@@ -8,6 +8,8 @@
 
   const NAVY = "#1b2c5b";
   const NAVY_SOFT = "#45598f";
+  const STILL = typeof location !== "undefined" && location.search.indexOf("still") !== -1;
+  const FRONT = Math.PI; // rotation.y that brings the label (texture u=0.5) to face the camera (+Z)
   const mountEl = document.getElementById("canStage");
   const canvasEl = document.getElementById("canCanvas");
   const fallbackEl = document.getElementById("stageFallback");
@@ -20,7 +22,7 @@
   if (!window.THREE) { fail(); return; }
 
   let renderer, scene, camera, canGroup, raf;
-  let targetRotY = 0.5, curRotY = 0.5, velRotY = 0;
+  let targetRotY = FRONT, curRotY = FRONT, velRotY = 0;
   let curRotX = 0, targetRotX = 0;
   let dragging = false, lastX = 0, lastY = 0, autoIdle = 0;
 
@@ -130,7 +132,7 @@
 
     const w = mountEl.clientWidth, h = mountEl.clientHeight;
     camera = new THREE.PerspectiveCamera(28, w / h, 0.1, 100);
-    camera.position.set(0, 0, 13);
+    camera.position.set(0, 0, 16);
 
     renderer = new THREE.WebGLRenderer({ canvas: canvasEl, alpha: true, antialias: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -156,7 +158,7 @@
     // body with label
     const label = makeLabelTexture();
     const bodyMat = new THREE.MeshStandardMaterial({
-      map: label, metalness: 0.32, roughness: 0.28, envMap: env, envMapIntensity: 0.7,
+      map: label, metalness: 0.12, roughness: 0.42, envMap: env, envMapIntensity: 0.45,
     });
     const body = new THREE.Mesh(new THREE.CylinderGeometry(R, R, BODY, 96, 1, true), bodyMat);
     canGroup.add(body);
@@ -256,14 +258,14 @@
     // grow-in
     if (grown < 1) {
       grown = Math.min(1, grown + 0.022);
-      const s = easeOutBack(grown) * 2.0;
+      const s = easeOutBack(grown) * 1.0;
       canGroup.scale.setScalar(s);
     }
 
-    // auto rotate when idle
+    // auto rotate when idle (slow turntable); skipped in ?still mode
     if (!dragging) {
       autoIdle += 1;
-      if (autoIdle > 40) targetRotY += 0.0035;
+      if (!STILL && autoIdle > 40) targetRotY += 0.0024;
       velRotY *= 0.95;
       targetRotY += velRotY * 0.0;
     }
