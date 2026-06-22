@@ -15,7 +15,7 @@ Daily flow per client (run in parallel across clients via asyncio.gather):
 from __future__ import annotations
 
 import asyncio
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Any
 from zoneinfo import ZoneInfo
 
@@ -72,7 +72,7 @@ async def run_client_pipeline(client: dict[str, Any], run_day: datetime | None =
     # 5. Analyst — on the 1st of the month, report on the previous month.
     if run_day.day == 1:
         try:
-            prev_month = (run_day.replace(day=1) - __import__("datetime").timedelta(days=1)).strftime("%Y-%m")
+            prev_month = (run_day.replace(day=1) - timedelta(days=1)).strftime("%Y-%m")
             path = await analyst.run_analyst(client, prev_month)
             agents_log["analyst"] = {"report": path, "month": prev_month}
         except Exception as exc:  # noqa: BLE001
