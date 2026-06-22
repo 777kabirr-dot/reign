@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #000000;
+  color: #ffffff;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* All headings: uppercase, tracked, sharp. Intelligence-data feel. */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+  }
+}
+
+::selection {
+  background: #ffffff;
+  color: #000000;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+@layer components {
+  /* Cards: surface bg, hairline white border, sharp corners, no shadow. */
+  .stat-card {
+    @apply bg-surface border border-border p-5 flex flex-col gap-1;
+  }
+  .panel {
+    @apply bg-surface border border-border;
+  }
+  /* Buttons: transparent, 1px white border, white text → invert on hover. */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-3.5 py-2 text-xs font-medium uppercase tracking-label
+           bg-transparent border border-white/30 text-white transition-colors
+           hover:bg-white hover:text-black;
+  }
+  .btn-gold {
+    @apply btn;
+  }
+  .btn-ghost {
+    @apply btn;
+  }
+  .btn-danger {
+    @apply btn;
+  }
+  .input {
+    @apply bg-bg border border-border px-3 py-2 text-sm text-text outline-none
+           focus:border-white/40 w-full;
+  }
+  .th {
+    @apply text-left text-[11px] uppercase tracking-label text-dim font-medium px-4 py-3;
+  }
+  .td {
+    @apply px-4 py-3 text-sm align-middle;
+  }
+}

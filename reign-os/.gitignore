@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Reports output
+backend/reports/**/*.pdf
+
+# Node
+node_modules/
+dist/
+.env.local
+
+# Editor / OS
+.DS_Store
