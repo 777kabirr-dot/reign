@@ -2,7 +2,7 @@ name: Deploy ELYPHANT to GitHub Pages
 
 on:
   push:
-    branches: [claude/vigilant-meitner-g69f6x]
+    branches: [claude/eager-einstein-9i7r1n]
   workflow_dispatch:
 
 permissions:
