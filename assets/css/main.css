@@ -4,32 +4,35 @@
    ============================================================ */
 
 :root{
-  /* ----- Brand palette (from the can) ----- */
-  --navy:        #1b2c5b;   /* wordmark navy */
+  /* ----- Brand palette — Liquid Glass system (UI/UX Pro Max) ----- */
+  --navy:        #1b2c5b;   /* wordmark navy (brand, kept from can) */
   --navy-deep:   #122145;
-  --navy-ink:    #0d1730;
-  --navy-soft:   #45598f;
-  --navy-mist:   #8e9bbe;
+  --navy-ink:    #0C0A09;   /* near-black foreground */
+  --navy-soft:   #44403C;   /* secondary text */
+  --navy-mist:   #a8a29e;   /* muted/placeholder */
 
-  --paper:       #f6f4ef;   /* warm off-white niche */
-  --paper-2:     #efece4;
+  --paper:       #FAFAF9;   /* warm off-white background */
+  --paper-2:     #f3f0ea;
   --white:       #ffffff;
-  --silver:      #c9ccd3;   /* aluminium rim */
-  --silver-2:    #e7e9ee;
+  --silver:      #D6D3D1;   /* aluminium/border */
+  --silver-2:    #e7e5e4;
+
+  --gold:        #A16207;   /* accent/CTA — WCAG 3:1 on white */
+  --gold-2:      #ca8a04;
 
   --line:        rgba(27,44,91,.12);
   --line-soft:   rgba(27,44,91,.07);
 
-  /* ----- Glass ----- */
-  --glass-bg:    rgba(255,255,255,.55);
-  --glass-bg-2:  rgba(255,255,255,.35);
-  --glass-brd:   rgba(255,255,255,.7);
-  --glass-shadow:0 30px 80px -30px rgba(27,44,91,.30);
+  /* ----- Liquid Glass ----- */
+  --glass-bg:    rgba(255,255,255,.58);
+  --glass-bg-2:  rgba(255,255,255,.38);
+  --glass-brd:   rgba(255,255,255,.75);
+  --glass-shadow:0 30px 80px -30px rgba(27,44,91,.28), 0 0 0 1px rgba(255,255,255,.5) inset;
 
-  /* ----- Type ----- */
-  --f-display: "Oswald", "Arial Narrow", sans-serif;
-  --f-serif:   "Cormorant Garamond", Georgia, serif;
-  --f-body:    "Manrope", system-ui, sans-serif;
+  /* ----- Type: Bodoni Moda (luxury serif) + Jost (clean geometric) + Oswald (can) ----- */
+  --f-display: "Oswald", "Arial Narrow", sans-serif;   /* keeps the can wordmark look */
+  --f-serif:   "Bodoni Moda", Georgia, serif;           /* upgraded: Bodoni for headlines */
+  --f-body:    "Jost", system-ui, sans-serif;           /* upgraded: Jost for body copy */
 
   /* ----- Rhythm ----- */
   --maxw: 1240px;
@@ -172,8 +175,10 @@ em{font-style:normal}
   padding:14px 26px;border-radius:100px;transition:.35s var(--ease);
   white-space:nowrap;
 }
-.btn--solid{background:var(--navy);color:var(--white);box-shadow:0 12px 30px -12px rgba(27,44,91,.6)}
+.btn--solid{background:var(--navy);color:var(--white);box-shadow:0 12px 30px -12px rgba(27,44,91,.6);transition:.4s var(--ease)}
 .btn--solid:hover{background:var(--navy-deep);transform:translateY(-2px);box-shadow:0 18px 40px -14px rgba(27,44,91,.7)}
+.btn--solid.btn--gold{background:var(--gold);box-shadow:0 12px 30px -12px rgba(161,98,7,.5)}
+.btn--solid.btn--gold:hover{background:#854d0e;box-shadow:0 18px 40px -14px rgba(161,98,7,.6)}
 .btn--ghost{border:1px solid var(--line);color:var(--navy);padding:11px 22px}
 .btn--ghost:hover{background:var(--navy);color:var(--white);border-color:var(--navy)}
 .btn--text{color:var(--navy);text-transform:none;letter-spacing:.02em;padding:14px 4px;font-size:.92rem}
@@ -439,7 +444,7 @@ em{font-style:normal}
 .footer__legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:26px;border-top:1px solid var(--line-soft);font-size:.78rem;color:var(--navy-mist);letter-spacing:.04em}
 
 /* ============================================================ Reveal animation */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
 .reveal.is-in{opacity:1;transform:none}
 
 /* ============================================================ Responsive */
