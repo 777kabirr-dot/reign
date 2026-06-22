@@ -96,16 +96,18 @@ export default function Dashboard() {
           <h3 className="text-sm font-semibold text-text mb-4">Mentions · last 30 days</h3>
           <ResponsiveContainer width="100%" height={280}>
             <LineChart data={series}>
-              <CartesianGrid stroke="#1a1a1a" vertical={false} />
-              <XAxis dataKey="date" stroke="#888888" fontSize={11} tickMargin={8} interval={4} />
-              <YAxis stroke="#888888" fontSize={11} allowDecimals={false} />
+              <CartesianGrid stroke="rgba(255,255,255,0.05)" vertical={false} />
+              <XAxis dataKey="date" stroke="rgba(255,255,255,0.35)" fontSize={11} tickMargin={8} interval={4} />
+              <YAxis stroke="rgba(255,255,255,0.35)" fontSize={11} allowDecimals={false} />
               <Tooltip
-                contentStyle={{ background: "#111", border: "1px solid #222", borderRadius: 8, color: "#E2E2E2" }}
+                cursor={{ stroke: "rgba(255,255,255,0.2)" }}
+                contentStyle={{ background: "#000", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 0, color: "#FFFFFF" }}
+                labelStyle={{ color: "rgba(255,255,255,0.35)" }}
               />
-              <Legend wrapperStyle={{ fontSize: 12 }} />
-              <Line type="monotone" dataKey="negative" stroke="#C0392B" strokeWidth={2} dot={false} />
-              <Line type="monotone" dataKey="neutral" stroke="#888888" strokeWidth={2} dot={false} />
-              <Line type="monotone" dataKey="positive" stroke="#27AE60" strokeWidth={2} dot={false} />
+              <Legend wrapperStyle={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.15em" }} />
+              <Line type="monotone" dataKey="negative" stroke="#FFFFFF" strokeWidth={1} strokeOpacity={1} dot={{ r: 2, fill: "#FFFFFF", strokeWidth: 0 }} />
+              <Line type="monotone" dataKey="neutral" stroke="#FFFFFF" strokeWidth={1} strokeOpacity={0.4} dot={{ r: 2, fill: "#FFFFFF", fillOpacity: 0.4, strokeWidth: 0 }} />
+              <Line type="monotone" dataKey="positive" stroke="#FFFFFF" strokeWidth={1} strokeOpacity={0.7} dot={{ r: 2, fill: "#FFFFFF", fillOpacity: 0.7, strokeWidth: 0 }} />
             </LineChart>
           </ResponsiveContainer>
         </div>

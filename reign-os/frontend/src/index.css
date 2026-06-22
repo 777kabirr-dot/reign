@@ -14,10 +14,28 @@ body,
 
 body {
   margin: 0;
-  background: #080808;
-  color: #e2e2e2;
-  font-family: "Inter", system-ui, sans-serif;
+  background: #000000;
+  color: #ffffff;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* All headings: uppercase, tracked, sharp. Intelligence-data feel. */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+  }
+}
+
+::selection {
+  background: #ffffff;
+  color: #000000;
 }
 
 ::-webkit-scrollbar {
@@ -25,40 +43,45 @@ body {
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #080808;
+  background: #000000;
 }
 ::-webkit-scrollbar-thumb {
-  background: #222222;
-  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 0;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #333333;
+  background: rgba(255, 255, 255, 0.25);
 }
 
 @layer components {
+  /* Cards: surface bg, hairline white border, sharp corners, no shadow. */
   .stat-card {
-    @apply bg-surface border border-border rounded-xl p-5 flex flex-col gap-1;
+    @apply bg-surface border border-border p-5 flex flex-col gap-1;
   }
   .panel {
-    @apply bg-surface border border-border rounded-xl;
+    @apply bg-surface border border-border;
   }
+  /* Buttons: transparent, 1px white border, white text → invert on hover. */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-lg text-sm font-medium transition-colors;
+    @apply inline-flex items-center justify-center gap-2 px-3.5 py-2 text-xs font-medium uppercase tracking-label
+           bg-transparent border border-white/30 text-white transition-colors
+           hover:bg-white hover:text-black;
   }
   .btn-gold {
-    @apply btn bg-gold text-black hover:bg-[#d8b85e];
+    @apply btn;
   }
   .btn-ghost {
-    @apply btn border border-border text-text hover:border-gold/60;
+    @apply btn;
   }
   .btn-danger {
-    @apply btn border border-danger/50 text-danger hover:bg-danger/10;
+    @apply btn;
   }
   .input {
-    @apply bg-bg border border-border rounded-lg px-3 py-2 text-sm text-text outline-none focus:border-gold/60 w-full;
+    @apply bg-bg border border-border px-3 py-2 text-sm text-text outline-none
+           focus:border-white/40 w-full;
   }
   .th {
-    @apply text-left text-xs uppercase tracking-wider text-dim font-medium px-4 py-3;
+    @apply text-left text-[11px] uppercase tracking-label text-dim font-medium px-4 py-3;
   }
   .td {
     @apply px-4 py-3 text-sm align-middle;

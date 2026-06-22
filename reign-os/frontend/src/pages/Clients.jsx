@@ -222,7 +222,7 @@ export default function Clients() {
             {clients.map((c) => (
               <tr
                 key={c.id}
-                className="border-t border-border hover:bg-white/[0.02] cursor-pointer"
+                className="border-t border-border hover:bg-white/[0.04] cursor-pointer"
                 onClick={() => setSelected(c.slug)}
               >
                 <td className="td">

@@ -120,8 +120,8 @@ export default function Legal() {
                     <button className="btn-ghost text-xs" onClick={() => setViewing(d)}>View</button>
                     {d.status === "pending" && (
                       <>
-                        <button className="btn text-xs bg-safe/15 text-safe border border-safe/40 hover:bg-safe/25" onClick={() => approve(d)}>Approve</button>
-                        <button className="btn-danger text-xs" onClick={() => reject(d)}>Reject</button>
+                        <button className="btn-ghost text-xs" onClick={() => approve(d)}>Approve</button>
+                        <button className="btn-ghost text-xs" onClick={() => reject(d)}>Reject</button>
                       </>
                     )}
                   </div>

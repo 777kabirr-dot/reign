@@ -9,7 +9,7 @@ export default function MentionRow({ mention, onResolve, onFlag }) {
   return (
     <>
       <tr
-        className="border-t border-border hover:bg-white/[0.02] cursor-pointer"
+        className="border-t border-border hover:bg-white/[0.04] cursor-pointer"
         onClick={() => setOpen((o) => !o)}
       >
         <td className="td text-dim">{client}</td>

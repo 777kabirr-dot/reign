@@ -11,10 +11,10 @@ const NAV = [
 
 export default function Sidebar() {
   return (
-    <aside className="fixed left-0 top-0 h-full w-[64px] md:w-[220px] bg-surface border-r border-border flex flex-col z-20">
+    <aside className="fixed left-0 top-0 h-full w-[64px] md:w-[220px] bg-bg border-r border-border flex flex-col z-20">
       <div className="h-16 flex items-center px-4 md:px-6 border-b border-border">
-        <span className="text-gold font-bold text-xl tracking-widest">R</span>
-        <span className="hidden md:inline ml-2 font-semibold tracking-[0.2em] text-text">
+        <span className="text-white font-bold text-xl tracking-widest">R</span>
+        <span className="hidden md:inline ml-2 font-semibold tracking-[0.2em] text-white">
           REIGN
         </span>
       </div>
@@ -24,10 +24,10 @@ export default function Sidebar() {
             key={item.to}
             to={item.to}
             className={({ isActive }) =>
-              `flex items-center gap-3 px-4 md:px-6 py-3 text-sm border-l-2 transition-colors ${
+              `flex items-center gap-3 px-4 md:px-6 py-3 text-xs uppercase tracking-label border-l transition-colors ${
                 isActive
-                  ? "border-gold text-gold bg-gold/5"
-                  : "border-transparent text-dim hover:text-text hover:bg-white/[0.02]"
+                  ? "border-white text-white"
+                  : "border-transparent text-dim hover:text-white"
               }`
             }
           >

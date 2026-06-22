@@ -30,9 +30,9 @@ export default function AgentStatusBar({ runs }) {
             <li key={agent} className="flex items-center justify-between">
               <div className="flex items-center gap-2.5">
                 <span
-                  className={`w-2.5 h-2.5 rounded-full ${active ? "bg-safe shadow-[0_0_8px] shadow-safe/60" : "bg-dim/40"}`}
+                  className={`w-2 h-2 ${active ? "bg-white" : "bg-white/15"}`}
                 />
-                <span className="text-sm text-text">{agent}</span>
+                <span className="text-xs uppercase tracking-label text-text">{agent}</span>
               </div>
               <span className="text-[11px] text-dim font-mono">
                 {last ? new Date(last).toLocaleDateString() : "idle"}
