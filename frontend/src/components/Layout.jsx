@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar.jsx";
+import { DEMO } from "../api.js";
 
 const MOBILE_NAV = [
   { to: "/", label: "Home", end: true },
@@ -33,6 +34,13 @@ export default function Layout() {
           ))}
         </header>
 
+        {DEMO && (
+          <div className="border-b border-subtle bg-elevated px-5 py-2 text-center text-xs text-white/55 sm:px-8">
+            <span className="font-mono uppercase tracking-wide text-white/40">Demo</span>
+            {"  "}— live preview with seeded data. Generation and publishing are
+            simulated; connect a backend + Anthropic key for the real thing.
+          </div>
+        )}
         <main className="mx-auto w-full max-w-shell flex-1 px-5 py-8 sm:px-8 sm:py-10">
           <Outlet />
         </main>

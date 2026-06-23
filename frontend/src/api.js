@@ -1,4 +1,7 @@
+import { demo } from "./demo.js";
+
 const BASE = import.meta.env.VITE_API_BASE || "http://localhost:8000";
+export const DEMO = import.meta.env.VITE_DEMO === "1";
 
 async function request(path, options = {}) {
   const res = await fetch(`${BASE}${path}`, {
@@ -19,7 +22,7 @@ async function request(path, options = {}) {
   return res.json();
 }
 
-export const api = {
+const live = {
   base: BASE,
   dashboard: () => request("/dashboard"),
   stats: () => request("/stats"),
@@ -46,3 +49,7 @@ export const api = {
   updateSettings: (values) =>
     request("/settings", { method: "PUT", body: JSON.stringify({ values }) }),
 };
+
+// In the static GitHub Pages preview (VITE_DEMO=1) there is no backend, so all
+// calls resolve from the in-memory demo data instead.
+export const api = DEMO ? { base: "demo", ...demo } : live;
