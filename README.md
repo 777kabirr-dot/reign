@@ -1,57 +1,96 @@
-# ELYPHANT — Premium Mineral Water
+# Reign — Content Publisher
 
-A premium, minimalist brand website for **ELYPHANT** mineral water, built around the
-product's real design language: pure white, deep navy blue, aluminium and a lot of
-breathing room.
+A solo-operated reputation-management dashboard. Add a client and a brief; Reign
+generates positive, SEO-optimized content with Claude and publishes it to the
+configured platforms (WordPress, Medium, LinkedIn). One user, no login.
 
-> *Naturally Pure · Rich in Minerals · Balanced pH · Nothing added, nothing removed.*
+> Premium dark SaaS aesthetic — black canvas, white-only accents at varying
+> opacity, Inter for body and JetBrains Mono for data. Sharp cards, lots of
+> breathing room.
 
-## Highlights
+## Stack
 
-- **Interactive 3D can** — a procedural aluminium can rendered with [three.js](https://threejs.org).
-  The ELYPHANT label is painted onto a canvas texture at runtime, lit with key/rim/fill lights
-  and real reflections. Auto-rotates, and you can **drag to spin it**. Falls back to an elegant
-  CSS can if WebGL is unavailable.
-- **Glassmorphism** — frosted glass panels for pillars, the mineral table, gallery and CTA.
-- **Background animation** — drifting gradient orbs + a rising-bubbles canvas, with a film-grain overlay.
-- **Animated mineral table** — counters and bars animate to the real values printed on the can.
-- **Scroll reveals, tilt cards, marquee, parallax** and an active-section nav.
-- **Premium typography** — Cormorant Garamond (display serif), Oswald (condensed display),
-  Manrope (body).
-- Fully **responsive**, accessible, and **`prefers-reduced-motion`** aware.
+| Layer     | Tech                                            |
+| --------- | ----------------------------------------------- |
+| Frontend  | React 18 · Vite · Tailwind CSS · React Router   |
+| Backend   | FastAPI · Python 3.11+                           |
+| Database  | Supabase (Postgres) — optional in-memory fallback |
+| AI        | Claude `claude-sonnet-4-6` via the Anthropic API |
+| Publishing| WordPress REST · Medium API · LinkedIn UGC API  |
 
-## Design tokens
-
-| Token | Value | Use |
-|-------|-------|-----|
-| `--navy` | `#1b2c5b` | Wordmark / primary text |
-| `--navy-soft` | `#45598f` | Secondary text |
-| `--paper` | `#f6f4ef` | Warm off-white background |
-| `--white` | `#ffffff` | Surfaces |
-| `--silver` | `#c9ccd3` | Aluminium accents |
-
-## Structure
+## Layout
 
 ```
-index.html              Markup + content (real values from the can)
-assets/css/main.css     Design system, glassmorphism, animations, responsive
-assets/js/can3d.js      three.js 3D can + canvas label + interaction
-assets/js/app.js        Reveals, counters, nav, tilt, bubbles, form
+backend/            FastAPI service
+  main.py           app + CORS + routers
+  config.py         .env-backed settings (read/write at runtime)
+  store.py          Supabase or in-memory repository
+  ai.py             Claude prompts + generation
+  publishers.py     WordPress / Medium / LinkedIn publishing
+  schemas.py        Pydantic models + content-type catalog
+  routers/          clients · generate · content · settings
+frontend/           React + Vite + Tailwind app
+  src/pages/        Dashboard · Clients · Generate · Library · Settings
+supabase/schema.sql Database schema
 ```
 
 ## Run it
 
-No build step. Open `index.html`, or serve the folder:
+### 1. Backend
 
 ```bash
-python3 -m http.server 8000
-# visit http://localhost:8000
+cd backend
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env        # add ANTHROPIC_API_KEY (Supabase optional)
+uvicorn main:app --reload --port 8000
 ```
 
-three.js is loaded from a CDN, so an internet connection is needed for the 3D can
-(the CSS fallback works offline).
+Without Supabase configured, the backend uses an in-memory store so the whole
+app runs end-to-end immediately. Add `SUPABASE_URL` / `SUPABASE_KEY` (and run
+`supabase/schema.sql`) to persist.
 
-## Brand
+### 2. Frontend
 
-- Instagram — [@elyphant.co](https://instagram.com/elyphant.co)
-- Elyphant Beverages Pvt. Ltd., Wai Region, Satara — Maharashtra, India · Made in India.
+```bash
+cd frontend
+npm install
+cp .env.example .env        # VITE_API_BASE defaults to http://localhost:8000
+npm run dev                 # http://localhost:5173
+```
+
+## How it works
+
+1. **Clients** — name, brand, industry, tone, keywords, brief, and WordPress
+   credentials. The brief is the narrative Claude reinforces.
+2. **Generate** — pick a client, check the content types (SEO article, press
+   release, LinkedIn post, Google Business Profile responses, FAQ page), add an
+   optional angle, and run. The backend calls Claude per piece, publishes to the
+   mapped platform, and saves everything to `content_published`.
+3. **Publishing fallback** — if a platform publish fails (or isn't configured),
+   the piece is still saved with `platform = "draft"` and the error is surfaced.
+4. **Library** — every published piece, filterable by client / type / platform /
+   month, with a slide-in preview of the full text.
+
+## API
+
+| Method | Path                | Purpose                                  |
+| ------ | ------------------- | ---------------------------------------- |
+| GET    | `/dashboard`        | Stats + recent activity + client cards   |
+| GET/POST/PUT/DELETE | `/clients`, `/clients/{id}` | Client CRUD            |
+| POST   | `/generate`         | Generate + publish a batch               |
+| GET    | `/content`          | Content library (filterable)             |
+| GET    | `/stats`            | Hero stats                               |
+| GET/PUT| `/settings`         | Masked API keys, written to `.env`       |
+
+## Environment
+
+`backend/.env` (see `backend/.env.example`): `ANTHROPIC_API_KEY`,
+`ANTHROPIC_MODEL`, `SUPABASE_URL`, `SUPABASE_KEY`, `MEDIUM_TOKEN`,
+`MEDIUM_USER_ID`, `LINKEDIN_TOKEN`, `LINKEDIN_AUTHOR_URN`, `PORT`,
+`CORS_ORIGINS`. Keys can also be edited from the Settings page.
+
+---
+
+_Note: an earlier static site (`index.html`, `assets/`, the Pages workflow)
+remains in the repo root from a previous project and is unrelated to this app._

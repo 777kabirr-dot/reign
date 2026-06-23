@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #000000;
+  color: #ffffff;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.font-mono {
+  font-feature-settings: "tnum" 1;
+}
+
+/* Minimal, near-invisible scrollbars to match the surface. */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  border: 3px solid #000;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+@keyframes reign-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: reign-fade-up 0.35s ease both;
+}
+
+@keyframes reign-slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.slide-in {
+  animation: reign-slide-in 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes reign-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin {
+  animation: reign-spin 0.8s linear infinite;
+}
