@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0c0a09" />
+<title>ELYPHANT — Investor Presentation</title>
+<meta name="description" content="ELYPHANT — Luxury Without Excess. Investor presentation for the premium aluminium mineral water house. Pure · Reserve · Noir." />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231b2c5b'/%3E%3Ctext x='16' y='23' font-family='Georgia' font-size='18' fill='white' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,300;0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,300;1,6..96,400;1,6..96,500&family=Jost:wght@300;400;500;600;700&family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+/* =========================================================
+   ELYPHANT · Investor Deck
+   Luxury Without Excess
+   ========================================================= */
+:root{
+  --navy:#1b2c5b; --navy-deep:#122145; --navy-ink:#0C0A09;
+  --paper:#FAFAF9; --paper-2:#f3f0ea; --white:#fff;
+  --silver:#D6D3D1; --silver-2:#e7e5e4;
+  --gold:#A16207; --gold-2:#ca8a04; --gold-lite:#e7c878;
+  --ink-soft:#6b6660; --ink-mute:#9a948c;
+  --noir:#0c0a09; --noir-2:#16130f;
+  --line:rgba(255,255,255,.12);
+  --f-display:"Oswald","Arial Narrow",sans-serif;
+  --f-serif:"Bodoni Moda",Georgia,serif;
+  --f-body:"Jost",system-ui,sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --maxw:1180px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--f-body);
+  background:var(--noir);
+  color:var(--white);
+  overflow:hidden;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+em{font-style:normal}
+::selection{background:var(--gold);color:#fff}
+
+/* ===== Animated luxury background ===== */
+.bg{position:fixed;inset:0;z-index:0;overflow:hidden;background:
+  radial-gradient(1200px 800px at 75% -10%, #1c2a4d 0%, transparent 55%),
+  radial-gradient(1000px 900px at -10% 110%, #241a08 0%, transparent 55%),
+  linear-gradient(160deg,#0c0a09 0%,#100d0a 50%,#0b0a0c 100%);}
+.bg__grain{position:absolute;inset:-50%;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:overlay;animation:grain 7s steps(6) infinite}
+@keyframes grain{0%,100%{transform:translate(0,0)}20%{transform:translate(-4%,3%)}40%{transform:translate(3%,-5%)}60%{transform:translate(-3%,2%)}80%{transform:translate(2%,4%)}}
+.bg__orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.4;animation:drift 22s var(--ease) infinite alternate}
+.bg__orb.a{width:520px;height:520px;background:radial-gradient(circle,#26407c,transparent 70%);top:-120px;right:-80px}
+.bg__orb.b{width:460px;height:460px;background:radial-gradient(circle,#8a6212,transparent 70%);bottom:-140px;left:-60px;animation-duration:28s}
+@keyframes drift{to{transform:translate(40px,30px) scale(1.12)}}
+
+/* ===== Deck frame ===== */
+.deck{position:relative;z-index:2;height:100vh;width:100vw;overflow:hidden}
+.slide{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(28px,5.5vh,70px) clamp(26px,7vw,110px);
+  opacity:0;visibility:hidden;pointer-events:none;
+  transform:translateY(28px) scale(.985);
+  transition:opacity .7s var(--ease),transform .7s var(--ease),visibility .7s;
+}
+.slide.is-active{opacity:1;visibility:visible;pointer-events:auto;transform:none}
+.slide.is-prev{transform:translateY(-28px) scale(.985)}
+.slide__inner{width:100%;max-width:var(--maxw);margin:0 auto;width:100%}
+
+/* per-slide palette accents */
+.slide[data-tone="noir"]{}
+.slide[data-tone="reserve"] .bg-tone{background:radial-gradient(900px 600px at 80% 10%,rgba(161,98,7,.16),transparent 60%)}
+
+/* ===== Reveal (staggered) ===== */
+.r{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.is-active .r{opacity:1;transform:none}
+.is-active .r{transition-delay:calc(var(--i,0)*.09s + .15s)}
+
+/* ===== Typography ===== */
+.eyebrow{font-family:var(--f-display);font-weight:400;letter-spacing:.42em;text-transform:uppercase;font-size:clamp(10px,1.05vw,13px);color:var(--gold-lite)}
+.eyebrow .num{color:var(--ink-mute);margin-right:.9em}
+.kicker{font-family:var(--f-body);letter-spacing:.05em;color:var(--ink-mute);font-weight:300}
+h1,h2,h3{font-family:var(--f-serif);font-weight:400;line-height:1.04;letter-spacing:-.01em}
+.h-xl{font-size:clamp(40px,7vw,104px);line-height:.96}
+.h-lg{font-size:clamp(30px,4.6vw,62px)}
+.h-md{font-size:clamp(24px,3vw,40px)}
+.serif-it{font-style:italic}
+.gold{color:var(--gold-lite)}
+.lede{font-weight:300;color:#d9d4cc;font-size:clamp(15px,1.55vw,21px);line-height:1.6;max-width:62ch}
+.muted{color:var(--ink-mute)}
+.small{font-size:clamp(12px,1.1vw,14px)}
+.hairline{height:1px;background:linear-gradient(90deg,var(--gold),transparent);border:0;margin:18px 0}
+
+.section-head{margin-bottom:clamp(20px,3.4vh,40px)}
+.section-head h2{margin-top:.35em}
+
+/* ===== Layout helpers ===== */
+.grid{display:grid;gap:clamp(14px,1.6vw,22px)}
+.g-2{grid-template-columns:repeat(2,1fr)}
+.g-3{grid-template-columns:repeat(3,1fr)}
+.g-4{grid-template-columns:repeat(4,1fr)}
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,64px);align-items:center}
+.flex{display:flex}.between{justify-content:space-between}.center{align-items:center}.wrap{flex-wrap:wrap}
+
+/* ===== Glass cards ===== */
+.card{
+  position:relative;border-radius:18px;padding:clamp(16px,1.7vw,26px);
+  background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.025));
+  border:1px solid var(--line);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 24px 60px -30px rgba(0,0,0,.7);
+  overflow:hidden;
+}
+.card--gold{border-color:rgba(161,98,7,.4);background:linear-gradient(160deg,rgba(161,98,7,.14),rgba(161,98,7,.03))}
+.card__top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.card h3{font-family:var(--f-display);font-weight:500;letter-spacing:.12em;text-transform:uppercase;font-size:clamp(12px,1.15vw,15px);color:#fff}
+.card p{color:#cfcac2;font-weight:300;font-size:clamp(13px,1.15vw,15px);line-height:1.5}
+.card .big{font-family:var(--f-serif);font-size:clamp(28px,3.4vw,46px);line-height:1;color:#fff}
+.card .big .u{font-family:var(--f-body);font-size:.32em;color:var(--gold-lite);letter-spacing:.1em;margin-left:.3em;vertical-align:.2em}
+.card .lbl{font-family:var(--f-display);letter-spacing:.2em;text-transform:uppercase;font-size:11px;color:var(--ink-mute);margin-top:8px}
+
+/* 3D icon chips */
+.ic{
+  --c:var(--gold-lite);
+  width:clamp(42px,4vw,54px);height:clamp(42px,4vw,54px);flex:0 0 auto;border-radius:14px;
+  display:grid;place-items:center;color:var(--c);
+  background:linear-gradient(150deg,rgba(255,255,255,.16),rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 10px 22px -10px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.35), inset 0 -8px 14px -8px rgba(0,0,0,.6);
+  transform:perspective(420px) rotateX(12deg);
+  transition:transform .5s var(--ease);
+}
+.card:hover .ic,.tier:hover .ic{transform:perspective(420px) rotateX(0) translateY(-3px) rotateZ(-3deg)}
+.ic svg{width:54%;height:54%}
+
+/* ===== Stats row ===== */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,30px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(16px,2.4vh,28px) 0}
+.stat .n{font-family:var(--f-serif);font-size:clamp(30px,4vw,56px);line-height:1;color:#fff}
+.stat .n small{font-size:.4em;color:var(--gold-lite);font-family:var(--f-body);letter-spacing:.06em}
+.stat .l{font-family:var(--f-display);letter-spacing:.2em;text-transform:uppercase;font-size:11px;color:var(--ink-mute);margin-top:10px}
+
+/* ===== 3D rotating can ===== */
+.can-scene{perspective:1400px;display:grid;place-items:center}
+.can{
+  --w:clamp(120px,11vw,168px);--h:clamp(300px,38vh,440px);
+  position:relative;width:var(--w);height:var(--h);
+  transform-style:preserve-3d;animation:spin 16s linear infinite;
+}
+.can.pure{--skin:linear-gradient(90deg,#cfd3da,#fff 18%,#fbfbfb 50%,#fff 82%,#c7ccd4);--word:#1b2c5b}
+.can.reserve{--skin:linear-gradient(90deg,#cbb89f,#f4ece0 18%,#fbf6ee 50%,#f4ece0 82%,#cab79f);--word:#A16207}
+.can.noir{--skin:linear-gradient(90deg,#000,#3a3a3c 18%,#1c1c1e 50%,#3a3a3c 82%,#000);--word:#000;--word:#101012}
+.can__body{position:absolute;inset:0;border-radius:12px/5%;background:var(--skin);overflow:hidden;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.08), 0 40px 60px -30px rgba(0,0,0,.8)}
+.can__sheen{position:absolute;top:0;bottom:0;left:-40%;width:40%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.65),transparent);filter:blur(2px);animation:sheen 16s linear infinite}
+.can__cap{position:absolute;left:6%;right:6%;height:5%;background:linear-gradient(180deg,#e9eaee,#a9adb6);border-radius:50%/100%}
+.can__cap.top{top:-2%}
+.can.noir .can__cap{background:linear-gradient(180deg,#2a2a2c,#0a0a0a)}
+.can.reserve .can__cap{background:linear-gradient(180deg,#e7cd92,#b8923f)}
+.can__label{position:absolute;inset:14% 0 0;display:flex;flex-direction:column;align-items:center;text-align:center;color:var(--word)}
+.can__word{font-family:var(--f-display);font-weight:600;letter-spacing:.02em;font-size:calc(var(--w)*.205);line-height:.9;transform:scaleY(2.05);transform-origin:top;margin-top:6%}
+.can__tier{font-family:var(--f-body);letter-spacing:.45em;font-size:calc(var(--w)*.085);margin-top:34%;opacity:.85}
+.can__sub{font-family:var(--f-body);letter-spacing:.2em;font-size:calc(var(--w)*.052);margin-top:8%;opacity:.6}
+.can__vol{font-family:var(--f-body);letter-spacing:.2em;font-size:calc(var(--w)*.058);position:absolute;bottom:9%;opacity:.7}
+@keyframes spin{to{transform:rotateY(360deg)}}
+@keyframes sheen{0%,100%{left:-40%}50%{left:120%}}
+.can-pedestal{width:60%;height:18px;margin-top:-6px;border-radius:50%;background:radial-gradient(ellipse,rgba(0,0,0,.55),transparent 70%);filter:blur(3px)}
+
+/* mini static cans (identity slide) */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.2vw,30px)}
+.tier{text-align:center;padding-top:6px}
+.tier .mini{--mw:clamp(70px,7vw,96px);width:var(--mw);height:calc(var(--mw)*2.55);margin:0 auto 16px;border-radius:11px/4%;position:relative;overflow:hidden;box-shadow:0 30px 50px -28px rgba(0,0,0,.85),inset 0 0 0 1px rgba(0,0,0,.06)}
+.tier .mini::after{content:"";position:absolute;top:0;bottom:0;left:0;width:34%;background:linear-gradient(90deg,rgba(255,255,255,.5),transparent)}
+.tier.pure .mini{background:linear-gradient(90deg,#cfd3da,#fff 20%,#fff 80%,#c7ccd4)}
+.tier.reserve .mini{background:linear-gradient(90deg,#cbb89f,#fbf6ee 20%,#fbf6ee 80%,#cab79f)}
+.tier.noir .mini{background:linear-gradient(90deg,#000,#2a2a2c 20%,#2a2a2c 80%,#000)}
+.tier .mini b{position:absolute;top:16%;left:0;right:0;font-family:var(--f-display);font-weight:600;font-size:calc(var(--mw)*.2);transform:scaleY(1.9);letter-spacing:0}
+.tier.pure .mini b{color:#1b2c5b}.tier.reserve .mini b{color:#A16207}.tier.noir .mini b{color:#0f0f11}
+.tier h3{font-family:var(--f-serif);font-size:clamp(20px,2.2vw,30px);margin-bottom:4px}
+.tier .pr{font-family:var(--f-display);letter-spacing:.2em;text-transform:uppercase;font-size:12px}
+.tier.pure .pr{color:#9fb4e6}.tier.reserve .pr{color:var(--gold-lite)}.tier.noir .pr{color:#bdbdc2}
+.tier p{color:var(--ink-mute);font-weight:300;font-size:13px;margin-top:8px;line-height:1.5}
+
+/* ===== Bars / charts ===== */
+.bars{display:flex;flex-direction:column;gap:14px}
+.bar{display:grid;grid-template-columns:130px 1fr auto;align-items:center;gap:14px}
+.bar .name{font-weight:300;color:#d9d4cc;font-size:14px}
+.bar .track{height:11px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden}
+.bar .fill{height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,var(--gold),var(--gold-lite));transition:width 1.2s var(--ease) .2s}
+.bar .fill.alt{background:linear-gradient(90deg,#2c4a8f,#7ea0e0)}
+.bar .v{font-family:var(--f-display);letter-spacing:.08em;font-size:14px;color:#fff;min-width:54px;text-align:right}
+
+/* line/area chart frame */
+.chart{width:100%;height:clamp(180px,30vh,300px)}
+.chart .axis{stroke:rgba(255,255,255,.12);stroke-width:1}
+.chart .grid-l{stroke:rgba(255,255,255,.06);stroke-width:1}
+.chart .area{fill:url(#gold-grad);opacity:.85}
+.chart .ln{fill:none;stroke:var(--gold-lite);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:1200;stroke-dashoffset:1200}
+.is-active .chart .ln{animation:draw 1.8s var(--ease) .4s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.chart .dot{fill:#fff;opacity:0}
+.is-active .chart .dot{animation:pop .4s var(--ease) forwards}
+@keyframes pop{to{opacity:1}}
+.chart text{fill:var(--ink-mute);font-family:var(--f-body);font-size:12px}
+
+/* ===== Timeline / roadmap ===== */
+.road{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:10px}
+.road::before{content:"";position:absolute;top:18px;left:6%;right:6%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.phase{position:relative;padding-top:42px}
+.phase .pin{position:absolute;top:11px;left:0;width:15px;height:15px;border-radius:50%;background:var(--gold-lite);box-shadow:0 0 0 5px rgba(161,98,7,.2)}
+.phase .yr{font-family:var(--f-display);letter-spacing:.18em;color:var(--gold-lite);font-size:12px;text-transform:uppercase}
+.phase h4{font-family:var(--f-serif);font-size:clamp(17px,1.8vw,22px);margin:6px 0 6px}
+.phase p{color:var(--ink-mute);font-weight:300;font-size:13px;line-height:1.5}
+
+/* list with markers */
+.ticks{display:flex;flex-direction:column;gap:13px}
+.ticks li{display:flex;gap:13px;align-items:flex-start;color:#d6d1c8;font-weight:300;font-size:clamp(14px,1.3vw,16px);line-height:1.5}
+.ticks li::before{content:"";flex:0 0 auto;width:7px;height:7px;margin-top:9px;border-radius:50%;background:var(--gold-lite);box-shadow:0 0 0 4px rgba(161,98,7,.16)}
+.ticks li b{color:#fff;font-weight:500}
+
+/* donut use-of-funds */
+.donut-wrap{display:flex;align-items:center;gap:clamp(20px,3vw,46px);flex-wrap:wrap}
+.donut{--deg:0deg;width:clamp(180px,20vw,240px);height:clamp(180px,20vw,240px);border-radius:50%;position:relative;
+  background:conic-gradient(var(--gold) 0 38%,#7ea0e0 38% 63%,#c79a3a 63% 80%,#5b6b8f 80% 92%,#3a3f4a 92% 100%);
+  -webkit-mask:radial-gradient(circle 64px at center,transparent 98%,#000 100%);mask:radial-gradient(circle 64px at center,transparent 98%,#000 100%)}
+.donut::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 40px rgba(0,0,0,.5)}
+.legend{display:flex;flex-direction:column;gap:12px}
+.legend li{display:flex;align-items:center;gap:12px;font-weight:300;color:#d9d4cc;font-size:15px}
+.legend .sw{width:13px;height:13px;border-radius:4px;flex:0 0 auto}
+.legend b{color:#fff;font-weight:500;font-family:var(--f-display);letter-spacing:.06em;margin-left:auto;padding-left:18px}
+
+/* competitor table */
+.ct{width:100%;border-collapse:collapse;font-size:clamp(12px,1.15vw,15px)}
+.ct th,.ct td{padding:clamp(8px,1.3vh,14px) 14px;text-align:left;border-bottom:1px solid var(--line)}
+.ct thead th{font-family:var(--f-display);letter-spacing:.16em;text-transform:uppercase;font-size:11px;color:var(--ink-mute);font-weight:500}
+.ct tbody td{font-weight:300;color:#cfcac2}
+.ct tbody tr.me td{color:#fff}
+.ct tbody tr.me{background:linear-gradient(90deg,rgba(161,98,7,.16),transparent)}
+.ct .name{font-family:var(--f-serif);font-size:1.18em;color:#fff}
+.ct .tag{font-family:var(--f-display);letter-spacing:.12em;font-size:11px;padding:3px 9px;border-radius:20px;border:1px solid var(--line);color:var(--gold-lite)}
+
+/* mood board */
+.mood{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:clamp(80px,13vh,128px);gap:12px}
+.mood div{border-radius:13px;background-size:cover;background-position:center;position:relative;overflow:hidden;border:1px solid var(--line)}
+.mood div span{position:absolute;left:12px;bottom:10px;font-family:var(--f-display);letter-spacing:.16em;text-transform:uppercase;font-size:10px;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.7)}
+.m1{grid-column:span 2;grid-row:span 2;background:linear-gradient(150deg,#1b2c5b,#0c1428)}
+.m2{grid-column:span 2;background:linear-gradient(150deg,#c9b896,#f4ece0)}
+.m3{grid-column:span 2;background:linear-gradient(150deg,#16130f,#000)}
+.m4{grid-column:span 2;background:linear-gradient(150deg,#A16207,#e7c878)}
+.m5{grid-column:span 2;background:repeating-linear-gradient(45deg,#1a1a1c,#1a1a1c 8px,#222 8px,#222 16px)}
+.m6{grid-column:span 3;background:linear-gradient(120deg,#0c0a09,#26407c)}
+.m7{grid-column:span 3;background:linear-gradient(120deg,#3a2e12,#A16207)}
+
+/* quote */
+.bigquote{font-family:var(--f-serif);font-style:italic;font-weight:300;font-size:clamp(26px,4.4vw,58px);line-height:1.14;letter-spacing:-.01em}
+.bigquote .mk{color:var(--gold);font-size:1.3em;line-height:0}
+
+/* ===== Chrome: progress, nav, counter ===== */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-lite));z-index:50;transition:width .5s var(--ease)}
+.brandbar{position:fixed;top:20px;left:clamp(20px,4vw,46px);z-index:40;display:flex;align-items:center;gap:11px}
+.brandbar .mk{font-family:var(--f-display);letter-spacing:.4em;font-size:13px;color:#fff}
+.brandbar .dot{width:6px;height:6px;border-radius:50%;background:var(--gold-lite)}
+.brandbar .ex{font-family:var(--f-body);letter-spacing:.2em;font-size:10px;color:var(--ink-mute);text-transform:uppercase}
+.counter{position:fixed;bottom:20px;right:clamp(20px,4vw,46px);z-index:40;font-family:var(--f-display);letter-spacing:.2em;font-size:12px;color:var(--ink-mute)}
+.counter b{color:#fff}
+.nav{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:40;display:flex;align-items:center;gap:14px;
+  padding:9px 16px;border-radius:40px;background:rgba(20,18,16,.6);border:1px solid var(--line);backdrop-filter:blur(10px)}
+.nav button{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#cfcac2;border:1px solid var(--line);transition:.3s var(--ease)}
+.nav button:hover{color:#fff;border-color:var(--gold-lite);background:rgba(161,98,7,.2)}
+.nav .dots{display:flex;gap:6px}
+.nav .dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.22);cursor:pointer;transition:.3s var(--ease)}
+.nav .dots i.on{background:var(--gold-lite);transform:scale(1.35)}
+.hint{position:fixed;bottom:62px;left:50%;transform:translateX(-50%);z-index:40;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute);font-family:var(--f-display);opacity:.8;transition:opacity .6s}
+.hint.hide{opacity:0}
+
+.note{font-size:11px;color:var(--ink-mute);font-weight:300;letter-spacing:.02em}
+
+/* cover specifics */
+.cover{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.cover .tagline{font-family:var(--f-body);letter-spacing:.5em;text-transform:uppercase;font-size:clamp(11px,1.3vw,15px);color:var(--gold-lite);margin-bottom:26px}
+.pill{display:inline-flex;align-items:center;gap:9px;padding:8px 16px;border-radius:30px;border:1px solid var(--line);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#d9d4cc;font-family:var(--f-display)}
+
+/* responsive */
+@media(max-width:900px){
+  .split,.cover{grid-template-columns:1fr;gap:24px}
+  .g-3,.g-4{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr);gap:18px}
+  .road{grid-template-columns:repeat(2,1fr)}.road::before{display:none}
+  .mood{grid-template-columns:repeat(4,1fr)}
+  .can-scene{display:none}
+  .cover .can-hide{display:none}
+}
+@media(max-width:600px){
+  .g-2,.g-3,.g-4,.tiers{grid-template-columns:1fr}
+  .bar{grid-template-columns:90px 1fr auto}
+  .ct .hidesm{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .can,.can__sheen,.bg__orb,.bg__grain{animation:none!important}
+  .r{transition-duration:.01ms}
+}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true">
+  <div class="bg__orb a"></div>
+  <div class="bg__orb b"></div>
+  <div class="bg__grain"></div>
+</div>
+
+<div class="progress" id="progress"></div>
+<div class="brandbar"><span class="mk">ELYPHANT</span><span class="dot"></span><span class="ex">Luxury Without Excess</span></div>
+<div class="counter"><b id="cNow">01</b> / <span id="cTot">22</span></div>
+
+<main class="deck" id="deck">
+
+  <!-- 01 · COVER -->
+  <section class="slide is-active" data-tone="reserve">
+    <div class="bg-tone" style="position:absolute;inset:0;pointer-events:none"></div>
+    <div class="slide__inner cover">
+      <div>
+        <p class="tagline r" style="--i:0">Luxury Without Excess</p>
+        <h1 class="h-xl r" style="--i:1">ELYPHANT</h1>
+        <p class="lede r" style="--i:2;margin-top:22px">
+          A house of premium aluminium mineral water — engineered as an object of desire,
+          not a commodity. Three expressions. One philosophy.
+        </p>
+        <div class="flex wrap" style="gap:12px;margin-top:30px">
+          <span class="pill r" style="--i:3">Pure</span>
+          <span class="pill r" style="--i:3">Reserve</span>
+          <span class="pill r" style="--i:3">Noir</span>
+        </div>
+        <p class="note r" style="--i:4;margin-top:34px">Series A Investor Presentation · Confidential · 2026 · Elyphant Beverages Pvt. Ltd.</p>
+      </div>
+      <div class="can-hide can-scene r" style="--i:2">
+        <div class="can reserve"><div class="can__cap top"></div>
+          <div class="can__body"><span class="can__sheen"></span>
+            <div class="can__label">
+              <span class="can__word">ELYPHANT</span>
+              <span class="can__tier">RESERVE</span>
+              <span class="can__sub">PREMIUM MINERAL WATER</span>
+              <span class="can__vol">500 mL</span>
+            </div>
+          </div>
+        </div>
+        <div class="can-pedestal"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 · THESIS -->
+  <section class="slide" data-tone="reserve">
+    <div class="bg-tone" style="position:absolute;inset:0;pointer-events:none"></div>
+    <div class="slide__inner">
+      <div class="section-head">
+        <p class="eyebrow r"><span class="num">02</span>The Thesis</p>
+        <h2 class="h-lg r" style="--i:1">Water is the last <span class="serif-it gold">unbranded</span> luxury.</h2>
+      </div>
+      <div class="split">
+        <p class="lede r" style="--i:2">
+          The wealthy have a wardrobe of luxury for every ritual — champagne, espresso, fragrance, fashion.
+          Yet the most consumed product on earth, the one held in hand at every dinner, spa and suite,
+          remains a plastic afterthought. <b style="color:#fff;font-weight:500">ELYPHANT turns water into a status object</b> —
+          an aluminium vessel worthy of the table it sits on.
+        </p>
+        <ul class="ticks r" style="--i:3">
+          <li><b>Frequency × emotion.</b> Consumed daily, gifted, displayed — the rare luxury with everyday occasions.</li>
+          <li><b>Aluminium over glass &amp; plastic.</b> Lighter, infinitely recyclable, light-proof — premium and sustainable.</li>
+          <li><b>A house, not a SKU.</b> Pure, Reserve and Noir let one brand price from accessible-luxury to ultra-premium.</li>
+          <li><b>Margin lives in perception.</b> The liquid costs cents; the brand commands dollars.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · MARKET -->
+  <section class="slide">
+    <div class="slide__inner">
+      <div class="section-head">
+        <p class="eyebrow r"><span class="num">03</span>Market Sizing</p>
+        <h2 class="h-lg r" style="--i:1">A premium tide, rising fastest where we stand.</h2>
+      </div>
+      <div class="stats r" style="--i:2">
+        <div class="stat"><div class="n" data-count="42" data-suffix="B"><small>$</small>0</div><div class="l">Global premium &amp; luxury water · 2026</div></div>
+        <div class="stat"><div class="n" data-count="8.7" data-dec="1" data-suffix="%">0</div><div class="l">Luxury water CAGR · 2026–2031</div></div>
+        <div class="stat"><div class="n" data-count="6.1" data-dec="1" data-suffix="B"><small>$</small>0</div><div class="l">India packaged water · 2026</div></div>
+        <div class="stat"><div class="n" data-count="3.4" data-dec="1" data-suffix="B"><small>$</small>0</div><div class="l">GCC premium beverage · 2026</div></div>
+      </div>
+      <div class="split" style="margin-top:clamp(18px,3vh,34px)">
+        <div class="r" style="--i:3">
+          <p class="kicker" style="margin-bottom:14px">Serviceable obtainable market — where ELYPHANT plays</p>
+          <div class="bars">
+            <div class="bar"><span class="name">India HoReCa lux</span><span class="track"><span class="fill" data-w="58"></span></span><span class="v">$880M</span></div>
+            <div class="bar"><span class="name">GCC hospitality</span><span class="track"><span class="fill" data-w="74"></span></span><span class="v">$1.1B</span></div>
+            <div class="bar"><span class="name">Global travel retail</span><span class="track"><span class="fill" data-w="40"></span></span><span class="v">$610M</span></div>
+            <div class="bar"><span class="name">D2C &amp; gifting</span><span class="track"><span class="fill" data-w="28"></span></span><span class="v">$420M</span></div>
+          </div>
+        </div>
+        <ul class="ticks r" style="--i:4">
+          <li><b>India is minting millionaires faster than any major economy</b> — 1.6M HNIs by 2027, hungry for home-grown luxury.</li>
+          <li><b>The GCC is the world's densest luxury-hospitality corridor</b> — Dubai, Riyadh, Doha — and imports nearly all premium water.</li>
+          <li><b>A "Made in India" luxury house</b> can serve both with a structural cost advantage Western brands can't match.</li>
+        </ul>
+      </div>
+      <p class="note r" style="--i:5;margin-top:16px">Figures are management estimates synthesised from industry sources for illustration; not audited.</p>
+    </div>
+  </section>
+
+  <!-- 04 · COMPETITOR TEARDOWN -->
+  <section class="slide" data-tone="noir">
+    <div class="slide__inner">
+      <div class="section-head">
+        <p class="eyebrow r"><span class="num">04</span>Competitor Teardown</p>
+        <h2 class="h-lg r" style="--i:1">Everyone sells the source. <span class="serif-it gold">No one sells the system.</span></h2>
+      </div>
+      <div class="card r" style="--i:2;padding:6px clamp(8px,1.4vw,18px)">
+      <table class="ct">
+        <thead><tr><th>Brand</th><th>Vessel</th><th class="hidesm">Positioning</th><th>Retail / 500mL</th><th class="hidesm">Weakness we exploit</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Evian / Volvic</td><td>Plastic</td><td class="hidesm">Mass-premium</td><td>$1.5</td><td class="hidesm">Plastic, no luxury equity</td></tr>
+          <tr><td class="name">Fiji</td><td>Plastic</td><td class="hidesm">Aspirational</td><td>$2.8</td><td class="hidesm">Carbon &amp; plastic backlash</td></tr>
+          <tr><td class="name">Voss</td><td>Glass</td><td class="hidesm">Design-led</td><td>$5.0</td><td class="hidesm">Heavy, fragile, single tier</td></tr>
+          <tr><td class="name">Perrier</td><td>Glass</td><td class="hidesm">Heritage sparkling</td><td>$3.5</td><td class="hidesm">Dated, no still-luxury halo</td></tr>
+          <tr><td class="name">GOAT / Reform / Blüra</td><td>Alu / Glass</td><td class="hidesm">New-luxury challengers</td><td>$4–9</td><td class="hidesm">Single tier, thin distribution</td></tr>
+          <tr class="me"><td class="name">ELYPHANT <span class="tag">House</span></td><td>Aluminium</td><td class="hidesm">3-tier luxury house</td><td>$3–14</td><td class="hidesm">— Our white space —</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="lede r" style="--i:3;margin-top:20px">
+        Incumbents are single-product. ELYPHANT is the only player built as a <b style="color:#fff;font-weight:500">vertical house</b> —
+        spanning accessible-luxury to ultra-premium — in the format luxury is migrating toward: aluminium.
+      </p>
+    </div>
+  </section>
+
+  <!-- 05 · THE MOAT -->
+  <section class="slide">
+    <div class="slide__inner">
+      <div class="section-head">
+        <p class="eyebrow r"><span class="num">05</span>The ELYPHANT Moat</p>
+        <h2 class="h-lg r" style="--i:1">Five walls around the brand.</h2>
+      </div>
+      <div class="grid g-3 r" style="--i:2">
+        <div class="card"><div class="card__top"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2 4 6v6c0 5 3.5 7.5 8 10 4.5-2.5 8-5 8-10V6l-8-4Z" stroke="currentColor" stroke-width="1.5"/></svg></span><h3>Brand House</h3></div><p>Three tiers under one mark — a price ladder and gifting architecture rivals can't bolt on later.</p></div>
+        <div class="card"><div class="card__top"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M3 21h18M6 21V9l6-5 6 5v12M10 21v-5h4v5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span><h3>Hospitality Lock-in</h3></div><p>Exclusive pours and co-branded service rituals make ELYPHANT the default on premium tables — switching costs for the venue.</p></div>
+        <div class="card"><div class="card__top"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M6 7h12M5 12h14M7 17h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><h3>Source &amp; Cost</h3></div><p>Protected Western-Ghats springs + India manufacturing = luxury perception at a structural cost base imports can't touch.</p></div>
+        <div class="card"><div class="card__top"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16v13H4zM8 7V4h8v3M9 12h6M9 16h4" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span><h3>Design IP</h3></div><p>The elongated wordmark, can system and Pure/Reserve/Noir identity are protectable, instantly recognisable assets.</p></div>
+        <div class="card"><div class="card__top"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10Z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="11" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg></span><h3>Sustainability</h3></div><p>Infinitely recyclable aluminium answers the plastic backlash — an ESG story glass and PET can't tell.</p></div>
+        <div class="card card--gold"><div class="card__top"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 6.9H22l-5.8 4.3 2.2 7L12 16l-6.4 4.2 2.2-7L2 8.9h7.6z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></span><h3>First-mover Prestige</h3></div><p>The first true luxury water <em>house</em> from India — owning the narrative before the category forms.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 · IDENTITY SYSTEM -->
+  <section class="slide" data-tone="reserve">
+    <div class="bg-tone" style="position:absolute;inset:0;pointer-events:none"></div>
+    <div class="slide__inner">
+      <div class="section-head">
+        <p class="eyebrow r"><span class="num">06</span>Visual Identity System</p>
+        <h2 class="h-lg r" style="--i:1">Three expressions. One philosophy.</h2>
+      </div>
+      <div class="tiers">
+        <div class="tier pure r" style="--i:2">
+          <div class="mini"><b>E</b></div>
+          <h3>Pure</h3><div class="pr">Premium · $3</div>
+          <p>For every moment. The purest form of hydration. Navy on white — crisp, clean, refreshing.</p>
+        </div>
+        <div class="tier reserve r" style="--i:3">
+          <div class="mini"><b>E</b></div>
+          <h3>Reserve</h3><div class="pr">Prestige · $6</div>
+          <p>For the exceptional few. Gold on cream — smooth, refined, elevated. The gifting hero.</p>
+        </div>
+        <div class="tier noir r" style="--i:4">
+          <div class="mini"><b>E</b></div>
+          <h3>Noir</h3><div class="pr">Ultra · $14</div>
+          <p>For after dark. Black on black — bold, sophisticated. Designed for the finest spaces.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 · HOSPITALITY ACQUISITION -->
+  <section class="slide" data-tone="noir">
+    <div class="slide__inner">
+      <div class="section-head">
+        <p class="eyebrow r"><span class="num">07</span>Hospitality Acquisition</p>
+        <h2 class="h-lg r" style="--i:1">Win the table, own the brand.</h2>
+      </div>
+      <div class="split">
+        <ul class="ticks r" style="--i:2">
+          <li><b>Land:</b> seed flagship 5-star hotels, Michelin-tier restaurants and members' clubs with Reserve &amp; Noir on the house.</li>
+          <li><b>Embed:</b> co-branded service ritual — chilled can, branded coaster, tableside pour — turning water into theatre.</li>
+          <li><b>Expand:</b> roll from F&amp;B into minibars, spa, banqueting and gifting across the property group.</li>
+          <li><b>Advocate:</b> sommeliers &amp; GMs become channel — referrals compound across a small, networked luxury world.</li>
+        </ul>
+        <div class="grid g-2 r" style="--i:3">
+          <div class="card"><div class="big" data-count="120" data-suffix="+">0</div><div class="lbl">Target venues · Year 1</div></div>
+          <div class="card"><div class="big" data-count="68" data-suffix="%">0</div><div class="lbl">Gross margin in channel</div></div>
+          <div class="card"><div class="big"><span class="u">₹</span><span data-count="3.2" data-dec="1">0</span><span class="u">L</span></div><div class="lbl">Avg. annual value / venue</div></div>
+          <div class="card card--gold"><div class="big" data-count="9" data-suffix="×">0</div><div class="lbl">LTV : CAC in hospitality</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 · UNIT ECONOMICS -->
+  <section class="slide">
+    <div class="slide__inner">
+      <div class="section-head">
+        <p class="eyebrow r"><span class="num">08</span>Unit Economics · Per Can</p>
+        <h2 class="h-lg r" style="--i:1">The margin is in the meaning.</h2>
+      </div>
+      <div class="split">
+        <div class="r" style="--i:2">
+          <p class="kicker" style="margin-bottom:14px">ELYPHANT Reserve · 500mL · indicative HoReCa economics</p>
+          <div class="bars">
+            <div class="bar"><span class="name">Selling price</span><span class="track"><span class="fill" data-w="100"></span></span><span class="v">$6.00</span></div>
+            <div class="bar"><span class="name">Aluminium can</span><span class="track"><span class="fill alt" data-w="13"></span></span><span class="v">$0.78</span></div>
+            <div class="bar"><span class="name">Water + fill</span><span class="track"><span class="fill alt" data-w="4"></span></span><span class="v">$0.24</span></div>
+            <div class="bar"><span class="name">Label + cap</span><span class="track"><span class="fill alt" data-w="6"></span></span><span class="v">$0.36</span></div>
+            <div class="bar"><span class="name">Logistics</span><span class="track"><span class="fill alt" data-w="9"></span></span><span class="v">$0.54</span></div>
+            <div class="bar"><span class="name">Gross profit</span><span class="track"><span class="fill" data-w="68"></span></span><span class="v">$4.08</span></div>
+          </div>
+        </div>
+        <div class="grid g-2 r" style="--i:3">
+          <div class="card"><div class="big" data-count="1.92" data-dec="2"><span class="u">$</span>0</div><div class="lbl">Total COGS / can</div></div>
+          <div class="card card--gold"><div class="big" data-count="68" data-suffix="%">0</div><div class="lbl">Gross margin · Reserve</div></div>
+          <div class="card"><div class="big" data-count="54" data-suffix="%">0</div><div class="lbl">Blended margin · all tiers</div></div>
+          <div class="card"><div class="big" data-count="82" data-suffix="%">0</div><div class="lbl">Gross margin · Noir</div></div>
+        </div>
+      </div>
+      <p class="note r" style="--i:4;margin-top:16px">Illustrative at scale (&gt;5M cans/yr); excludes brand &amp; overhead, captured in the P&amp;L on slide 12.</p>
+    </div>
+  </section>
+
+  <!-- 09 · MANUFACTURING -->
+  <section class="slide" data-tone="reserve">
+    <div class="bg-tone" style="position:absolute;inset:0;pointer-events:none"></div>
+    <div class="slide__inner">
+      <div class="section-head">
+        <p class="eyebrow r"><span class="num">09</span>Manufacturing Model</p>
+        <h2 class="h-lg r" style="--i:1">Asset-light now. Owned where it matters.</h2>
+      </div>
+      <div class="grid g-3 r" style="--i:2">
+        <div class="card"><div class="card__top"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V10l5-3 5 3v11M15 21v-7l4-2v9" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span><h3>Source · Owned</h3></div><p>Protected spring catchment &amp; on-site canning in the Wai region — the one asset we control end-to-end for quality &amp; story.</p></div>
+        <div class="card"><div class="card__top"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20V8l8-4 8 4v12M4 20h16M9 20v-5h6v5M9 11h.01M15 11h.01" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span><h3>Canning · Co-pack</h3></div><p>Certified aluminium co-packers for capacity flex — scale up without capex, maintaining FSSAI &amp; export-grade standards.</p></div>
+        <div class="card"><div class="card__top"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><h3>Phase 2 · Own line</h3></div><p>Dedicated luxury line funded post-traction — unlocking Noir finishes, limited editions and full margin capture.</p></div>
+      </div>
+      <div class="stats r" style="--i:3;margin-top:8px">
+        <div class="stat"><div class="n" data-count="5" data-suffix="M"><small></small>0</div><div class="l">Cans/yr · Phase 1 capacity</div></div>
+        <div class="stat"><div class="n" data-count="0" data-suffix="">0</div><div class="l">Capex to launch (co-pack)</div></div>
+        <div class="stat"><div class="n" data-count="6" data-suffix="wk">0</div><div class="l">Source → shelf cycle</div></div>
+        <div class="stat"><div class="n" data-count="100" data-suffix="%">0</div><div class="l">Recyclable aluminium</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · SUPPLY CHAIN -->
+  <section class="slide" data-tone="noir">
+    <div class="slide__inner">
+      <div class="section-head">
+        <p class="eyebrow r"><span class="num">10</span>Supply Chain</p>
+        <h2 class="h-lg r" style="--i:1">From the spring to the suite.</h2>
+      </div>
+      <div class="road r" style="--i:2">
+        <div class="phase"><span class="pin"></span><div class="yr">Stage 01</div><h4>Source</h4><p>Protected aquifer, sealed catchment, zero surface contact in the Western Ghats.</p></div>
+        <div class="phase"><span class="pin"></span><div class="yr">Stage 02</div><h4>Fill &amp; Seal</h4><p>Canned at source in light-proof aluminium — freshness locked, plastic eliminated.</p></div>
+        <div class="phase"><span class="pin"></span><div class="yr">Stage 03</div><h4>Distribute</h4><p>Temperature-stable, lightweight cases; domestic 3PL + GCC export freight forwarding.</p></div>
+        <div class="phase"><span class="pin"></span><div class="yr">Stage 04</div><h4>Serve</h4><p>Chilled, presented, poured — delivered to hotels, clubs, retail &amp; D2C doorsteps.</p></div>
+      </div>
+      <div class="split" style="margin-top:clamp(18px,3vh,32px)">
+        <ul class="ticks r" style="--i:3">
+          <li><b>Aluminium = logistics edge.</b> ~40% lighter than glass, unbreakable, stackable — lower freight, zero breakage loss.</li>
+          <li><b>Dual-node ready.</b> India for domestic + a GCC bonded warehouse to serve the Gulf without import friction.</li>
+        </ul>
+        <ul class="ticks r" style="--i:4">
+          <li><b>Traceability.</b> Batch-level provenance from spring to can — the transparency luxury buyers now demand.</li>
+          <li><b>Resilient sourcing.</b> Multi-supplier aluminium &amp; co-pack agreements remove single-point risk.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · GROSS MARGIN PROJECTIONS -->
+  <section class="slide">
+    <div class="slide__inner">
+      <div class="section-head">
+        <p class="eyebrow r"><span class="num">11</span>Gross Margin Projections</p>
+        <h2 class="h-lg r" style="--i:1">Margins expand as the mix moves up.</h2>
+      </div>
+      <div class="split">
+        <div class="card r" style="--i:2">
+          <svg class="chart" viewBox="0 0 520 260" preserveAspectRatio="none">
+            <defs><linearGradient id="gold-grad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e7c878" stop-opacity=".5"/><stop offset="1" stop-color="#A16207" stop-opacity="0"/>
+            </linearGradient></defs>
+            <line class="grid-l" x1="40" y1="40" x2="500" y2="40"/>
+            <line class="grid-l" x1="40" y1="110" x2="500" y2="110"/>
+            <line class="grid-l" x1="40" y1="180" x2="500" y2="180"/>
+            <line class="axis" x1="40" y1="220" x2="500" y2="220"/>
+            <path class="area" d="M40 168 L155 138 L270 100 L385 70 L500 48 L500 220 L40 220 Z"/>
+            <path class="ln" d="M40 168 L155 138 L270 100 L385 70 L500 48"/>
+            <circle class="dot" cx="40" cy="168" r="4"/><circle class="dot" cx="155" cy="138" r="4"/><circle class="dot" cx="270" cy="100" r="4"/><circle class="dot" cx="385" cy="70" r="4"/><circle class="dot" cx="500" cy="48" r="4"/>
+            <text x="34" y="236">Y0</text><text x="149" y="236">Y1</text><text x="264" y="236">Y2</text><text x="379" y="236">Y3</text><text x="486" y="236">Y4</text>
+            <text x="6" y="172">45%</text><text x="6" y="114">58%</text><text x="6" y="44">72%</text>
+          </svg>
+        </div>
+        <div class="r" style="--i:3">
+          <p class="lede" style="margin-bottom:20px">Blended gross margin climbs from <b style="color:#fff;font-weight:500">45%</b> at launch to <b class="gold">68%+</b> as Reserve and Noir take share and the owned line comes online.</p>
+          <ul class="ticks">
+            <li><b>Mix shift:</b> Noir &amp; Reserve grow from 30% → 55% of volume.</li>
+            <li><b>Scale buying:</b> aluminium &amp; co-pack rates fall with volume.</li>
+            <li><b>Owned line:</b> Phase-2 capture removes co-pack margin leakage.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 · 3-YEAR MODEL -->
+  <section class="slide" data-tone="noir">
+    <div class="slide__inner">
+      <div class="section-head">
+        <p class="eyebrow r"><span class="num">12</span>3-Year Financial Model</p>
+        <h2 class="h-lg r" style="--i:1">A clear path to profitable scale.</h2>
+      </div>
+      <div class="card r" style="--i:2;padding:6px clamp(8px,1.4vw,18px)">
+      <table class="ct">
+        <thead><tr><th>Metric</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th class="hidesm">Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Cans sold</td><td>0.9M</td><td>3.1M</td><td>7.8M</td><td class="hidesm">HoReCa-led, then retail &amp; export</td></tr>
+          <tr><td>Revenue</td><td>$3.2M</td><td>$12.4M</td><td>$34.0M</td><td class="hidesm">Blended ASP rising with mix</td></tr>
+          <tr><td>Gross margin</td><td>48%</td><td>58%</td><td>66%</td><td class="hidesm">Mix + scale + owned line</td></tr>
+          <tr><td>Gross profit</td><td>$1.5M</td><td>$7.2M</td><td>$22.4M</td><td class="hidesm">—</td></tr>
+          <tr class="me"><td>EBITDA</td><td>–$1.1M</td><td>$1.4M</td><td>$8.9M</td><td class="hidesm">Profitable from Year 2</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="stats r" style="--i:3;margin-top:18px">
+        <div class="stat"><div class="n"><small>$</small><span data-count="34" data-suffix="M">0</span></div><div class="l">Year-3 revenue (target)</div></div>
+        <div class="stat"><div class="n"><span data-count="26" data-suffix="%">0</span></div><div class="l">Year-3 EBITDA margin</div></div>
+        <div class="stat"><div class="n"><span data-count="11" data-suffix="×">0</span></div><div class="l">3-yr revenue growth</div></div>
+        <div class="stat"><div class="n">Y2</div><div class="l">EBITDA break-even</div></div>
+      </div>
+      <p class="note r" style="--i:4;margin-top:14px">Forward-looking targets for illustration only; actual results will vary.</p>
+    </div>
+  </section>
+
+  <!-- 13 · USE OF FUNDS -->
+  <section class="slide" data-tone="reserve">
+    <div class="bg-tone" style="position:absolute;inset:0;pointer-events:none"></div>
+    <div class="slide__inner">
+      <div class="section-head">
+        <p class="eyebrow r"><span class="num">13</span>The Ask · Use of Funds</p>
+        <h2 class="h-lg r" style="--i:1">Raising <span class="gold">$5M</span> to build the house.</h2>
+      </div>
+      <div class="donut-wrap">
+        <div class="donut r" style="--i:2"></div>
+        <ul class="legend r" style="--i:3">
+          <li><span class="sw" style="background:#A16207"></span>Brand, content &amp; hospitality activation <b>38%</b></li>
+          <li><span class="sw" style="background:#7ea0e0"></span>Sales, distribution &amp; GCC expansion <b>25%</b></li>
+          <li><span class="sw" style="background:#c79a3a"></span>Owned production line (Phase 2) <b>17%</b></li>
+          <li><span class="sw" style="background:#5b6b8f"></span>Inventory &amp; working capital <b>12%</b></li>
+          <li><span class="sw" style="background:#3a3f4a"></span>Team &amp; operations <b>8%</b></li>
+        </ul>
+      </div>
+      <p class="lede r" style="--i:4;margin-top:26px">
+        18–24 month runway to <b style="color:#fff;font-weight:500">$12M+ revenue</b>, 120+ flagship venues,
+        a live GCC corridor and an owned luxury line — de-risking the brand before Series B.
+      </p>
+    </div>
+  </section>
+
+  <!-- 14 · EXPANSION ROADMAP -->
+  <section class="slide">
+    <div class="slide__inner">
+      <div class="section-head">
+        <p class="eyebrow r"><span class="num">14</span>Brand Expansion Roadmap</p>
+        <h2 class="h-lg r" style="--i:1">From a can to a house of objects.</h2>
+      </div>
+      <div class="road r" style="--i:2">
+        <div class="phase"><span class="pin"></span><div class="yr">2026</div><h4>Establish</h4><p>Launch Pure, Reserve &amp; Noir. Win India's flagship hospitality and define the category.</p></div>
+        <div class="phase"><span class="pin"></span><div class="yr">2027</div><h4>Extend</h4><p>Sparkling line, glass-format limited editions, branded glassware &amp; gifting sets.</p></div>
+        <div class="phase"><span class="pin"></span><div class="yr">2028</div><h4>Elevate</h4><p>Noir Réserve ultra-editions, artist collabs, members' programme &amp; concept boutique.</p></div>
+        <div class="phase"><span class="pin"></span><div class="yr">2029</div><h4>Expand</h4><p>Adjacent luxury hydration &amp; wellness — the ELYPHANT lifestyle house.</p></div>
+      </div>
+      <p class="lede r" style="--i:3;margin-top:clamp(18px,3vh,30px)">
+        Water is the entry point. The destination is a <b style="color:#fff;font-weight:500">multi-category luxury lifestyle brand</b>
+        with water as its iconic, daily touchpoint.
+      </p>
+    </div>
+  </section>
+
+  <!-- 15 · INTERNATIONAL EXPANSION -->
+  <section class="slide" data-tone="noir">
+    <div class="slide__inner">
+      <div class="section-head">
+        <p class="eyebrow r"><span class="num">15</span>International Expansion</p>
+        <h2 class="h-lg r" style="--i:1">India first. The Gulf next. The world after.</h2>
+      </div>
+      <div class="grid g-3 r" style="--i:2">
+        <div class="card"><div class="card__top"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" stroke="currentColor" stroke-width="1.2"/></svg></span><h3>Wave 1 · India</h3></div><p>Mumbai, Delhi, Bengaluru &amp; Goa luxury hospitality. Prove the model in our home market.</p><div class="lbl">2026 · Beachhead</div></div>
+        <div class="card card--gold"><div class="card__top"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10Z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="11" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg></span><h3>Wave 2 · GCC</h3></div><p>Dubai, Abu Dhabi, Riyadh, Doha — the world's densest luxury-hospitality market, hungry for premium pours.</p><div class="lbl">2027 · Export corridor</div></div>
+        <div class="card"><div class="card__top"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M2 12h20M12 2v20M5 5l14 14M19 5 5 19" stroke="currentColor" stroke-width="1.2"/></svg></span><h3>Wave 3 · Global</h3></div><p>London, Singapore, Monaco travel-retail &amp; luxury hotel groups via distribution partners.</p><div class="lbl">2028 · Selective</div></div>
+      </div>
+      <div class="stats r" style="--i:3;margin-top:8px">
+        <div class="stat"><div class="n"><span data-count="3">0</span></div><div class="l">Strategic regions</div></div>
+        <div class="stat"><div class="n"><span data-count="40" data-suffix="%">0</span></div><div class="l">Y3 revenue from export</div></div>
+        <div class="stat"><div class="n"><small></small><span data-count="0" data-prefix="$" data-suffix="">0</span></div><div class="l">Import duty (FTA routes)</div></div>
+        <div class="stat"><div class="n"><span data-count="6" data-suffix="wk">0</span></div><div class="l">India → GCC lead time</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16 · HOTEL PARTNERSHIP PIPELINE -->
+  <section class="slide">
+    <div class="slide__inner">
+      <div class="section-head">
+        <p class="eyebrow r"><span class="num">16</span>Hotel Partnership Pipeline</p>
+        <h2 class="h-lg r" style="--i:1">The funnel is already filling.</h2>
+      </div>
+      <div class="split">
+        <div class="r" style="--i:2">
+          <p class="kicker" style="margin-bottom:14px">Pipeline by stage · target accounts (illustrative)</p>
+          <div class="bars">
+            <div class="bar"><span class="name">Identified</span><span class="track"><span class="fill" data-w="100"></span></span><span class="v">240</span></div>
+            <div class="bar"><span class="name">In conversation</span><span class="track"><span class="fill" data-w="56"></span></span><span class="v">96</span></div>
+            <div class="bar"><span class="name">Sampling / trial</span><span class="track"><span class="fill" data-w="30"></span></span><span class="v">42</span></div>
+            <div class="bar"><span class="name">LOI / contracting</span><span class="track"><span class="fill" data-w="13"></span></span><span class="v">18</span></div>
+          </div>
+        </div>
+        <ul class="ticks r" style="--i:3">
+          <li><b>Group-level entry.</b> Targeting 5-star chains &amp; luxury collections — one signature unlocks dozens of properties.</li>
+          <li><b>Categories in play:</b> hotels, fine-dining, members' clubs, premium airlines &amp; lounges, luxury events.</li>
+          <li><b>Service model proven.</b> Pilots convert on experience, not discount — protecting price &amp; margin.</li>
+          <li><b>Reference power.</b> Each marquee logo de-risks the next — luxury follows luxury.</li>
+        </ul>
+      </div>
+      <p class="note r" style="--i:4;margin-top:16px">Pipeline figures are illustrative of the target model.</p>
+    </div>
+  </section>
+
+  <!-- 17 · FOUNDER STORY -->
+  <section class="slide" data-tone="reserve">
+    <div class="bg-tone" style="position:absolute;inset:0;pointer-events:none"></div>
+    <div class="slide__inner split">
+      <div>
+        <p class="eyebrow r"><span class="num">17</span>Founder Story</p>
+        <h2 class="h-lg r" style="--i:1;margin:.3em 0 .5em">Built from the source up.</h2>
+        <p class="lede r" style="--i:2">
+          ELYPHANT began with a simple frustration: the most premium tables in the world still served water
+          like an afterthought. We set out to build the brand that India — sitting on some of the planet's
+          finest spring sources — should have created decades ago.
+        </p>
+        <ul class="ticks r" style="--i:3;margin-top:20px">
+          <li><b>Brand &amp; design discipline</b> — an identity system already mistaken for a global house.</li>
+          <li><b>Operating roots in Maharashtra</b> — direct line to the source, the region and the supply chain.</li>
+          <li><b>A house philosophy from day one</b> — Pure, Reserve, Noir designed as a system, not stumbled into.</li>
+        </ul>
+      </div>
+      <div class="card card--gold r" style="--i:2">
+        <p class="bigquote" style="font-size:clamp(20px,2.6vw,32px)"><span class="mk">“</span>Purity isn't something we make. It's something we protect.<span class="mk">”</span></p>
+        <hr class="hairline">
+        <p class="kicker">— The ELYPHANT promise</p>
+        <p class="note" style="margin-top:18px">Elyphant Beverages Pvt. Ltd. · Wai Region, Satara — Maharashtra, India · Made in India.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 18 · EXIT OPPORTUNITIES -->
+  <section class="slide" data-tone="noir">
+    <div class="slide__inner">
+      <div class="section-head">
+        <p class="eyebrow r"><span class="num">18</span>Exit Opportunities</p>
+        <h2 class="h-lg r" style="--i:1">A category the giants always acquire.</h2>
+      </div>
+      <div class="grid g-3 r" style="--i:2">
+        <div class="card"><div class="card__top"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20V9l8-5 8 5v11M4 20h16M10 20v-6h4v6" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span><h3>Strategic · Beverage</h3></div><p>Nestlé Waters, Danone, Coca-Cola &amp; PepsiCo routinely acquire premium water brands to upgrade portfolios.</p></div>
+        <div class="card"><div class="card__top"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 6.9H22l-5.8 4.3 2.2 7L12 16l-6.4 4.2 2.2-7L2 8.9h7.6z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></span><h3>Strategic · Luxury</h3></div><p>LVMH, Pernod Ricard &amp; luxury-hospitality groups seek lifestyle brands with daily-use prestige.</p></div>
+        <div class="card"><div class="card__top"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M3 21h18M6 21V8m4 13V5m4 16V9m4 12V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><h3>Financial · PE / IPO</h3></div><p>Consumer-luxury PE roll-ups, or a public listing on the back of India's premiumisation story.</p></div>
+      </div>
+      <div class="stats r" style="--i:3;margin-top:8px">
+        <div class="stat"><div class="n"><span data-count="4" data-suffix="–6×">0</span></div><div class="l">Revenue multiple · premium water M&amp;A</div></div>
+        <div class="stat"><div class="n"><span data-count="3" data-suffix="–5yr">0</span></div><div class="l">Typical horizon to exit</div></div>
+        <div class="stat"><div class="n"><span data-count="100" data-prefix="$" data-suffix="M+">0</span></div><div class="l">Target enterprise value</div></div>
+        <div class="stat"><div class="n"><span data-count="2">0</span></div><div class="l">Strategic buyer pools</div></div>
+      </div>
+      <p class="note r" style="--i:4;margin-top:14px">Comparable-based illustration; not a forecast or guarantee of outcome.</p>
+    </div>
+  </section>
+
+  <!-- 19 · MOOD BOARD -->
+  <section class="slide">
+    <div class="slide__inner">
+      <div class="section-head">
+        <p class="eyebrow r"><span class="num">19</span>Mood &amp; Mockups</p>
+        <h2 class="h-lg r" style="--i:1">The world ELYPHANT lives in.</h2>
+      </div>
+      <div class="mood r" style="--i:2">
+        <div class="m1"><span>Pure · Navy on White</span></div>
+        <div class="m2"><span>Reserve · Cream &amp; Gold</span></div>
+        <div class="m3"><span>Noir · After Dark</span></div>
+        <div class="m4"><span>Gold Foil Detail</span></div>
+        <div class="m5"><span>Brushed Aluminium</span></div>
+        <div class="m6"><span>The Suite</span></div>
+        <div class="m7"><span>The Table</span></div>
+      </div>
+      <p class="lede r" style="--i:3;margin-top:20px">Crisp · Refined · Sophisticated — three palettes, one unmistakable house.</p>
+    </div>
+  </section>
+
+  <!-- 20 · IDENTITY / 3 CANS LIVE -->
+  <section class="slide" data-tone="noir">
+    <div class="slide__inner" style="text-align:center">
+      <p class="eyebrow r">The Object</p>
+      <h2 class="h-lg r" style="--i:1;margin:.3em 0 clamp(14px,3vh,30px)">Designed to be seen.</h2>
+      <div class="flex center" style="justify-content:center;gap:clamp(24px,5vw,80px);align-items:flex-end" >
+        <div class="can-scene r" style="--i:2;transform:scale(.78)">
+          <div class="can pure"><div class="can__cap top"></div><div class="can__body"><span class="can__sheen"></span><div class="can__label"><span class="can__word">ELYPHANT</span><span class="can__tier">PURE</span><span class="can__sub">PREMIUM MINERAL WATER</span><span class="can__vol">500 mL</span></div></div></div>
+        </div>
+        <div class="can-scene r" style="--i:3">
+          <div class="can reserve"><div class="can__cap top"></div><div class="can__body"><span class="can__sheen"></span><div class="can__label"><span class="can__word">ELYPHANT</span><span class="can__tier">RESERVE</span><span class="can__sub">PREMIUM MINERAL WATER</span><span class="can__vol">500 mL</span></div></div></div>
+        </div>
+        <div class="can-scene r" style="--i:4;transform:scale(.78)">
+          <div class="can noir"><div class="can__cap top"></div><div class="can__body"><span class="can__sheen"></span><div class="can__label"><span class="can__word">ELYPHANT</span><span class="can__tier">NOIR</span><span class="can__sub">PREMIUM MINERAL WATER</span><span class="can__vol">500 mL</span></div></div></div>
+        </div>
+      </div>
+      <p class="kicker r" style="--i:5;margin-top:clamp(14px,3vh,30px)">Three expressions · One philosophy · Luxury without excess</p>
+    </div>
+  </section>
+
+  <!-- 21 · WHY NOW -->
+  <section class="slide" data-tone="reserve">
+    <div class="bg-tone" style="position:absolute;inset:0;pointer-events:none"></div>
+    <div class="slide__inner">
+      <div class="section-head">
+        <p class="eyebrow r"><span class="num">21</span>Why Now</p>
+        <h2 class="h-lg r" style="--i:1">Three curves are crossing.</h2>
+      </div>
+      <div class="grid g-3 r" style="--i:2">
+        <div class="card"><div class="big" data-count="1.6" data-dec="1" data-suffix="M">0</div><div class="lbl">Indian HNIs by 2027 — domestic luxury demand</div><p style="margin-top:12px">A generation that wants home-grown brands it can be proud of.</p></div>
+        <div class="card"><div class="big" data-count="3" data-suffix="×">0</div><div class="lbl">Faster aluminium-water growth vs. PET</div><p style="margin-top:12px">The plastic backlash is structural, not a trend.</p></div>
+        <div class="card card--gold"><div class="big" data-count="0">0</div><div class="lbl">True luxury water houses from India</div><p style="margin-top:12px">The white space is open — and closing. First mover wins the narrative.</p></div>
+      </div>
+      <p class="lede r" style="--i:3;margin-top:clamp(18px,3vh,30px)">Rising wealth, a format shift toward aluminium, and an empty luxury throne — ELYPHANT exists to claim it.</p>
+    </div>
+  </section>
+
+  <!-- 22 · CLOSE -->
+  <section class="slide" data-tone="reserve">
+    <div class="bg-tone" style="position:absolute;inset:0;pointer-events:none"></div>
+    <div class="slide__inner cover">
+      <div>
+        <p class="eyebrow r"><span class="num">22</span>The Invitation</p>
+        <h2 class="h-xl r" style="--i:1;margin:.2em 0">Pour the<br><span class="serif-it gold">future.</span></h2>
+        <p class="lede r" style="--i:2">
+          We're raising <b style="color:#fff;font-weight:500">$5M</b> to build the world's first luxury water house from India —
+          and we're inviting a select few to build it with us.
+        </p>
+        <hr class="hairline r" style="--i:3">
+        <div class="flex wrap r" style="--i:4;gap:26px;align-items:center">
+          <span class="pill">hello@elyphant.co</span>
+          <span class="pill">@elyphant.co</span>
+          <span class="kicker">Elyphant Beverages Pvt. Ltd. · Made in India</span>
+        </div>
+      </div>
+      <div class="can-hide can-scene r" style="--i:2">
+        <div class="can noir"><div class="can__cap top"></div>
+          <div class="can__body"><span class="can__sheen"></span>
+            <div class="can__label"><span class="can__word">ELYPHANT</span><span class="can__tier">NOIR</span><span class="can__sub">PREMIUM MINERAL WATER</span><span class="can__vol">500 mL</span></div>
+          </div>
+        </div>
+        <div class="can-pedestal"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="hint" id="hint">← → · Space · Swipe</div>
+<nav class="nav" aria-label="Slide navigation">
+  <button id="prev" aria-label="Previous slide"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <div class="dots" id="dots"></div>
+  <button id="next" aria-label="Next slide"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</nav>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var total=slides.length, cur=0;
+  var progress=document.getElementById('progress');
+  var cNow=document.getElementById('cNow'), cTot=document.getElementById('cTot');
+  var dots=document.getElementById('dots'), hint=document.getElementById('hint');
+  cTot.textContent=String(total).padStart(2,'0');
+
+  slides.forEach(function(s,i){
+    var d=document.createElement('i'); d.addEventListener('click',function(){go(i)});
+    dots.appendChild(d);
+  });
+  var dotEls=[].slice.call(dots.children);
+
+  function animateCounters(slide){
+    slide.querySelectorAll('[data-count]').forEach(function(el){
+      if(el.dataset.done) return; el.dataset.done='1';
+      var end=parseFloat(el.dataset.count), dec=parseInt(el.dataset.dec||'0',10);
+      var pre=el.dataset.prefix||'', suf=el.dataset.suffix||'';
+      var dur=1300, t0=null;
+      function step(t){ if(!t0)t0=t; var p=Math.min((t-t0)/dur,1);
+        var e=1-Math.pow(1-p,3); var val=(end*e).toFixed(dec);
+        el.textContent=pre+val+suf; if(p<1)requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    });
+    slide.querySelectorAll('.fill[data-w]').forEach(function(f){ f.style.width=f.dataset.w+'%'; });
+  }
+
+  function go(n){
+    n=Math.max(0,Math.min(total-1,n));
+    slides[cur].classList.remove('is-active'); slides[cur].classList.add('is-prev');
+    dotEls[cur].classList.remove('on');
+    cur=n;
+    slides[cur].classList.remove('is-prev'); slides[cur].classList.add('is-active');
+    dotEls[cur].classList.add('on');
+    cNow.textContent=String(cur+1).padStart(2,'0');
+    progress.style.width=((cur+1)/total*100)+'%';
+    animateCounters(slides[cur]);
+  }
+  // init
+  dotEls[0].classList.add('on'); progress.style.width=(1/total*100)+'%';
+  animateCounters(slides[0]);
+
+  document.getElementById('next').addEventListener('click',function(){go(cur+1)});
+  document.getElementById('prev').addEventListener('click',function(){go(cur-1)});
+  function hideHint(){ hint.classList.add('hide'); }
+  window.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();go(cur+1);hideHint();}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(cur-1);hideHint();}
+    else if(e.key==='Home'){go(0)} else if(e.key==='End'){go(total-1)}
+  });
+  // wheel (debounced)
+  var wl=0;
+  window.addEventListener('wheel',function(e){
+    var now=Date.now(); if(now-wl<700)return; if(Math.abs(e.deltaY)<24)return;
+    wl=now; go(cur+(e.deltaY>0?1:-1)); hideHint();
+  },{passive:true});
+  // touch
+  var sx=0,sy=0;
+  window.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+  window.addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy;
+    if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)){ go(cur+(dx<0?1:-1)); hideHint(); }
+  },{passive:true});
+  setTimeout(hideHint,5000);
+})();
+</script>
+</body>
+</html>
