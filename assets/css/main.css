@@ -21,7 +21,7 @@
   --pill-hi:     rgba(255,255,255,.12);
 
   --font:  "Inter Tight", "Inter", "Helvetica Neue", Arial, sans-serif;
-  --mono:  "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  --mono:  "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
 
   --max:   1180px;
   --pad:   clamp(20px, 5vw, 60px);
@@ -87,6 +87,12 @@ h1,h2,h3,h4{ color:var(--text); font-weight:500; letter-spacing:-.02em; line-hei
 .eyebrow{ font-family:var(--font); font-weight:500; font-size:.8rem; letter-spacing:.01em; color:var(--text-2); display:inline-flex; align-items:center; gap:.6rem; }
 .eyebrow::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--node); box-shadow:0 0 10px rgba(232,232,230,.7); flex:none; }
 .lead{ font-size:clamp(1.02rem,1.5vw,1.18rem); color:var(--text-2); max-width:56ch; }
+/* JetBrains Mono data-label treatment — weight 500, applied to every mono data-chip */
+.mono,
+.node-label, .datacard .dc-live, .datacard .dc-id, .dc-item .env, .datacard .dc-meta,
+.reg small, .trust-stat, .trust-lead, .gcard .env, .cap-node .cn-idx, .cap-tag,
+.nested-label, .featcard .region, .featcard .fid, .log-row .lid, .log-row .ld,
+.tnum .c, .ch .ck, .field label, .fnote, .foot-grid .fh, .foot-base{ font-weight:500; }
 .mono{ font-family:var(--mono); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--text-3); }
 
 .sec-head{ display:grid; gap:1.1rem; margin-bottom:clamp(2.4rem,4vw,3.6rem); }
@@ -182,7 +188,7 @@ h1,h2,h3,h4{ color:var(--text); font-weight:500; letter-spacing:-.02em; line-hei
 .trust-lead{ text-align:center; margin-bottom:1.6rem; }
 .trust-row{ display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:1.4rem 2.6rem; }
 .reg{ font-weight:600; font-size:1.02rem; letter-spacing:.01em; color:var(--text-2); opacity:.55; transition:opacity .3s var(--ease), color .3s var(--ease); }
-.reg small{ display:block; font-family:var(--mono); font-weight:400; font-size:.5rem; letter-spacing:.14em; text-transform:uppercase; color:var(--text-3); margin-top:.15rem; text-align:center; }
+.reg small{ display:block; font-family:var(--mono); font-weight:500; font-size:.5rem; letter-spacing:.14em; text-transform:uppercase; color:var(--text-3); margin-top:.15rem; text-align:center; }
 .reg:hover{ opacity:1; color:var(--text); }
 .trust-stat{ display:flex; align-items:center; justify-content:center; gap:.7rem; margin-top:1.6rem; font-family:var(--mono); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--text-3); }
 .trust-stat b{ font-family:var(--font); font-size:1.1rem; font-weight:600; letter-spacing:-.01em; color:var(--text); }
