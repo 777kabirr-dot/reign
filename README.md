@@ -1,57 +1,51 @@
-# ELYPHANT — Premium Mineral Water
+# Azimuth Energy Solutions — Marketing Site
 
-A premium, minimalist brand website for **ELYPHANT** mineral water, built around the
-product's real design language: pure white, deep navy blue, aluminium and a lot of
-breathing room.
+Single-page marketing website for **Azimuth Energy Solutions Pvt Ltd**, an independent
+deepwater / shallow-water / onshore well engineering and drilling project management
+consultancy (Pune HQ · Perth · Houston opening).
 
-> *Naturally Pure · Rich in Minerals · Balanced pH · Nothing added, nothing removed.*
+> *Drilling in the right direction.*
 
-## Highlights
+## Design system — "Depth & Precision"
 
-- **Interactive 3D can** — a procedural aluminium can rendered with [three.js](https://threejs.org).
-  The ELYPHANT label is painted onto a canvas texture at runtime, lit with key/rim/fill lights
-  and real reflections. Auto-rotates, and you can **drag to spin it**. Falls back to an elegant
-  CSS can if WebGL is unavailable.
-- **Glassmorphism** — frosted glass panels for pillars, the mineral table, gallery and CTA.
-- **Background animation** — drifting gradient orbs + a rising-bubbles canvas, with a film-grain overlay.
-- **Animated mineral table** — counters and bars animate to the real values printed on the can.
-- **Scroll reveals, tilt cards, marquee, parallax** and an active-section nav.
-- **Premium typography** — Cormorant Garamond (display serif), Oswald (condensed display),
-  Manrope (body).
-- Fully **responsive**, accessible, and **`prefers-reduced-motion`** aware.
-
-## Design tokens
+Dark-mode-first industrial design language derived from drilling trajectory schematics,
+subsurface cross-sections and offshore engineering drawings — built for an audience of
+operators (ExxonMobil, NOCs) evaluating technical credibility.
 
 | Token | Value | Use |
 |-------|-------|-----|
-| `--navy` | `#1b2c5b` | Wordmark / primary text |
-| `--navy-soft` | `#45598f` | Secondary text |
-| `--paper` | `#f6f4ef` | Warm off-white background |
-| `--white` | `#ffffff` | Surfaces |
-| `--silver` | `#c9ccd3` | Aluminium accents |
+| `--ink` | `#0B0E11` | Base — deep water, night rig operations |
+| `--steel` / `--steel-hi` | `#3E7CB1` / `#6DA5D5` | Azimuth blue — trajectory lines, accents |
+| `--amber` | `#C97B3D` | Drill-bit amber — CTAs, data highlights |
+| `--grey-hi` | `#C4CBD4` | Body text (WCAG AA on dark) |
+
+**Typography:** Archivo (engineered grotesk headlines) · Inter (body) ·
+IBM Plex Mono (data labels, coordinates, regulatory codes).
+
+## Highlights
+
+- **Hero** — animated well-trajectory line art (vertical → KOP → 90° lateral, with
+  sidetracks), depth rail, mono data cells.
+- **Trust bar** — API / OGUK / NORSOK D-10 / NOPSEMA / DGH / ONHYM styled as
+  certification stamps; 100+ years stat counter; world-graticule map with
+  Pune / Perth / Houston pins at true coordinates.
+- **Our Forte** — Onshore / Shallow Water / Deepwater as a literal depth cross-section
+  with a surface-to-reservoir ruler and line-art rig illustrations (derrick, jack-up,
+  drillship + riser).
+- **Capabilities** — accessible accordion (Well Engineering / Project Management /
+  Liaisoning & BD) with the full technical line-item lists; Reservoir & Borehole
+  Characterization as a mono chip grid.
+- **Track record** — project-log index treatment; ExxonMobil Bass Strait and PNG
+  P&A scopes featured.
+- Scroll reveals, stat counters and SVG draw-ins are subtle and fully
+  **`prefers-reduced-motion`** aware. WCAG AA contrast throughout.
 
 ## Structure
 
 ```
-index.html              Markup + content (real values from the can)
-assets/css/main.css     Design system, glassmorphism, animations, responsive
-assets/js/can3d.js      three.js 3D can + canvas label + interaction
-assets/js/app.js        Reveals, counters, nav, tilt, bubbles, form
+index.html    Self-contained single file — markup, design system CSS, and JS
+              (reveals, accordion, counters, trajectory draw-in, mailto form)
 ```
 
-## Run it
-
-No build step. Open `index.html`, or serve the folder:
-
-```bash
-python3 -m http.server 8000
-# visit http://localhost:8000
-```
-
-three.js is loaded from a CDN, so an internet connection is needed for the 3D can
-(the CSS fallback works offline).
-
-## Brand
-
-- Instagram — [@elyphant.co](https://instagram.com/elyphant.co)
-- Elyphant Beverages Pvt. Ltd., Wai Region, Satara — Maharashtra, India · Made in India.
+No build step. All content is real company copy — no fabricated stats, logos or
+testimonials.
