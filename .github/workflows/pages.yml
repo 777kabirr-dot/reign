@@ -1,8 +1,8 @@
-name: Deploy ELYPHANT to GitHub Pages
+name: Deploy Azimuth to GitHub Pages
 
 on:
   push:
-    branches: [claude/vigilant-meitner-g69f6x]
+    branches: [claude/azimuth-energy-website-amwufp]
   workflow_dispatch:
 
 permissions:
