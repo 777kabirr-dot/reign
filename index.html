@@ -3,1076 +3,384 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0B0E11">
-<title>Azimuth Energy Solutions — Well Engineering &amp; Drilling Project Management</title>
-<meta name="description" content="Azimuth Energy Solutions Pvt Ltd — independent well engineering, drilling project management and P&A engineering across deepwater, shallow water and onshore operations. Pune · Perth · Houston (opening).">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='none' stroke='%233E7CB1' stroke-width='2'/%3E%3Cpath d='M16 5 L20 20 L16 17 L12 20 Z' fill='%23C97B3D'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#0A0A0B">
+<title>Azimuth Energy Solutions — Well Engineering &amp; Drilling Consultancy</title>
+<meta name="description" content="Azimuth Energy Solutions Pvt Ltd — independent international well engineering and drilling project management across deepwater, shallow water and onshore. Pune · Perth · Houston (opening).">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%23E8E8E6' stroke-width='1.6'/%3E%3Cpath d='M16 6 L20 20 L16 17 L12 20 Z' fill='%23E8E8E6'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-/* ============================================================
-   AZIMUTH ENERGY SOLUTIONS — "Depth & Precision"
-   Dark-mode-first industrial design system
-   ============================================================ */
-:root{
-  --ink:        #0B0E11;   /* base — deep water, night ops */
-  --ink-2:      #0D1117;   /* raised surface */
-  --ink-3:      #12171D;   /* card surface */
-  --line:       #1E2630;   /* hairlines */
-  --line-2:     #2A3440;   /* stronger hairlines */
-  --steel:      #3E7CB1;   /* azimuth blue — strokes, lines */
-  --steel-hi:   #6DA5D5;   /* azimuth blue — text-safe */
-  --amber:      #C97B3D;   /* drill-bit amber — CTA, data highlights */
-  --amber-hi:   #DE9155;
-  --grey:       #8B95A1;   /* muted text */
-  --grey-hi:    #C4CBD4;   /* body text */
-  --white:      #EDF1F5;   /* headline text */
-
-  --font-head:  "Archivo", "Helvetica Neue", Arial, sans-serif;
-  --font-body:  "Inter", "Helvetica Neue", Arial, sans-serif;
-  --font-mono:  "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
-
-  --max:        1200px;
-  --pad:        clamp(20px, 5vw, 48px);
-  --sec-gap:    clamp(88px, 12vw, 160px);
-  --ease:       cubic-bezier(.22,.61,.36,1);
-}
-*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
-html{ scroll-behavior:smooth; }
-body{
-  background:var(--ink);
-  color:var(--grey-hi);
-  font-family:var(--font-body);
-  font-size:16px;
-  line-height:1.65;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
-::selection{ background:var(--steel); color:var(--white); }
-a{ color:var(--steel-hi); text-decoration:none; }
-a:hover{ color:var(--white); }
-img,svg{ max-width:100%; display:block; }
-button{ font:inherit; cursor:pointer; background:none; border:none; color:inherit; }
-:focus-visible{ outline:2px solid var(--amber-hi); outline-offset:3px; border-radius:2px; }
-
-.wrap{ max-width:var(--max); margin:0 auto; padding-left:var(--pad); padding-right:var(--pad); }
-
-/* ---- type scale ---- */
-h1,h2,h3,h4{ font-family:var(--font-head); color:var(--white); letter-spacing:-.02em; line-height:1.08; font-weight:600; }
-.h-display{ font-size:clamp(2.6rem, 6.2vw, 4.9rem); font-weight:700; letter-spacing:-.03em; }
-.h-sec{ font-size:clamp(1.9rem, 3.6vw, 2.9rem); }
-.mono{ font-family:var(--font-mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--grey); }
-.lede{ font-size:clamp(1.02rem, 1.5vw, 1.2rem); color:var(--grey-hi); max-width:62ch; }
-
-/* ---- section scaffolding ---- */
-section{ padding-top:var(--sec-gap); }
-.sec-head{ display:flex; align-items:baseline; gap:1.25rem; border-top:1px solid var(--line-2); padding-top:1.1rem; margin-bottom:clamp(2rem,4vw,3.4rem); flex-wrap:wrap; }
-.sec-head .idx{ font-family:var(--font-mono); font-size:.72rem; letter-spacing:.14em; color:var(--amber-hi); white-space:nowrap; }
-.sec-head h2{ flex:1; min-width:min(100%, 320px); }
-.sec-head .tag{ font-family:var(--font-mono); font-size:.68rem; letter-spacing:.14em; color:var(--grey); text-transform:uppercase; display:none; }
-@media(min-width:800px){ .sec-head .tag{ display:block; } }
-
-/* ---- reveal animation ---- */
-.reveal{ opacity:0; transform:translateY(22px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
-.reveal.in{ opacity:1; transform:none; }
-.reveal.d1{ transition-delay:.08s; } .reveal.d2{ transition-delay:.16s; } .reveal.d3{ transition-delay:.24s; }
-
-@media (prefers-reduced-motion: reduce){
-  html{ scroll-behavior:auto; }
-  *,*::before,*::after{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
-  .reveal{ opacity:1; transform:none; }
-}
-
-/* ============================================================
-   ANNOUNCEMENT RIBBON + NAV
-   ============================================================ */
-.ribbon{
-  background:linear-gradient(90deg, rgba(201,123,61,.12), rgba(62,124,177,.10));
-  border-bottom:1px solid var(--line);
-  font-family:var(--font-mono); font-size:.66rem; letter-spacing:.16em; text-transform:uppercase;
-  color:var(--grey-hi); text-align:center; padding:.55rem var(--pad);
-}
-.ribbon b{ color:var(--amber-hi); font-weight:500; }
-header.nav{
-  position:sticky; top:0; z-index:60;
-  background:rgba(11,14,17,.82); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--line);
-}
-.nav-in{ display:flex; align-items:center; justify-content:space-between; height:66px; gap:1rem; }
-.brand{ display:flex; align-items:center; gap:.7rem; }
-.brand svg{ width:30px; height:30px; flex:none; }
-.brand .word{ font-family:var(--font-head); font-weight:700; letter-spacing:.06em; font-size:.98rem; color:var(--white); line-height:1.1; }
-.brand .word small{ display:block; font-family:var(--font-mono); font-weight:400; font-size:.55rem; letter-spacing:.3em; color:var(--grey); }
-.nav-links{ display:none; gap:1.9rem; }
-.nav-links a{ font-size:.82rem; font-weight:500; color:var(--grey-hi); letter-spacing:.02em; }
-.nav-links a:hover{ color:var(--white); }
-@media(min-width:960px){ .nav-links{ display:flex; } }
-.nav-cta{
-  font-family:var(--font-mono); font-size:.7rem; letter-spacing:.12em; text-transform:uppercase;
-  color:var(--ink); background:var(--amber); padding:.6rem 1.1rem; white-space:nowrap;
-  transition:background .2s var(--ease);
-}
-.nav-cta:hover{ background:var(--amber-hi); color:var(--ink); }
-
-/* ============================================================
-   HERO
-   ============================================================ */
-.hero{
-  position:relative; padding:0; overflow:hidden;
-  border-bottom:1px solid var(--line);
-  background:
-    radial-gradient(1100px 600px at 78% -10%, rgba(62,124,177,.10), transparent 60%),
-    radial-gradient(900px 500px at 8% 110%, rgba(62,124,177,.06), transparent 60%),
-    var(--ink);
-}
-.hero-in{ position:relative; z-index:2; padding-top:clamp(84px,12vh,150px); padding-bottom:clamp(96px,14vh,170px); }
-.hero .kicker{ display:flex; align-items:center; gap:.9rem; margin-bottom:1.6rem; }
-.hero .kicker .rule{ width:44px; height:1px; background:var(--amber); flex:none; }
-.hero h1{ max-width:15ch; margin-bottom:1.6rem; }
-.hero h1 .dim{ color:var(--steel-hi); }
-.hero .lede{ margin-bottom:2.6rem; }
-.hero-ctas{ display:flex; flex-wrap:wrap; gap:1rem; margin-bottom:3.4rem; }
-.btn{
-  display:inline-flex; align-items:center; gap:.65rem;
-  font-family:var(--font-mono); font-size:.74rem; letter-spacing:.12em; text-transform:uppercase;
-  padding:.95rem 1.6rem; border:1px solid transparent;
-  transition:background .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease);
-}
-.btn svg{ width:14px; height:14px; }
-.btn-amber{ background:var(--amber); color:var(--ink); }
-.btn-amber:hover{ background:var(--amber-hi); color:var(--ink); }
-.btn-ghost{ border-color:var(--line-2); color:var(--grey-hi); }
-.btn-ghost:hover{ border-color:var(--steel); color:var(--white); }
-.hero-data{ display:flex; flex-wrap:wrap; gap:1.4rem 2.6rem; }
-.hero-data .cell{ border-left:1px solid var(--line-2); padding-left:1rem; }
-.hero-data .cell .v{ font-family:var(--font-mono); font-size:.82rem; color:var(--steel-hi); letter-spacing:.06em; }
-.hero-data .cell .k{ font-family:var(--font-mono); font-size:.6rem; color:var(--grey); letter-spacing:.18em; text-transform:uppercase; margin-top:.15rem; }
-/* trajectory svg backdrop */
-.hero-traj{ position:absolute; inset:0; z-index:1; pointer-events:none; opacity:.9; }
-.hero-traj svg{ width:100%; height:100%; }
-.traj-path{ fill:none; stroke:var(--steel); stroke-width:1.5; opacity:.55; }
-.traj-path.p2{ opacity:.3; stroke-width:1; }
-.traj-path.p3{ opacity:.18; stroke-width:1; }
-.traj-casing{ fill:none; stroke:var(--line-2); stroke-width:1; stroke-dasharray:2 5; }
-.traj-node{ fill:var(--amber); }
-.traj-label{ font-family:var(--font-mono); font-size:10px; letter-spacing:.14em; fill:var(--grey); }
-.traj-grid{ stroke:var(--line); stroke-width:1; }
-/* depth rail on the right */
-.depth-rail{
-  position:absolute; top:0; bottom:0; right:calc(var(--pad) * .45); z-index:2;
-  display:none; flex-direction:column; justify-content:space-between;
-  padding:110px 0 60px; pointer-events:none;
-}
-@media(min-width:1100px){ .depth-rail{ display:flex; } }
-.depth-rail .mark{ display:flex; align-items:center; gap:.6rem; font-family:var(--font-mono); font-size:.6rem; letter-spacing:.14em; color:var(--grey); }
-.depth-rail .mark::after{ content:""; width:18px; height:1px; background:var(--line-2); }
-.depth-rail .mark.hot{ color:var(--amber-hi); } .depth-rail .mark.hot::after{ background:var(--amber); }
-
-/* ============================================================
-   TRUST BAR — certifications / stats / bases
-   ============================================================ */
-.trust{ padding-top:clamp(56px,8vw,96px); }
-.trust-grid{
-  display:grid; grid-template-columns:1fr; border:1px solid var(--line);
-  background:var(--ink-2);
-}
-@media(min-width:960px){ .trust-grid{ grid-template-columns:1.15fr 1fr; } }
-.trust-cell{ padding:clamp(1.6rem,3vw,2.6rem); }
-.trust-cell + .trust-cell{ border-top:1px solid var(--line); }
-@media(min-width:960px){ .trust-cell + .trust-cell{ border-top:none; border-left:1px solid var(--line); } }
-.trust .label{ margin-bottom:1.4rem; display:flex; align-items:center; gap:.7rem; }
-.trust .label::after{ content:""; flex:1; height:1px; background:var(--line); }
-.stamps{ display:grid; grid-template-columns:repeat(2,1fr); gap:.6rem; }
-@media(min-width:560px){ .stamps{ grid-template-columns:repeat(3,1fr); } }
-.stamp{
-  border:1px solid var(--line-2); padding:.85rem .7rem; text-align:center;
-  font-family:var(--font-mono); font-size:.72rem; letter-spacing:.12em; color:var(--grey-hi);
-  position:relative; transition:border-color .25s var(--ease), color .25s var(--ease);
-}
-.stamp::before{ content:""; position:absolute; inset:3px; border:1px solid var(--line); pointer-events:none; }
-.stamp small{ display:block; font-size:.52rem; letter-spacing:.2em; color:var(--grey); margin-top:.3rem; }
-.stamp:hover{ border-color:var(--steel); color:var(--white); }
-.trust-stats{ display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; }
-.tstat .num{ font-family:var(--font-head); font-weight:700; font-size:clamp(2.4rem,4.5vw,3.6rem); color:var(--white); letter-spacing:-.03em; line-height:1; }
-.tstat .num em{ color:var(--amber-hi); font-style:normal; }
-.tstat .cap{ font-family:var(--font-mono); font-size:.62rem; letter-spacing:.16em; text-transform:uppercase; color:var(--grey); margin-top:.55rem; max-width:22ch; }
-/* world graticule map */
-.map-strip{ border:1px solid var(--line); border-top:none; background:var(--ink-2); padding:clamp(1.4rem,3vw,2.4rem); position:relative; }
-.map-strip .label{ margin-bottom:1rem; display:flex; align-items:center; gap:.7rem; }
-.map-strip .label::after{ content:""; flex:1; height:1px; background:var(--line); }
-.map-svg{ width:100%; height:auto; }
-.grat{ stroke:var(--line); stroke-width:1; fill:none; }
-.grat .eq{ stroke:var(--line-2); }
-.pin-dot{ fill:var(--amber); }
-.pin-ring{ fill:none; stroke:var(--amber); stroke-width:1; opacity:.5; }
-.pin-ring.pulse{ animation:pinpulse 2.6s var(--ease) infinite; transform-origin:center; transform-box:fill-box; }
-@keyframes pinpulse{ 0%{ opacity:.55; transform:scale(.4);} 70%{ opacity:0; transform:scale(1.6);} 100%{ opacity:0; transform:scale(1.6);} }
-.pin-label{ font-family:var(--font-mono); font-size:11px; letter-spacing:.12em; fill:var(--grey-hi); }
-.pin-sub{ font-family:var(--font-mono); font-size:9px; letter-spacing:.14em; fill:var(--grey); }
-.pin-arc{ fill:none; stroke:var(--steel); stroke-width:1; opacity:.45; stroke-dasharray:3 4; }
-
-/* ============================================================
-   MISSION
-   ============================================================ */
-.mission-grid{ display:grid; gap:2.4rem; }
-@media(min-width:900px){ .mission-grid{ grid-template-columns:1.3fr 1fr; gap:4rem; } }
-.mission-lede p{ font-size:clamp(1.15rem,2vw,1.5rem); line-height:1.55; color:var(--grey-hi); font-weight:400; }
-.mission-lede p strong{ color:var(--white); font-weight:600; }
-.mission-side{ border-left:1px solid var(--line-2); padding-left:1.6rem; display:flex; flex-direction:column; gap:1.5rem; align-self:start; }
-.mission-side .item .t{ font-family:var(--font-mono); font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; color:var(--amber-hi); margin-bottom:.3rem; }
-.mission-side .item p{ font-size:.92rem; line-height:1.6; color:var(--grey); }
-
-/* ============================================================
-   OUR FORTE — depth cross-section
-   ============================================================ */
-.forte-body{ display:grid; grid-template-columns:1fr; gap:0; position:relative; }
-@media(min-width:860px){ .forte-body{ grid-template-columns:110px 1fr; } }
-/* left depth ruler */
-.forte-ruler{ display:none; position:relative; border-right:1px solid var(--line-2); }
-@media(min-width:860px){ .forte-ruler{ display:block; } }
-.forte-ruler .rmark{
-  position:absolute; right:0; transform:translateY(-50%);
-  display:flex; align-items:center; gap:.55rem;
-  font-family:var(--font-mono); font-size:.58rem; letter-spacing:.1em; color:var(--grey); white-space:nowrap;
-}
-.forte-ruler .rmark::after{ content:""; width:14px; height:1px; background:var(--line-2); flex:none; }
-.forte-ruler .rmark.hot{ color:var(--amber-hi); } .forte-ruler .rmark.hot::after{ background:var(--amber); }
-/* tiers */
-.tier{ position:relative; border:1px solid var(--line); border-top:none; padding:clamp(1.7rem,3.4vw,2.8rem); overflow:hidden; }
-.tier:first-child{ border-top:1px solid var(--line); }
-.tier.onshore{ background:linear-gradient(180deg, #12171D 0%, #10151B 100%); }
-.tier.shallow{ background:linear-gradient(180deg, #0F141A 0%, #0D1218 100%); }
-.tier.deep{ background:linear-gradient(180deg, #0C1016 0%, #090C10 100%); }
-.tier-head{ display:flex; flex-wrap:wrap; align-items:baseline; gap:.8rem 1.4rem; margin-bottom:1.2rem; }
-.tier-head .depth{ font-family:var(--font-mono); font-size:.66rem; letter-spacing:.16em; color:var(--amber-hi); }
-.tier-head h3{ font-size:clamp(1.5rem,2.6vw,2.1rem); }
-.tier-head .env{ font-family:var(--font-mono); font-size:.62rem; letter-spacing:.14em; color:var(--grey); text-transform:uppercase; }
-.tier ul{ list-style:none; display:grid; gap:.55rem .9rem; max-width:760px; }
-@media(min-width:640px){ .tier ul{ grid-template-columns:1fr 1fr; } }
-.tier li{ font-size:.92rem; color:var(--grey-hi); padding-left:1.15rem; position:relative; }
-.tier li::before{ content:""; position:absolute; left:0; top:.62em; width:6px; height:1px; background:var(--amber); }
-.tier-art{ position:absolute; right:-10px; top:0; bottom:0; width:min(300px,36%); opacity:.65; pointer-events:none; display:none; }
-@media(min-width:760px){ .tier-art{ display:block; } }
-.tier-art svg{ width:100%; height:100%; }
-.tart-line{ stroke:var(--steel); stroke-width:1.2; fill:none; opacity:.6; }
-.tart-dim{ stroke:var(--line-2); stroke-width:1; fill:none; }
-.tart-wave{ stroke:var(--steel); stroke-width:1; fill:none; opacity:.35; }
-
-/* ============================================================
-   CAPABILITIES — accordion
-   ============================================================ */
-.cap-acc{ border-top:1px solid var(--line-2); }
-.cap-item{ border-bottom:1px solid var(--line-2); }
-.cap-btn{
-  width:100%; display:flex; align-items:center; gap:1.2rem; text-align:left;
-  padding:clamp(1.3rem,2.6vw,1.9rem) 0;
-}
-.cap-btn .n{ font-family:var(--font-mono); font-size:.72rem; letter-spacing:.12em; color:var(--amber-hi); flex:none; width:2.4rem; }
-.cap-btn .ttl{ flex:1; font-family:var(--font-head); color:var(--white); font-weight:600; letter-spacing:-.02em; line-height:1.15; font-size:clamp(1.25rem,2.4vw,1.8rem); }
-.cap-btn .count{ font-family:var(--font-mono); font-size:.62rem; letter-spacing:.14em; color:var(--grey); display:none; white-space:nowrap; }
-@media(min-width:700px){ .cap-btn .count{ display:block; } }
-.cap-btn .ico{ flex:none; width:34px; height:34px; border:1px solid var(--line-2); display:grid; place-items:center; transition:border-color .25s var(--ease), transform .35s var(--ease), background .25s var(--ease); }
-.cap-btn .ico svg{ width:12px; height:12px; stroke:var(--grey-hi); }
-.cap-btn:hover .ico{ border-color:var(--steel); }
-.cap-btn[aria-expanded="true"] .ico{ transform:rotate(45deg); border-color:var(--amber); background:rgba(201,123,61,.08); }
-.cap-panel{ display:grid; grid-template-rows:0fr; transition:grid-template-rows .5s var(--ease); }
-.cap-panel > div{ overflow:hidden; }
-.cap-item.open .cap-panel{ grid-template-rows:1fr; }
-.cap-panel-in{ padding:0 0 clamp(1.8rem,3vw,2.6rem) 0; }
-@media(min-width:860px){ .cap-panel-in{ padding-left:3.6rem; } }
-.cap-cols{ display:grid; gap:1.8rem; }
-@media(min-width:820px){ .cap-cols{ grid-template-columns:1fr 1fr; } }
-.cap-group .gt{ font-family:var(--font-mono); font-size:.64rem; letter-spacing:.16em; text-transform:uppercase; color:var(--steel-hi); margin-bottom:.8rem; display:flex; align-items:center; gap:.6rem; }
-.cap-group .gt::after{ content:""; flex:1; height:1px; background:var(--line); }
-.cap-group ul{ list-style:none; display:grid; gap:.5rem; }
-.cap-group li{ font-size:.9rem; color:var(--grey-hi); padding-left:1.15rem; position:relative; }
-.cap-group li::before{ content:""; position:absolute; left:0; top:.62em; width:6px; height:1px; background:var(--steel); }
-/* reservoir sub-section */
-.rescat{ margin-top:clamp(2.8rem,5vw,4rem); border:1px solid var(--line); background:var(--ink-2); padding:clamp(1.6rem,3vw,2.4rem); }
-.rescat .rt{ display:flex; flex-wrap:wrap; align-items:baseline; gap:.7rem 1.2rem; margin-bottom:1.3rem; }
-.rescat h3{ font-size:clamp(1.15rem,2vw,1.45rem); }
-.chipset{ display:flex; flex-wrap:wrap; gap:.55rem; }
-.chip{
-  font-family:var(--font-mono); font-size:.68rem; letter-spacing:.1em; color:var(--grey-hi);
-  border:1px solid var(--line-2); padding:.5rem .8rem;
-  transition:border-color .2s var(--ease), color .2s var(--ease);
-}
-.chip:hover{ border-color:var(--steel); color:var(--white); }
-
-/* ============================================================
-   TRACK RECORD — project log
-   ============================================================ */
-.feat-grid{ display:grid; gap:1rem; margin-bottom:2.6rem; }
-@media(min-width:820px){ .feat-grid{ grid-template-columns:1fr 1fr; } }
-.feat{
-  position:relative; border:1px solid var(--line-2); background:var(--ink-3);
-  padding:clamp(1.6rem,3vw,2.3rem); overflow:hidden;
-  transition:border-color .3s var(--ease);
-}
-.feat:hover{ border-color:var(--steel); }
-.feat::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:2px; background:var(--amber); }
-.feat .op{ display:flex; align-items:baseline; gap:.7rem; margin-bottom:1.1rem; flex-wrap:wrap; }
-.feat .op .opname{ font-family:var(--font-mono); font-size:.72rem; letter-spacing:.18em; color:var(--amber-hi); text-transform:uppercase; }
-.feat .op .region{ font-family:var(--font-mono); font-size:.62rem; letter-spacing:.14em; color:var(--grey); text-transform:uppercase; }
-.feat h3{ font-size:clamp(1.15rem,1.9vw,1.4rem); margin-bottom:.8rem; max-width:26ch; }
-.feat p{ font-size:.9rem; color:var(--grey); max-width:48ch; }
-.feat .fid{ position:absolute; top:1.3rem; right:1.4rem; font-family:var(--font-mono); font-size:.6rem; letter-spacing:.14em; color:var(--grey); }
-.log{ border:1px solid var(--line); }
-.log-row{
-  display:grid; grid-template-columns:1fr; gap:.35rem 1.4rem;
-  padding:1.15rem clamp(1.1rem,2.4vw,1.7rem); border-top:1px solid var(--line);
-  transition:background .2s var(--ease);
-}
-.log-row:first-child{ border-top:none; }
-.log-row:hover{ background:var(--ink-2); }
-@media(min-width:760px){ .log-row{ grid-template-columns:5.2rem 1fr 15rem; align-items:baseline; } }
-.log-row .lid{ font-family:var(--font-mono); font-size:.68rem; letter-spacing:.12em; color:var(--amber-hi); }
-.log-row .lt{ font-size:.95rem; color:var(--grey-hi); font-weight:500; }
-.log-row .lt strong{ color:var(--white); }
-.log-row .ld{ font-family:var(--font-mono); font-size:.64rem; letter-spacing:.12em; text-transform:uppercase; color:var(--grey); }
-@media(min-width:760px){ .log-row .ld{ text-align:right; } }
-
-/* ============================================================
-   TEAM
-   ============================================================ */
-.team-grid{ display:grid; gap:2.6rem; }
-@media(min-width:920px){ .team-grid{ grid-template-columns:1.25fr 1fr; gap:4rem; } }
-.team-copy p{ margin-bottom:1.2rem; }
-.team-copy p strong{ color:var(--white); }
-.team-facts{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); align-self:start; }
-.tfact{ background:var(--ink-2); padding:1.4rem 1.3rem; }
-.tfact .fv{ font-family:var(--font-head); font-weight:700; font-size:1.7rem; color:var(--white); letter-spacing:-.02em; }
-.tfact .fv em{ color:var(--amber-hi); font-style:normal; }
-.tfact .fk{ font-family:var(--font-mono); font-size:.58rem; letter-spacing:.16em; text-transform:uppercase; color:var(--grey); margin-top:.4rem; }
-.indep{
-  margin-top:clamp(2.6rem,5vw,3.8rem); border:1px solid var(--line-2); background:var(--ink-2);
-  padding:clamp(1.7rem,3.4vw,2.6rem); display:grid; gap:1.4rem;
-}
-@media(min-width:860px){ .indep{ grid-template-columns:auto 1fr; align-items:center; gap:2.4rem; } }
-.indep .mark{ width:56px; height:56px; flex:none; }
-.indep p{ font-size:clamp(1.05rem,1.7vw,1.3rem); color:var(--grey-hi); }
-.indep p strong{ color:var(--white); }
-
-/* ============================================================
-   CONTACT
-   ============================================================ */
-.contact-grid{ display:grid; gap:2.6rem; }
-@media(min-width:920px){ .contact-grid{ grid-template-columns:1.1fr 1fr; gap:4rem; } }
-.ch-list{ display:grid; gap:1px; background:var(--line); border:1px solid var(--line); }
-.ch{
-  display:flex; align-items:center; gap:1.1rem; background:var(--ink-2);
-  padding:1.25rem 1.3rem; transition:background .2s var(--ease);
-}
-a.ch:hover{ background:var(--ink-3); }
-a.ch:hover .cv{ color:var(--white); }
-.ch .ci{ width:38px; height:38px; flex:none; border:1px solid var(--line-2); display:grid; place-items:center; }
-.ch .ci svg{ width:16px; height:16px; stroke:var(--steel-hi); fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
-.ch .cv{ font-size:.95rem; color:var(--white); font-weight:500; word-break:break-word; display:block; }
-.ch .ck{ font-family:var(--font-mono); font-size:.58rem; letter-spacing:.16em; text-transform:uppercase; color:var(--grey); margin-top:.1rem; display:block; }
-.contact form{ display:grid; gap:1rem; align-self:start; }
-.fnote{ font-family:var(--font-mono); font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:var(--grey); line-height:1.7; }
-.field label{ display:block; font-family:var(--font-mono); font-size:.62rem; letter-spacing:.16em; text-transform:uppercase; color:var(--grey); margin-bottom:.45rem; }
-.field input, .field textarea{
-  width:100%; background:var(--ink-2); border:1px solid var(--line-2); color:var(--white);
-  font-family:var(--font-body); font-size:.95rem; padding:.85rem 1rem; border-radius:0;
-  transition:border-color .2s var(--ease);
-}
-.field input:focus, .field textarea:focus{ outline:none; border-color:var(--steel); }
-.field textarea{ min-height:130px; resize:vertical; }
-
-/* ============================================================
-   FOOTER
-   ============================================================ */
-footer{
-  margin-top:var(--sec-gap); border-top:1px solid var(--line);
-  background:var(--ink-2); padding:clamp(2.6rem,5vw,4rem) 0 2rem;
-}
-.foot-grid{ display:grid; gap:2.2rem; margin-bottom:2.6rem; }
-@media(min-width:860px){ .foot-grid{ grid-template-columns:1.4fr 1fr 1fr; } }
-.foot-grid .fh{ font-family:var(--font-mono); font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color:var(--grey); margin-bottom:.9rem; }
-.foot-grid p{ font-size:.88rem; color:var(--grey-hi); line-height:1.7; }
-.foot-grid p strong{ color:var(--white); }
-.foot-base{
-  border-top:1px solid var(--line); padding-top:1.4rem;
-  display:flex; flex-wrap:wrap; justify-content:space-between; gap:.8rem;
-  font-family:var(--font-mono); font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; color:var(--grey);
-}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
 
-<!-- ══════════════ ANNOUNCEMENT RIBBON ══════════════ -->
-<div class="ribbon" role="note">
-  Notice — <b>Houston office coming up shortly</b> &nbsp;·&nbsp; Pune &nbsp;·&nbsp; Perth
+<div class="atmos" aria-hidden="true">
+  <div class="glow"></div>
+  <div class="dots"></div>
+  <div class="petrol"></div>
+  <div class="petrol p2"></div>
 </div>
+<div class="grain" aria-hidden="true"></div>
 
-<!-- ══════════════ NAV ══════════════ -->
-<header class="nav">
-  <div class="wrap nav-in">
-    <a href="#top" class="brand" aria-label="Azimuth Energy Solutions — home">
-      <svg viewBox="0 0 32 32" aria-hidden="true">
-        <circle cx="16" cy="16" r="14" fill="none" stroke="#3E7CB1" stroke-width="1.5"/>
-        <circle cx="16" cy="16" r="9.5" fill="none" stroke="#1E2630" stroke-width="1"/>
-        <path d="M16 4.5 L19.5 21 L16 17.8 L12.5 21 Z" fill="#C97B3D"/>
-        <circle cx="16" cy="16" r="1.4" fill="#EDF1F5"/>
-      </svg>
-      <span class="word">AZIMUTH<small>ENERGY SOLUTIONS</small></span>
+<!-- ═══════════ NAV ═══════════ -->
+<header class="nav" id="nav">
+  <a href="#top" class="brand" aria-label="Azimuth Energy Solutions — home">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <circle cx="16" cy="16" r="13" fill="none" stroke="#E8E8E6" stroke-width="1.4" opacity=".85"/>
+      <circle cx="16" cy="16" r="8.5" fill="none" stroke="#E8E8E6" stroke-width=".6" opacity=".3"/>
+      <path d="M16 5 L20 20 L16 17 L12 20 Z" fill="#E8E8E6"/>
+    </svg>
+    <span class="word">Azimuth</span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#mission">Company</a>
+    <a href="#forte">Forte</a>
+    <a href="#capabilities">Capabilities</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="nav-right">
+    <a class="nav-ghost" href="mailto:projects@azimuthenergysolutions.com">Contact</a>
+    <a class="pill pill-solid pill-sm" href="#contact">Start a Project
+      <span class="knob" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h9M8 4l4 4-4 4"/></svg></span>
     </a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="#mission">Mission</a>
-      <a href="#forte">Our Forte</a>
-      <a href="#capabilities">Capabilities</a>
-      <a href="#track">Track Record</a>
-      <a href="#team">Team</a>
-    </nav>
-    <a class="nav-cta" href="#contact">Contact</a>
   </div>
 </header>
 
 <main id="top">
 
-<!-- ══════════════ HERO ══════════════ -->
-<section class="hero" aria-label="Introduction">
-  <!-- Trajectory line-art backdrop -->
-  <div class="hero-traj" aria-hidden="true">
-    <svg viewBox="0 0 1440 820" preserveAspectRatio="xMidYMid slice">
-      <g class="traj-grid" opacity=".5">
-        <line x1="0" y1="205" x2="1440" y2="205"/>
-        <line x1="0" y1="410" x2="1440" y2="410"/>
-        <line x1="0" y1="615" x2="1440" y2="615"/>
-        <line x1="1080" y1="0" x2="1080" y2="820"/>
-        <line x1="1260" y1="0" x2="1260" y2="820"/>
-      </g>
-      <!-- top-hole casing -->
-      <path class="traj-casing" d="M1080 0 V 240"/>
-      <!-- primary well path: vertical → build → lateral -->
-      <path class="traj-path draw" d="M1080 -20 V 300 C 1080 480, 1010 610, 850 665 C 700 716, 520 738, 300 742"/>
-      <!-- offset sidetracks -->
-      <path class="traj-path p2 draw" d="M1080 300 C 1085 480, 1050 640, 960 720 C 900 772, 800 792, 660 798"/>
-      <path class="traj-path p3 draw" d="M1080 300 C 1070 420, 1150 500, 1290 540"/>
-      <!-- KOP + TD nodes -->
-      <circle class="traj-node" cx="1080" cy="300" r="3.5"/>
-      <circle class="traj-node" cx="300" cy="742" r="3.5"/>
-      <text class="traj-label" x="1098" y="296">KOP</text>
-      <text class="traj-label" x="258" y="726">TD</text>
-      <text class="traj-label" x="1098" y="200">0.0&#176; INC</text>
-      <text class="traj-label" x="560" y="712">90.0&#176; INC</text>
-    </svg>
-  </div>
-  <!-- depth rail -->
-  <div class="depth-rail" aria-hidden="true">
-    <span class="mark">0 m &#183; MSL</span>
-    <span class="mark">SEABED</span>
-    <span class="mark">KOP</span>
-    <span class="mark hot">RESERVOIR</span>
-  </div>
-
-  <div class="wrap hero-in">
-    <div class="kicker reveal">
-      <span class="rule"></span>
-      <span class="mono">Azimuth Energy Solutions Pvt Ltd — Well Engineering &#183; Drilling Project Management</span>
-    </div>
-    <h1 class="h-display reveal d1">Drilling in the <span class="dim">right direction.</span></h1>
-    <p class="lede reveal d2">Independent well engineering and drilling project management — from ultra-deepwater drillships to onshore pads — engineered to standard, delivered on budget, on time.</p>
-    <div class="hero-ctas reveal d3">
-      <a class="btn btn-amber" href="#contact">Discuss your project
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg>
-      </a>
-      <a class="btn btn-ghost" href="#track">View track record</a>
-    </div>
-    <div class="hero-data reveal d3">
-      <div class="cell"><div class="v">DEEPWATER &#183; SHALLOW &#183; ONSHORE</div><div class="k">Operating envelope</div></div>
-      <div class="cell"><div class="v">API &#183; OGUK &#183; NORSOK D-10</div><div class="k">Engineered to standard</div></div>
-      <div class="cell"><div class="v">PUNE &#183; PERTH &#183; HOUSTON*</div><div class="k">*Office opening shortly</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ TRUST BAR ══════════════ -->
-<section class="trust wrap" aria-label="Certifications and global presence">
-  <div class="trust-grid reveal">
-    <div class="trust-cell">
-      <div class="label mono">Regulatory &amp; standards fluency</div>
-      <div class="stamps">
-        <div class="stamp">API<small>American Petroleum Inst.</small></div>
-        <div class="stamp">OGUK<small>UK Offshore</small></div>
-        <div class="stamp">NORSOK D-10<small>Well Integrity</small></div>
-        <div class="stamp">NOPSEMA<small>Australia</small></div>
-        <div class="stamp">DGH<small>India</small></div>
-        <div class="stamp">ONHYM<small>Morocco</small></div>
-      </div>
-    </div>
-    <div class="trust-cell">
-      <div class="label mono">The bench</div>
-      <div class="trust-stats">
-        <div class="tstat"><div class="num"><span data-count="100">100</span><em>+</em></div><div class="cap">Years collective well engineering experience</div></div>
-        <div class="tstat"><div class="num">3</div><div class="cap">Operating bases — Pune HQ &#183; Perth &#183; Houston (opening)</div></div>
-      </div>
-    </div>
-  </div>
-  <div class="map-strip reveal d1">
-    <div class="label mono">Global presence</div>
-    <svg class="map-svg" viewBox="0 0 1000 420" role="img" aria-label="World map showing offices in Pune (headquarters), Perth, and Houston (opening shortly)">
-      <g class="grat">
-        <line x1="0" y1="70" x2="1000" y2="70"/>
-        <line x1="0" y1="140" x2="1000" y2="140"/>
-        <line class="eq" x1="0" y1="210" x2="1000" y2="210"/>
-        <line x1="0" y1="280" x2="1000" y2="280"/>
-        <line x1="0" y1="350" x2="1000" y2="350"/>
-        <line x1="125" y1="0" x2="125" y2="420"/>
-        <line x1="250" y1="0" x2="250" y2="420"/>
-        <line x1="375" y1="0" x2="375" y2="420"/>
-        <line x1="500" y1="0" x2="500" y2="420"/>
-        <line x1="625" y1="0" x2="625" y2="420"/>
-        <line x1="750" y1="0" x2="750" y2="420"/>
-        <line x1="875" y1="0" x2="875" y2="420"/>
-      </g>
-      <text class="pin-sub" x="8" y="204">EQUATOR — 0&#176;</text>
-      <!-- connection arcs: Houston ↔ Pune ↔ Perth -->
-      <path class="pin-arc" d="M235 167 C 420 40, 580 60, 705 167"/>
-      <path class="pin-arc" d="M705 167 C 750 230, 790 280, 822 315"/>
-      <g>
-        <circle class="pin-ring pulse" cx="235" cy="167" r="14"/>
-        <circle class="pin-ring" cx="235" cy="167" r="7"/>
-        <circle class="pin-dot" cx="235" cy="167" r="3.2"/>
-        <text class="pin-label" x="252" y="160">HOUSTON</text>
-        <text class="pin-sub" x="252" y="176">29.76&#176;N 95.37&#176;W &#183; OPENING</text>
-      </g>
-      <g>
-        <circle class="pin-ring pulse" cx="705" cy="167" r="14"/>
-        <circle class="pin-ring" cx="705" cy="167" r="7"/>
-        <circle class="pin-dot" cx="705" cy="167" r="3.2"/>
-        <text class="pin-label" x="722" y="160">PUNE — HQ</text>
-        <text class="pin-sub" x="722" y="176">18.58&#176;N 73.78&#176;E</text>
-      </g>
-      <g>
-        <circle class="pin-ring pulse" cx="822" cy="315" r="14"/>
-        <circle class="pin-ring" cx="822" cy="315" r="7"/>
-        <circle class="pin-dot" cx="822" cy="315" r="3.2"/>
-        <text class="pin-label" x="839" y="308">PERTH</text>
-        <text class="pin-sub" x="839" y="324">31.95&#176;S 115.86&#176;E</text>
-      </g>
-    </svg>
-  </div>
-</section>
-
-<!-- ══════════════ 01 · MISSION ══════════════ -->
-<section id="mission" class="wrap" aria-label="Mission">
-  <div class="sec-head reveal">
-    <span class="idx">01 / MISSION</span>
-    <h2 class="h-sec">Why we exist</h2>
-    <span class="tag">EST. PUNE, INDIA</span>
-  </div>
-  <div class="mission-grid">
-    <div class="mission-lede reveal d1">
-      <p>Azimuth was formed to meet the ever-growing demand for <strong>customisable engineering solutions on small and medium projects</strong> — delivering high-quality engineering services that adhere to industry standards and best practices, so our clients hit their targets.</p>
-    </div>
-    <div class="mission-side reveal d2">
-      <div class="item">
-        <div class="t">Standard-driven</div>
-        <p>Every deliverable engineered against API, OGUK and NORSOK D-10 practice, and regulator-ready for NOPSEMA, DGH India and ONHYM regimes.</p>
-      </div>
-      <div class="item">
-        <div class="t">Right-sized</div>
-        <p>Built for small and medium projects that need major-operator engineering rigour without major-operator overhead.</p>
-      </div>
-      <div class="item">
-        <div class="t">Independent</div>
-        <p>No vendor bias. One objective — the right technical solution, on budget, on time.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ 02 · OUR FORTE — depth cross-section ══════════════ -->
-<section id="forte" class="wrap" aria-label="Our forte">
-  <div class="sec-head reveal">
-    <span class="idx">02 / OUR FORTE</span>
-    <h2 class="h-sec">Surface to reservoir</h2>
-    <span class="tag">CROSS-SECTION VIEW</span>
-  </div>
-  <div class="forte-body">
-    <div class="forte-ruler" aria-hidden="true">
-      <span class="rmark" style="top:4%;">0 m — SURFACE</span>
-      <span class="rmark" style="top:35%;">MSL</span>
-      <span class="rmark" style="top:64%;">SEABED — SHELF</span>
-      <span class="rmark" style="top:82%;">DEEPWATER WD</span>
-      <span class="rmark hot" style="top:97%;">RESERVOIR</span>
-    </div>
-    <div>
-      <!-- ONSHORE — surface -->
-      <article class="tier onshore reveal">
-        <div class="tier-art" aria-hidden="true">
-          <svg viewBox="0 0 300 260" preserveAspectRatio="xMidYMid meet">
-            <path class="tart-dim" d="M0 200 H300"/>
-            <path class="tart-line" d="M150 40 L120 200 M150 40 L180 200 M126 168 H174 M132 136 H168 M138 104 H162 M144 72 H156 M120 200 H180"/>
-            <path class="tart-line" d="M150 40 V 200"/>
-            <path class="tart-dim" d="M150 200 V 250" stroke-dasharray="2 4"/>
-          </svg>
-        </div>
-        <div class="tier-head">
-          <span class="depth">0 m &#183; SURFACE</span>
-          <h3>Onshore</h3>
-          <span class="env">Land rigs &#183; pads &#183; logistics corridors</span>
-        </div>
-        <ul>
-          <li>Rig selection</li>
-          <li>Well site preparation</li>
-          <li>Wellsite facilities</li>
-          <li>Rig inspection</li>
-          <li>Rig move &amp; logistics planning</li>
-        </ul>
-      </article>
-      <!-- SHALLOW WATER -->
-      <article class="tier shallow reveal">
-        <div class="tier-art" aria-hidden="true">
-          <svg viewBox="0 0 300 260" preserveAspectRatio="xMidYMid meet">
-            <path class="tart-wave" d="M0 120 q 15 -8 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0"/>
-            <path class="tart-line" d="M100 90 H220 V70 H100 Z"/>
-            <path class="tart-line" d="M115 70 V 200 M205 70 V 200 M160 90 V 200"/>
-            <path class="tart-line" d="M150 70 L160 30 L170 70"/>
-            <path class="tart-dim" d="M0 200 H300"/>
-            <path class="tart-dim" d="M160 200 V 250" stroke-dasharray="2 4"/>
-          </svg>
-        </div>
-        <div class="tier-head">
-          <span class="depth">SHELF &#183; JACK-UP WD</span>
-          <h3>Shallow Water</h3>
-          <span class="env">Jack-ups &#183; platforms &#183; templates</span>
-        </div>
-        <ul>
-          <li>Shallow water well engineering</li>
-          <li>Platforms</li>
-          <li>Template drilling</li>
-          <li>Re-entry wells</li>
-        </ul>
-      </article>
-      <!-- DEEPWATER -->
-      <article class="tier deep reveal">
-        <div class="tier-art" aria-hidden="true">
-          <svg viewBox="0 0 300 260" preserveAspectRatio="xMidYMid meet">
-            <path class="tart-wave" d="M0 60 q 15 -8 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0"/>
-            <path class="tart-line" d="M95 60 L110 78 H210 L225 60 Z"/>
-            <path class="tart-line" d="M155 60 L162 28 L169 60"/>
-            <path class="tart-line" d="M160 78 V 210"/>
-            <path class="tart-dim" d="M0 210 H300"/>
-            <path class="tart-line" d="M152 210 h16 v14 h-16 Z"/>
-            <path class="tart-dim" d="M160 224 V 256" stroke-dasharray="2 4"/>
-          </svg>
-        </div>
-        <div class="tier-head">
-          <span class="depth">DEEP &#183; ULTRA-DEEPWATER WD</span>
-          <h3>Deepwater</h3>
-          <span class="env">High-spec 5th &amp; 6th gen drillships &#183; semisubs</span>
-        </div>
-        <ul>
-          <li>Deepwater &amp; ultra-deepwater well engineering</li>
-          <li>High-spec 5th &amp; 6th generation drillships</li>
-          <li>Semisubmersibles</li>
-          <li>Anchor handling</li>
-          <li>PSV management</li>
-        </ul>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ 03 · CAPABILITIES ══════════════ -->
-<section id="capabilities" class="wrap" aria-label="Capabilities">
-  <div class="sec-head reveal">
-    <span class="idx">03 / CAPABILITIES</span>
-    <h2 class="h-sec">Scope of service</h2>
-    <span class="tag">EXPAND EACH DISCIPLINE</span>
-  </div>
-
-  <div class="cap-acc reveal d1">
-    <!-- 01 WELL ENGINEERING -->
-    <div class="cap-item open">
-      <button class="cap-btn" aria-expanded="true" aria-controls="cap-we" id="cap-we-btn">
-        <span class="n">01</span>
-        <span class="ttl">Well Engineering</span>
-        <span class="count">17 LINE ITEMS</span>
-        <span class="ico" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.5"><path d="M6 1v10M1 6h10"/></svg></span>
-      </button>
-      <div class="cap-panel" id="cap-we" role="region" aria-labelledby="cap-we-btn">
-        <div><div class="cap-panel-in">
-          <div class="cap-cols">
-            <div class="cap-group">
-              <div class="gt">Conceptual well design &amp; construction</div>
-              <ul>
-                <li>FEED study</li>
-                <li>Trajectory design</li>
-                <li>Casing seat selection &amp; stress check</li>
-                <li>BHA design</li>
-                <li>Mud engineering</li>
-                <li>Budgeting &amp; AFE creation</li>
-                <li>DTL &amp; expenditure scheduling</li>
-                <li>Technical limit preparation</li>
-                <li>Offset well review</li>
-                <li>Peer review &amp; verification</li>
-                <li>Well P&amp;A strategy development</li>
-              </ul>
-            </div>
-            <div class="cap-group">
-              <div class="gt">Delivery &amp; operations support</div>
-              <ul>
-                <li>Preparation of drilling program</li>
-                <li>Field plug &amp; abandonment project planning &amp; engineering</li>
-                <li>Drilling engineering technical support</li>
-                <li>Liaison with service providers &amp; experts</li>
-                <li>Rig-specific procedure development</li>
-                <li>RTOC monitoring during critical operations</li>
-              </ul>
-            </div>
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-canvas" id="hero-canvas"></div>
+    <div class="hero-labels" id="hero-labels" aria-hidden="true"></div>
+    <div class="hero-veil" aria-hidden="true"></div>
+    <div class="wrap hero-in">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow reveal">International Well Engineering &amp; Drilling Consultancy</p>
+          <h1 class="h1 reveal d1">Drilling in the <span class="dim">Right Direction</span></h1>
+          <p class="lead reveal d2">Independent well engineering and drilling project management — no vendor bias, delivering the right technical solution on time and on budget across deepwater, shallow water and onshore operations.</p>
+          <div class="hero-ctas reveal d3">
+            <a class="pill pill-solid" href="#contact">Start a Project
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+            </a>
+            <a class="pill pill-ghost" href="#capabilities">See Our Capabilities</a>
           </div>
-        </div></div>
-      </div>
-    </div>
-
-    <!-- 02 PROJECT MANAGEMENT -->
-    <div class="cap-item">
-      <button class="cap-btn" aria-expanded="false" aria-controls="cap-pm" id="cap-pm-btn">
-        <span class="n">02</span>
-        <span class="ttl">Project Management</span>
-        <span class="count">9 LINE ITEMS</span>
-        <span class="ico" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.5"><path d="M6 1v10M1 6h10"/></svg></span>
-      </button>
-      <div class="cap-panel" id="cap-pm" role="region" aria-labelledby="cap-pm-btn">
-        <div><div class="cap-panel-in">
-          <div class="cap-cols">
-            <div class="cap-group">
-              <div class="gt">Planning &amp; procurement</div>
-              <ul>
-                <li>Project planning and tracking</li>
-                <li>Identification of project-specific tools, equipment &amp; service requirements</li>
-                <li>Liaison with service providers</li>
-                <li>Project-specific SOW preparation</li>
-                <li>Pre-qualification of suppliers</li>
-              </ul>
-            </div>
-            <div class="cap-group">
-              <div class="gt">Contracting &amp; tendering</div>
-              <ul>
-                <li>Techno-commercial evaluation &amp; award of service contracts</li>
-                <li>Rig / services selection and contracting</li>
-                <li>Management of client tender processes</li>
-                <li>Preparation of techno-commercial tender submissions</li>
-              </ul>
-            </div>
+        </div>
+        <div class="datacard reveal d2" aria-hidden="true">
+          <div class="dc-top">
+            <span class="dc-live"><span class="pulse"></span>Well Trajectory — Active</span>
+            <span class="dc-id">AZ · NODE 03</span>
           </div>
-        </div></div>
-      </div>
-    </div>
-
-    <!-- 03 LIAISONING & BD -->
-    <div class="cap-item">
-      <button class="cap-btn" aria-expanded="false" aria-controls="cap-bd" id="cap-bd-btn">
-        <span class="n">03</span>
-        <span class="ttl">Liaisoning &amp; Business Development</span>
-        <span class="count">5 LINE ITEMS</span>
-        <span class="ico" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.5"><path d="M6 1v10M1 6h10"/></svg></span>
-      </button>
-      <div class="cap-panel" id="cap-bd" role="region" aria-labelledby="cap-bd-btn">
-        <div><div class="cap-panel-in">
-          <div class="cap-cols">
-            <div class="cap-group">
-              <div class="gt">Market &amp; representation</div>
-              <ul>
-                <li>Market intelligence analysis</li>
-                <li>Liaising with operators for new technology, equipment, services &amp; tools</li>
-                <li>In-country representation for competitive bidding of tenders and business opportunities</li>
-              </ul>
-            </div>
-            <div class="cap-group">
-              <div class="gt">Development &amp; relationships</div>
-              <ul>
-                <li>Product marketing &amp; business development</li>
-                <li>Relationship management between operators &amp; service companies</li>
-              </ul>
-            </div>
+          <div class="dc-stage">
+            <div class="dc-item on"><div class="env">Operating Environment</div><div class="name"><span class="nd"></span>Deepwater</div></div>
+            <div class="dc-item"><div class="env">Operating Environment</div><div class="name"><span class="nd"></span>Shallow Water</div></div>
+            <div class="dc-item"><div class="env">Operating Environment</div><div class="name"><span class="nd"></span>Onshore</div></div>
           </div>
-        </div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Reservoir & Borehole Characterization -->
-  <div class="rescat reveal d2">
-    <div class="rt">
-      <span class="mono" style="color:var(--amber-hi);">SUPPORTING CAPABILITY</span>
-      <h3>Reservoir &amp; Borehole Characterization</h3>
-    </div>
-    <div class="chipset">
-      <span class="chip">BOREHOLE STRESS STUDIES</span>
-      <span class="chip">RESERVOIR CHARACTERISATION</span>
-      <span class="chip">GEOLOGICAL STUDIES</span>
-      <span class="chip">GEOSTEERING</span>
-      <span class="chip">PORE PRESSURE STUDIES</span>
-      <span class="chip">LWD/MWD LOG INTERPRETATION &amp; EVALUATION</span>
-      <span class="chip">SURVEY PROGRAMMING</span>
-      <span class="chip">REAL-TIME MONITORING</span>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ 04 · TRACK RECORD ══════════════ -->
-<section id="track" class="wrap" aria-label="Track record">
-  <div class="sec-head reveal">
-    <span class="idx">04 / TRACK RECORD</span>
-    <h2 class="h-sec">Projects executed</h2>
-    <span class="tag">PROJECT LOG — EXECUTED SCOPES</span>
-  </div>
-
-  <!-- Featured: ExxonMobil scopes -->
-  <div class="feat-grid">
-    <article class="feat reveal">
-      <span class="fid">LOG-06</span>
-      <div class="op"><span class="opname">ExxonMobil</span><span class="region">— Australia</span></div>
-      <h3>P&amp;A planning and engineering, Bass Strait</h3>
-      <p>Plug &amp; abandonment planning and engineering delivered for Bass Strait operations.</p>
-    </article>
-    <article class="feat reveal d1">
-      <span class="fid">LOG-07</span>
-      <div class="op"><span class="opname">ExxonMobil</span><span class="region">— Papua New Guinea</span></div>
-      <h3>P&amp;A planning and engineering, two CAT 1 wells</h3>
-      <p>Plug &amp; abandonment planning and engineering executed for two Category 1 wells.</p>
-    </article>
-  </div>
-
-  <!-- Log index -->
-  <div class="log reveal d2">
-    <div class="log-row">
-      <span class="lid">LOG-01</span>
-      <span class="lt">High-level Well Design and Engineering</span>
-      <span class="ld">DEEPWATER</span>
-    </div>
-    <div class="log-row">
-      <span class="lid">LOG-02</span>
-      <span class="lt">Well Design and Engineering</span>
-      <span class="ld">SHALLOW WATER &#183; HPHT</span>
-    </div>
-    <div class="log-row">
-      <span class="lid">LOG-03</span>
-      <span class="lt">Well Trajectory Planning &amp; Project Feasibility Study, incl. P&amp;A strategy</span>
-      <span class="ld">SHALLOW WATER</span>
-    </div>
-    <div class="log-row">
-      <span class="lid">LOG-04</span>
-      <span class="lt">Project Management — tendering &amp; identification of equipment / service providers</span>
-      <span class="ld">ONSHORE</span>
-    </div>
-    <div class="log-row">
-      <span class="lid">LOG-05</span>
-      <span class="lt">Well Design and Engineering</span>
-      <span class="ld">ONSHORE</span>
-    </div>
-    <div class="log-row">
-      <span class="lid">LOG-06</span>
-      <span class="lt">P&amp;A planning and engineering, Bass Strait — <strong>ExxonMobil</strong></span>
-      <span class="ld">AUSTRALIA &#183; OFFSHORE</span>
-    </div>
-    <div class="log-row">
-      <span class="lid">LOG-07</span>
-      <span class="lt">P&amp;A planning and engineering, two CAT 1 wells — <strong>ExxonMobil</strong></span>
-      <span class="ld">PAPUA NEW GUINEA</span>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ 05 · TEAM ══════════════ -->
-<section id="team" class="wrap" aria-label="The team">
-  <div class="sec-head reveal">
-    <span class="idx">05 / THE TEAM</span>
-    <h2 class="h-sec">An internationally distributed technical bench</h2>
-  </div>
-  <div class="team-grid">
-    <div class="team-copy reveal d1">
-      <p><strong>People are our most important asset.</strong> Azimuth draws on more than 100 years of collective experience — a pool of highly experienced, internationally available talent with hands-on well engineering and project management delivery across deepwater semisubs and drillships, land drilling, and shallow-water jack-ups.</p>
-      <p>The bench is well versed with API, OGUK, NORSOK D-10, NOPSEMA, DGH India and ONHYM requirements, and fluent in the latest industry-standard engineering software. We are building our reputation on one thing: quality work, on time, within budget.</p>
-    </div>
-    <div class="team-facts reveal d2">
-      <div class="tfact"><div class="fv">100<em>+</em></div><div class="fk">Years collective experience</div></div>
-      <div class="tfact"><div class="fv">3</div><div class="fk">Rig environments — DW &#183; SW &#183; land</div></div>
-      <div class="tfact"><div class="fv">6</div><div class="fk">Regulatory regimes worked</div></div>
-      <div class="tfact"><div class="fv">0</div><div class="fk">Vendor affiliations — fully independent</div></div>
-    </div>
-  </div>
-  <div class="indep reveal d3">
-    <svg class="mark" viewBox="0 0 56 56" aria-hidden="true">
-      <circle cx="28" cy="28" r="26" fill="none" stroke="#3E7CB1" stroke-width="1.5"/>
-      <circle cx="28" cy="28" r="17" fill="none" stroke="#1E2630" stroke-width="1"/>
-      <path d="M28 8 L34 36 L28 30.5 L22 36 Z" fill="#C97B3D"/>
-      <circle cx="28" cy="28" r="2" fill="#EDF1F5"/>
-    </svg>
-    <p><strong>Totally independent.</strong> We carry no vendor bias and sell no hardware. One objective only — deliver the right technical solution to our clients, on budget, on time.</p>
-  </div>
-</section>
-
-<!-- ══════════════ 06 · CONTACT ══════════════ -->
-<section id="contact" class="wrap contact" aria-label="Contact">
-  <div class="sec-head reveal">
-    <span class="idx">06 / CONTACT</span>
-    <h2 class="h-sec">Start the conversation</h2>
-    <span class="tag">EMAIL &#183; PHONE &#183; WHATSAPP PREFERRED</span>
-  </div>
-  <div class="contact-grid">
-    <div class="reveal d1">
-      <div class="ch-list">
-        <a class="ch" href="mailto:projects@azimuthenergysolutions.com">
-          <span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6"/></svg></span>
-          <span><span class="cv">projects@azimuthenergysolutions.com</span><span class="ck">Email — primary channel</span></span>
-        </a>
-        <a class="ch" href="https://wa.me/917219657827" target="_blank" rel="noopener">
-          <span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L4 20l1.1-4.4A8.5 8.5 0 1 1 21 11.5Z"/><path d="M9 9.5c.5 2.5 2 4 4.5 5l1.5-1.5 2 1"/></svg></span>
-          <span><span class="cv">WhatsApp — +91 72196 57827</span><span class="ck">Fastest response</span></span>
-        </a>
-        <a class="ch" href="tel:+917219657827">
-          <span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg></span>
-          <span><span class="cv">+91 72196 57827 &nbsp;/&nbsp; +91 93711 67566</span><span class="ck">India</span></span>
-        </a>
-        <a class="ch" href="tel:+65457076593">
-          <span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg></span>
-          <span><span class="cv">+65 45707 6593</span><span class="ck">Perth</span></span>
-        </a>
-        <div class="ch">
-          <span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
-          <span><span class="cv">Vasundhara Plaza, DP Rd, Pimple Nilakh, Pimpri-Chinchwad, Pune, Maharashtra, India</span><span class="ck">Registered office — HQ</span></span>
+          <div class="dc-bar"><span></span></div>
+          <div class="dc-meta"><span>API · OGUK · NORSOK D-10</span><span>RTOC LIVE</span></div>
         </div>
       </div>
     </div>
-    <form class="reveal d2" id="contact-form" novalidate>
-      <div class="field">
-        <label for="f-name">Name</label>
-        <input id="f-name" name="name" type="text" autocomplete="name" required>
+  </section>
+
+  <!-- ═══════════ TRUST STRIP ═══════════ -->
+  <section class="trust" aria-label="Regulatory compliance">
+    <div class="wrap">
+      <div class="trust-inner reveal">
+        <p class="trust-lead mono">Engineered to standard · regulator-ready across six regimes</p>
+        <div class="trust-row">
+          <span class="reg">API<small>American Petroleum Inst.</small></span>
+          <span class="reg">OGUK<small>UK Offshore</small></span>
+          <span class="reg">NORSOK D-10<small>Well Integrity</small></span>
+          <span class="reg">NOPSEMA<small>Australia</small></span>
+          <span class="reg">DGH India<small>India</small></span>
+          <span class="reg">ONHYM<small>Morocco</small></span>
+        </div>
+        <div class="trust-stat"><b><span data-count="100">100</span>+</b> years collective well engineering experience &nbsp;·&nbsp; Pune · Perth · Houston (opening)</div>
       </div>
-      <div class="field">
-        <label for="f-email">Email</label>
-        <input id="f-email" name="email" type="email" autocomplete="email" required>
+    </div>
+  </section>
+
+  <!-- ═══════════ MISSION ═══════════ -->
+  <section id="mission" class="sec-pad" aria-label="Mission">
+    <div class="wrap mission">
+      <p class="eyebrow reveal" style="margin-bottom:1.6rem;">Why Azimuth exists</p>
+      <p class="lead reveal d1">Azimuth was formed to cater to the ever-growing requirement of customisable engineering solutions for small &amp; medium projects — delivering high-quality engineering services adhering to industry standards and best practices, helping companies hit their targets.</p>
+      <q class="reveal d2">Totally independent. One objective: <span class="dim">the right technical solution, on budget, on time.</span></q>
+    </div>
+  </section>
+
+  <!-- ═══════════ OUR FORTE ═══════════ -->
+  <section id="forte" class="sec-pad" aria-label="Our forte">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="h2 reveal">Our Forte <span class="dim">— seabed to surface</span></h2>
+        <p class="note reveal d1">One continuous operating chain across three environments. The line runs from the deepest water to the pad.</p>
       </div>
-      <div class="field">
-        <label for="f-msg">Message</label>
-        <textarea id="f-msg" name="message" required></textarea>
+      <div class="forte-wrap">
+        <svg class="forte-line" id="forte-line" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M166 150 H500 M500 150 H834" />
+          <circle class="pulse" cx="166" cy="150" r="3.5" />
+        </svg>
+        <div class="forte-grid">
+          <article class="gcard will-tilt reveal">
+            <div class="node-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#E8E8E6" stroke-width="1.3"><path d="M12 3v18M5 8l7-5 7 5M5 8v8l7 5 7-5V8"/></svg></div>
+            <div class="env">Deep · Ultra-deepwater WD</div>
+            <h3>Deepwater</h3>
+            <ul>
+              <li>Deepwater &amp; ultra-deepwater well engineering</li>
+              <li>High-spec 5th &amp; 6th gen drillships</li>
+              <li>Semisubmersibles</li>
+              <li>Anchor handling</li>
+              <li>PSV management</li>
+            </ul>
+          </article>
+          <article class="gcard will-tilt reveal d1">
+            <div class="node-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#E8E8E6" stroke-width="1.3"><path d="M3 12h18M6 12V7h12v5M9 12v9M15 12v9"/></svg></div>
+            <div class="env">Shelf · Jack-up WD</div>
+            <h3>Shallow Water</h3>
+            <ul>
+              <li>Shallow water well engineering</li>
+              <li>Platforms</li>
+              <li>Template drilling</li>
+              <li>Re-entry wells</li>
+            </ul>
+          </article>
+          <article class="gcard will-tilt reveal d2">
+            <div class="node-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#E8E8E6" stroke-width="1.3"><path d="M12 2 5 21M12 2l7 19M8.5 12h7M12 2v19"/></svg></div>
+            <div class="env">0 m · Surface</div>
+            <h3>Onshore</h3>
+            <ul>
+              <li>Rig selection</li>
+              <li>Well site preparation</li>
+              <li>Wellsite facilities</li>
+              <li>Rig inspection</li>
+              <li>Rig move &amp; logistics planning</li>
+            </ul>
+          </article>
+        </div>
       </div>
-      <button class="btn btn-amber" type="submit">Send enquiry
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg>
-      </button>
-      <p class="fnote">Submitting opens your mail client addressed to projects@azimuthenergysolutions.com</p>
-    </form>
-  </div>
-</section>
+    </div>
+  </section>
+
+  <!-- ═══════════ CAPABILITIES — node chain ═══════════ -->
+  <section id="capabilities" class="sec-pad" aria-label="Capabilities">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="h2 reveal">Capabilities <span class="dim">as a connected chain</span></h2>
+        <p class="note reveal d1">Each discipline is a node in one continuous engineering workflow — fluent in the latest industry-standard software.</p>
+      </div>
+      <div class="cap-flow">
+        <div class="cap-node reveal">
+          <div class="cn-head">
+            <span class="cn-idx">01</span>
+            <div><h3>Well Engineering</h3><p class="cn-sub">Conceptual design through drilling program, P&amp;A engineering and real-time operations support.</p></div>
+          </div>
+          <div class="cap-tags">
+            <span class="cap-tag">FEED study</span>
+            <span class="cap-tag">Trajectory design</span>
+            <span class="cap-tag">Casing seat selection &amp; stress check</span>
+            <span class="cap-tag">BHA design</span>
+            <span class="cap-tag">Mud engineering</span>
+            <span class="cap-tag">Budgeting &amp; AFE creation</span>
+            <span class="cap-tag">DTL &amp; expenditure scheduling</span>
+            <span class="cap-tag">Technical limit preparation</span>
+            <span class="cap-tag">Offset well review</span>
+            <span class="cap-tag">Peer review &amp; verification</span>
+            <span class="cap-tag">Well P&amp;A strategy development</span>
+            <span class="cap-tag">Drilling program preparation</span>
+            <span class="cap-tag">Field P&amp;A project planning &amp; engineering</span>
+            <span class="cap-tag">Drilling engineering technical support</span>
+            <span class="cap-tag">Liaise with service providers &amp; experts</span>
+            <span class="cap-tag">Rig-specific procedure development</span>
+            <span class="cap-tag">RTOC monitoring during critical operations</span>
+            <span class="nested-label">Supporting node — Reservoir &amp; Borehole Characterization</span>
+            <span class="cap-tag nested">Borehole stress studies</span>
+            <span class="cap-tag nested">Reservoir characterisation</span>
+            <span class="cap-tag nested">Geological studies</span>
+            <span class="cap-tag nested">Geosteering</span>
+            <span class="cap-tag nested">Pore pressure studies</span>
+            <span class="cap-tag nested">LWD/MWD log interpretation</span>
+            <span class="cap-tag nested">Survey programming</span>
+            <span class="cap-tag nested">Real-time monitoring</span>
+          </div>
+          <div class="cn-dot" aria-hidden="true"></div>
+        </div>
+
+        <div class="cap-node reveal">
+          <div class="cn-head">
+            <span class="cn-idx">02</span>
+            <div><h3>Project Management</h3><p class="cn-sub">Planning, procurement, tendering and techno-commercial contracting end to end.</p></div>
+          </div>
+          <div class="cap-tags">
+            <span class="cap-tag">Project planning and tracking</span>
+            <span class="cap-tag">Tools / equipment / service requirement identification</span>
+            <span class="cap-tag">Liaising with service providers</span>
+            <span class="cap-tag">Project-specific SOW preparation</span>
+            <span class="cap-tag">Techno-commercial evaluation &amp; award of contracts</span>
+            <span class="cap-tag">Pre-qualification of suppliers</span>
+            <span class="cap-tag">Rig / services selection and contracting</span>
+            <span class="cap-tag">Management of client tender processes</span>
+            <span class="cap-tag">Techno-commercial tender submissions</span>
+          </div>
+          <div class="cn-dot" aria-hidden="true"></div>
+        </div>
+
+        <div class="cap-node reveal">
+          <div class="cn-head">
+            <span class="cn-idx">03</span>
+            <div><h3>Liaisoning &amp; Business Development</h3><p class="cn-sub">Market intelligence, in-country representation and operator–service relationships.</p></div>
+          </div>
+          <div class="cap-tags">
+            <span class="cap-tag">Market intelligence analysis</span>
+            <span class="cap-tag">Liaising with operators for new technology / equipment / services / tools</span>
+            <span class="cap-tag">Product marketing &amp; business development</span>
+            <span class="cap-tag">In-country representation for competitive bidding</span>
+            <span class="cap-tag">Relationship management between operators &amp; service companies</span>
+          </div>
+          <div class="cn-dot" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ PROJECTS — largest moment ═══════════ -->
+  <section id="projects" class="sec-pad projects" aria-label="Projects executed">
+    <div class="wrap">
+      <p class="eyebrow proj-eyebrow reveal">Projects executed</p>
+      <h2 class="proj-h reveal d1">Trusted on <span class="dim">ExxonMobil</span> wells</h2>
+      <p class="proj-sub reveal d2">Plug &amp; abandonment planning and engineering delivered for <strong>ExxonMobil</strong> in the Bass Strait, Australia, and on two CAT&nbsp;1 wells in Papua New Guinea — alongside deepwater, shallow-water HPHT and onshore well design and engineering scopes.</p>
+
+      <div class="feat-grid">
+        <article class="featcard will-tilt reveal">
+          <span class="fid">LOG-06</span>
+          <div class="op"><span class="opname">ExxonMobil</span><span class="region">— Australia</span></div>
+          <h3>P&amp;A planning and engineering, Bass Strait</h3>
+          <p>Plug &amp; abandonment planning and engineering delivered for Bass Strait operations.</p>
+        </article>
+        <article class="featcard will-tilt reveal d1">
+          <span class="fid">LOG-07</span>
+          <div class="op"><span class="opname">ExxonMobil</span><span class="region">— Papua New Guinea</span></div>
+          <h3>P&amp;A planning and engineering, two CAT&nbsp;1 wells</h3>
+          <p>Plug &amp; abandonment planning and engineering executed for two Category&nbsp;1 wells.</p>
+        </article>
+      </div>
+
+      <div class="log reveal d2">
+        <div class="log-row"><span class="lid">LOG-01</span><span class="lt">High-level Well Design and Engineering</span><span class="ld">Deepwater</span></div>
+        <div class="log-row"><span class="lid">LOG-02</span><span class="lt">Well Design and Engineering</span><span class="ld">Shallow Water · HPHT</span></div>
+        <div class="log-row"><span class="lid">LOG-03</span><span class="lt">Well Trajectory Planning &amp; Project Feasibility Study, incl. P&amp;A strategy</span><span class="ld">Shallow Water</span></div>
+        <div class="log-row"><span class="lid">LOG-04</span><span class="lt">Project Management — tendering &amp; identification of equipment / service providers</span><span class="ld">Onshore</span></div>
+        <div class="log-row"><span class="lid">LOG-05</span><span class="lt">Well Design and Engineering</span><span class="ld">Onshore</span></div>
+        <div class="log-row"><span class="lid">LOG-06</span><span class="lt">P&amp;A planning and engineering, Bass Strait — <strong>ExxonMobil</strong></span><span class="ld">Australia · Offshore</span></div>
+        <div class="log-row"><span class="lid">LOG-07</span><span class="lt">P&amp;A planning and engineering, two CAT 1 wells — <strong>ExxonMobil</strong></span><span class="ld">Papua New Guinea</span></div>
+      </div>
+      <p class="proj-note mono reveal">Further project entries available on request — confirmed with client prior to release</p>
+    </div>
+  </section>
+
+  <!-- ═══════════ TEAM ═══════════ -->
+  <section id="team" class="sec-pad" aria-label="The team">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="h2 reveal">An internationally <span class="dim">distributed technical bench</span></h2>
+        <p class="note reveal d1">People are our most important asset — internationally available talent, one shared standard.</p>
+      </div>
+      <p class="team-copy reveal d1">More than <strong>100 years of collective experience</strong> — a pool of highly experienced, internationally available talent with hands-on well engineering and project management delivery across deepwater semisubs and drillships, land drilling, and shallow-water jack-ups. Well versed with API, OGUK, NORSOK D-10, NOPSEMA, DGH India and ONHYM. Totally independent — one objective: <strong>deliver the right technical solution, on budget, on time.</strong></p>
+      <div class="team-nums">
+        <div class="tnum reveal"><div class="v">100<span class="u">+</span></div><div class="c">Years collective experience</div></div>
+        <div class="tnum reveal d1"><div class="v">3</div><div class="c">Rig environments — deepwater · shallow · land</div></div>
+        <div class="tnum reveal d2"><div class="v">6</div><div class="c">Regulatory regimes worked</div></div>
+        <div class="tnum reveal d3"><div class="v">0</div><div class="c">Vendor affiliations — fully independent</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CONTACT ═══════════ -->
+  <section id="contact" class="sec-pad" aria-label="Contact">
+    <div class="wrap">
+      <div class="contact-head">
+        <p class="eyebrow reveal">Your well, our bearing</p>
+        <h2 class="h2 reveal d1">Start your next project with an independent technical partner</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="ch-list reveal d1">
+          <a class="ch" href="mailto:projects@azimuthenergysolutions.com">
+            <span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 8 9 6 9-6"/></svg></span>
+            <span><span class="cv">projects@azimuthenergysolutions.com</span><span class="ck">Email — primary channel</span></span>
+          </a>
+          <a class="ch" href="https://wa.me/917219657827" target="_blank" rel="noopener">
+            <span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L4 20l1.1-4.4A8.5 8.5 0 1 1 21 11.5Z"/><path d="M9 9.5c.5 2.5 2 4 4.5 5l1.5-1.5 2 1"/></svg></span>
+            <span><span class="cv">WhatsApp — +91 72196 57827</span><span class="ck">Fastest response</span></span>
+          </a>
+          <a class="ch" href="tel:+917219657827">
+            <span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg></span>
+            <span><span class="cv">+91 72196 57827 &nbsp;/&nbsp; +91 93711 67566</span><span class="ck">India</span></span>
+          </a>
+          <a class="ch" href="tel:+65457076593">
+            <span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg></span>
+            <span><span class="cv">+65 45707 6593</span><span class="ck">Perth</span></span>
+          </a>
+          <div class="ch">
+            <span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+            <span><span class="cv">Vasundhara Plaza, DP Rd, Pimple Nilakh, Pimpri-Chinchwad, Pune, Maharashtra, India</span><span class="ck">Registered office — HQ</span></span>
+          </div>
+        </div>
+        <form class="formcard reveal d2" id="contact-form" novalidate>
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="f-msg">Message</label>
+            <textarea id="f-msg" name="message" required></textarea>
+          </div>
+          <button class="pill pill-solid" type="submit" style="justify-content:center;">Send enquiry
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+          </button>
+          <p class="fnote">Submitting opens your mail client addressed to projects@azimuthenergysolutions.com</p>
+        </form>
+      </div>
+    </div>
+  </section>
 
 </main>
 
-<!-- ══════════════ FOOTER ══════════════ -->
-<footer>
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer">
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <a href="#top" class="brand">
-          <svg viewBox="0 0 32 32" aria-hidden="true" style="width:26px;height:26px;">
-            <circle cx="16" cy="16" r="14" fill="none" stroke="#3E7CB1" stroke-width="1.5"/>
-            <path d="M16 4.5 L19.5 21 L16 17.8 L12.5 21 Z" fill="#C97B3D"/>
-          </svg>
-          <span class="word">AZIMUTH<small>ENERGY SOLUTIONS PVT LTD</small></span>
-        </a>
-        <p style="max-width:38ch; margin-top:1rem;">Independent well engineering, drilling project management and P&amp;A engineering — deepwater, shallow water and onshore.</p>
+        <div class="foot-word">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="#E8E8E6" stroke-width="1.4" opacity=".85"/><path d="M16 5 L20 20 L16 17 L12 20 Z" fill="#E8E8E6"/></svg>
+          Azimuth
+        </div>
+        <p style="max-width:36ch;">Independent well engineering, drilling project management and P&amp;A engineering — deepwater, shallow water and onshore.</p>
       </div>
       <div>
-        <div class="fh">Offices</div>
-        <p><strong>Pune — HQ</strong><br>Vasundhara Plaza, DP Rd,<br>Pimple Nilakh, Pimpri-Chinchwad,<br>Pune, Maharashtra, India<br>+91 72196 57827 &#183; +91 93711 67566</p>
+        <div class="fh">Pune — Headquarters</div>
+        <p>Vasundhara Plaza, DP Rd,<br>Pimple Nilakh, Pimpri-Chinchwad,<br>Pune, Maharashtra, India<br><strong>+91 72196 57827</strong> · +91 93711 67566</p>
       </div>
       <div>
-        <div class="fh">&nbsp;</div>
-        <p><strong>Perth</strong><br>+65 45707 6593</p>
-        <p style="margin-top:.9rem;"><strong>Houston</strong><br>Office coming up shortly</p>
+        <div class="fh">Perth &amp; Houston</div>
+        <p><strong>Perth</strong> — +65 45707 6593<br><strong>Houston</strong> — office opening shortly<br><a href="mailto:projects@azimuthenergysolutions.com">projects@azimuthenergysolutions.com</a></p>
       </div>
     </div>
     <div class="foot-base">
       <span>&#169; <span id="yr">2026</span> Azimuth Energy Solutions Pvt Ltd</span>
       <span>Drilling in the right direction</span>
-      <span>API &#183; OGUK &#183; NORSOK D-10 &#183; NOPSEMA &#183; DGH &#183; ONHYM</span>
+      <span>API · OGUK · NORSOK D-10 · NOPSEMA · DGH · ONHYM</span>
     </div>
   </div>
 </footer>
 
-<script>
-(function(){
-  "use strict";
-  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  /* ---- scroll reveals ---- */
-  var revealEls = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window && !reduced){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
-      });
-    }, { rootMargin:"0px 0px -8% 0px", threshold:.08 });
-    revealEls.forEach(function(el){ io.observe(el); });
-  } else {
-    revealEls.forEach(function(el){ el.classList.add("in"); });
-  }
-
-  /* ---- hero trajectory: draw-in on load ---- */
-  if (!reduced){
-    document.querySelectorAll(".traj-path.draw").forEach(function(p, i){
-      var len = p.getTotalLength();
-      p.style.strokeDasharray = len;
-      p.style.strokeDashoffset = len;
-      p.style.transition = "stroke-dashoffset 2.4s cubic-bezier(.22,.61,.36,1) " + (0.3 + i * 0.35) + "s";
-      requestAnimationFrame(function(){ requestAnimationFrame(function(){ p.style.strokeDashoffset = "0"; }); });
-    });
-  }
-
-  /* ---- capabilities accordion ---- */
-  document.querySelectorAll(".cap-btn").forEach(function(btn){
-    btn.addEventListener("click", function(){
-      var item = btn.closest(".cap-item");
-      var open = item.classList.toggle("open");
-      btn.setAttribute("aria-expanded", open ? "true" : "false");
-    });
-  });
-
-  /* ---- stat counter (100+) ---- */
-  var counters = document.querySelectorAll("[data-count]");
-  if ("IntersectionObserver" in window && !reduced && counters.length){
-    var cio = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (!e.isIntersecting) return;
-        cio.unobserve(e.target);
-        var el = e.target, target = parseInt(el.getAttribute("data-count"), 10), t0 = null;
-        function step(ts){
-          if (!t0) t0 = ts;
-          var k = Math.min((ts - t0) / 1400, 1);
-          el.textContent = Math.round(target * (1 - Math.pow(1 - k, 3)));
-          if (k < 1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-      });
-    }, { threshold:.6 });
-    counters.forEach(function(c){ cio.observe(c); });
-  }
-
-  /* ---- contact form → mailto ---- */
-  var form = document.getElementById("contact-form");
-  if (form){
-    form.addEventListener("submit", function(ev){
-      ev.preventDefault();
-      var name = document.getElementById("f-name").value.trim();
-      var email = document.getElementById("f-email").value.trim();
-      var msg = document.getElementById("f-msg").value.trim();
-      var body = msg + "\n\n— " + name + (email ? " <" + email + ">" : "");
-      window.location.href = "mailto:projects@azimuthenergysolutions.com"
-        + "?subject=" + encodeURIComponent("Project enquiry — " + (name || "via website"))
-        + "&body=" + encodeURIComponent(body);
-    });
-  }
-
-  /* ---- footer year ---- */
-  var yr = document.getElementById("yr");
-  if (yr) yr.textContent = new Date().getFullYear();
-})();
-</script>
+<script src="assets/js/vendor/three.min.js"></script>
+<script src="assets/js/scene3d.js" defer></script>
+<script src="assets/js/app.js" defer></script>
 </body>
 </html>
