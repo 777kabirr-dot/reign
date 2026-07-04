@@ -198,6 +198,7 @@ h1,h2,h3,h4{ color:var(--text); font-weight:500; letter-spacing:-.02em; line-hei
    ================================================================ */
 .mission{ text-align:center; }
 .mission .lead{ margin:0 auto 2.6rem; max-width:60ch; color:var(--text-2); }
+.pullbox{ border-radius:22px; padding:clamp(2rem,4vw,3.2rem) clamp(1.6rem,3vw,2.6rem); margin:clamp(2.4rem,5vw,3.4rem) auto 0; max-width:780px; }
 .mission q{ display:block; max-width:20ch; margin:0 auto; quotes:none;
   font-size:clamp(2rem,4.4vw,3.4rem); font-weight:600; letter-spacing:-.025em; line-height:1.1; color:var(--text); }
 .mission q .dim{ color:var(--text-2); }
@@ -242,8 +243,12 @@ h1,h2,h3,h4{ color:var(--text); font-weight:500; letter-spacing:-.02em; line-hei
 /* connector dot column */
 .cap-node .cn-dot{ display:none; position:relative; }
 @media(min-width:820px){ .cap-node .cn-dot{ display:block; } }
-.cap-node .cn-dot::before{ content:""; position:absolute; left:50%; top:2.1rem; transform:translateX(-50%); width:9px; height:9px; border-radius:50%; background:var(--node); box-shadow:0 0 10px rgba(232,232,230,.8); z-index:2; }
-.cap-node .cn-dot::after{ content:""; position:absolute; left:50%; top:2.1rem; bottom:-1.8rem; transform:translateX(-50%); width:1px; background:var(--line-mid); }
+.cap-node .cn-dot::before{ content:""; position:absolute; left:50%; top:2.1rem; transform:translateX(-50%); width:9px; height:9px; border-radius:50%; background:var(--node); box-shadow:0 0 10px rgba(232,232,230,.8); z-index:2; animation:nodePulse 2.6s ease-in-out infinite; }
+@keyframes nodePulse{ 0%,100%{ box-shadow:0 0 8px rgba(232,232,230,.6); transform:translateX(-50%) scale(1); } 50%{ box-shadow:0 0 20px rgba(232,232,230,1); transform:translateX(-50%) scale(1.25); } }
+.cap-node .cn-dot::after{ content:""; position:absolute; left:50%; top:2.1rem; bottom:-1.8rem; transform:translateX(-50%); width:1px;
+  background:linear-gradient(180deg, rgba(232,232,230,.7), rgba(232,232,230,.7)) no-repeat, var(--line-mid);
+  background-size:100% 34%, 100% 100%; animation:chainFlow 3.2s linear infinite; }
+@keyframes chainFlow{ 0%{ background-position:0 -50%, 0 0; } 100%{ background-position:0 150%, 0 0; } }
 .cap-node:last-child .cn-dot::after{ display:none; }
 .nested-label{ width:100%; font-family:var(--mono); font-size:.56rem; letter-spacing:.14em; text-transform:uppercase; color:var(--text-3); margin:.6rem 0 .1rem; }
 
@@ -330,3 +335,82 @@ a.ch:hover{ background:var(--graphite); border-color:var(--line-mid); transform:
 .foot-base{ border-top:1px solid var(--line-dim); padding-top:1.4rem; display:flex; flex-wrap:wrap; justify-content:space-between; gap:.8rem;
   font-family:var(--mono); font-size:.56rem; letter-spacing:.12em; text-transform:uppercase; color:var(--text-3); }
 .foot-base a:hover{ color:var(--text); }
+
+/* ================================================================
+   LIQUID GLASS BOXES + MOTION
+   Every content box becomes translucent frosted glass with a
+   slow specular sheen drifting across it; each section carries a
+   business-mapped ambient motion so the whole site feels alive.
+   ================================================================ */
+.gcard, .featcard, .datacard, .log-row, .ch, .formcard, .pullbox, .trust-inner{
+  position:relative; overflow:hidden;
+  background:linear-gradient(155deg, rgba(255,255,255,.07) 0%, rgba(255,255,255,.025) 46%, rgba(255,255,255,.01) 100%);
+  backdrop-filter:blur(22px) saturate(140%); -webkit-backdrop-filter:blur(22px) saturate(140%);
+  border:1px solid rgba(255,255,255,.11);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16), inset 0 -1px 0 rgba(255,255,255,.03), 0 26px 60px -34px rgba(0,0,0,.85);
+}
+.trust-inner{ border-radius:20px; padding:2rem 1.6rem; }
+/* travelling specular sheen (the "liquid" glint) */
+.gcard::after, .featcard::after, .datacard::after, .log-row::after, .ch::after, .formcard::after, .pullbox::after{
+  content:""; position:absolute; inset:0; pointer-events:none; border-radius:inherit; z-index:3;
+  background:linear-gradient(118deg, transparent 34%, rgba(255,255,255,.06) 44%, rgba(255,255,255,.16) 50%, rgba(255,255,255,.06) 56%, transparent 66%);
+  background-size:280% 280%; background-position:170% 0;
+  mix-blend-mode:screen; opacity:.55;
+  animation:glassSheen 13s ease-in-out infinite;
+}
+@keyframes glassSheen{ 0%{ background-position:170% 0; } 60%,100%{ background-position:-90% 0; } }
+/* soft drifting inner highlight — subtle liquid body */
+.gcard::before, .datacard::before, .formcard::before, .ch::before, .pullbox::before{
+  content:""; position:absolute; width:60%; height:60%; top:-10%; left:-10%; z-index:0; pointer-events:none;
+  background:radial-gradient(closest-side, rgba(255,255,255,.09), transparent 70%);
+  filter:blur(14px); animation:glassDrift 11s ease-in-out infinite;
+}
+@keyframes glassDrift{ 0%,100%{ transform:translate(0,0); opacity:.5; } 50%{ transform:translate(60%,40%); opacity:.85; } }
+/* keep content above the glass internals */
+.gcard > *, .featcard > *, .datacard > *, .log-row > *, .ch > *, .formcard > *, .pullbox > *{ position:relative; z-index:2; }
+/* stagger so boxes don't glint in unison */
+.forte-grid .gcard:nth-child(2)::after{ animation-delay:-4.3s; }
+.forte-grid .gcard:nth-child(3)::after{ animation-delay:-8.6s; }
+.feat-grid .featcard:nth-child(2)::after{ animation-delay:-6.2s; }
+.log-row:nth-child(2n)::after{ animation-delay:-5.1s; }
+.log-row:nth-child(3n)::after{ animation-delay:-9.4s; }
+.ch:nth-child(2n)::after{ animation-delay:-6.7s; }
+.ch:nth-child(3n)::after{ animation-delay:-3.2s; }
+/* liquid response on hover — a faster, brighter sweep + lift */
+.gcard:hover::after, .featcard:hover::after, .ch:hover::after, .log-row:hover::after, .formcard:hover::after{
+  animation-duration:2.4s; opacity:.85;
+}
+.datacard:hover::after{ animation-duration:2.4s; opacity:.85; }
+
+/* ---- per-section business motion (behind each section's content) ---- */
+.fx{ position:absolute; inset:0; z-index:1; pointer-events:none; overflow:hidden; }
+/* Forte — light filtering down through the water column (seabed → surface) */
+.fx-depth::before{ content:""; position:absolute; left:-10%; right:-10%; top:-30%; height:160%;
+  background:repeating-linear-gradient(180deg, transparent 0 46px, rgba(110,130,136,.045) 46px 48px);
+  animation:depthRise 16s linear infinite; }
+.fx-depth::after{ content:""; position:absolute; inset:0;
+  background:radial-gradient(130% 60% at 50% -12%, rgba(110,130,136,.12), transparent 60%);
+  animation:depthGlow 10s ease-in-out infinite; }
+@keyframes depthRise{ from{ transform:translateY(0); } to{ transform:translateY(-48px); } }
+@keyframes depthGlow{ 0%,100%{ opacity:.35; transform:translateY(0); } 50%{ opacity:.75; transform:translateY(24px); } }
+/* Projects — a seismic/survey scan sweeping the executed record */
+.fx-scan::before{ content:""; position:absolute; left:0; right:0; top:0; height:2px;
+  background:linear-gradient(90deg, transparent, rgba(232,232,230,.22) 30%, rgba(232,232,230,.22) 70%, transparent);
+  box-shadow:0 0 14px rgba(232,232,230,.28); animation:scanDown 8.5s ease-in-out infinite; }
+.fx-scan::after{ content:""; position:absolute; inset:0;
+  background:radial-gradient(60% 40% at 50% 50%, rgba(42,74,71,.16), transparent 70%);
+  animation:depthGlow 12s ease-in-out infinite; }
+@keyframes scanDown{ 0%{ top:-2%; opacity:0; } 8%{ opacity:1; } 92%{ opacity:1; } 100%{ top:102%; opacity:0; } }
+/* Trust strip — a light travelling the compliance rail */
+.trust-inner::after{ content:""; position:absolute; left:0; bottom:0; height:1px; width:34%;
+  background:linear-gradient(90deg, transparent, rgba(232,232,230,.5), transparent);
+  animation:railSweep 6s ease-in-out infinite; z-index:3; }
+@keyframes railSweep{ 0%{ transform:translateX(-40%); opacity:0; } 20%{ opacity:1; } 80%{ opacity:1; } 100%{ transform:translateX(320%); opacity:0; } }
+
+@media (prefers-reduced-motion: reduce){
+  .gcard::after, .featcard::after, .datacard::after, .log-row::after, .ch::after, .formcard::after, .pullbox::after,
+  .gcard::before, .datacard::before, .formcard::before, .ch::before, .pullbox::before,
+  .fx-depth::before, .fx-depth::after, .fx-scan::before, .fx-scan::after, .trust-inner::after,
+  .cap-node .cn-dot::before, .cap-node .cn-dot::after{ animation:none !important; }
+  .gcard::after, .featcard::after, .datacard::after, .log-row::after, .ch::after, .formcard::after, .pullbox::after{ opacity:0; }
+}
