@@ -77,29 +77,112 @@
   }
   if (tzEls.length) { updClocks(); setInterval(updClocks, 20000); }
 
+  /* ---- cascade timing: capability tags + log rows ---- */
+  if (!reduced) {
+    document.querySelectorAll(".cap-node").forEach(function (node) {
+      node.querySelectorAll(".cap-tag, .nested-label").forEach(function (tag, i) {
+        tag.style.transitionDelay = Math.min(i * 24, 620) + "ms";
+      });
+    });
+    document.querySelectorAll(".log .log-row").forEach(function (row, i) {
+      row.style.transitionDelay = (i * 70) + "ms";
+    });
+  }
+
   /* ---- scroll reveals ---- */
   var revealEls = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && !reduced) {
     var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add("in");
+        io.unobserve(e.target);
+        // clear cascade delays after entry so hover states stay snappy
+        if (e.target.classList.contains("cap-node") || e.target.classList.contains("log")) {
+          setTimeout(function () {
+            e.target.querySelectorAll(".cap-tag, .nested-label, .log-row").forEach(function (el) {
+              el.style.transitionDelay = "";
+            });
+          }, 1400);
+        }
+      });
     }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
     revealEls.forEach(function (el) { io.observe(el); });
   } else {
     revealEls.forEach(function (el) { el.classList.add("in"); });
   }
 
+  /* ---- mobile menu ---- */
+  var burger = document.getElementById("nav-burger");
+  var mmenu = document.getElementById("mmenu");
+  if (burger && mmenu) {
+    function setMenu(open) {
+      document.body.classList.toggle("menu-open", open);
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+      burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      mmenu.setAttribute("aria-hidden", open ? "false" : "true");
+    }
+    burger.addEventListener("click", function () {
+      setMenu(!document.body.classList.contains("menu-open"));
+    });
+    mmenu.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () { setMenu(false); });
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && document.body.classList.contains("menu-open")) setMenu(false);
+    });
+  }
+
+  /* ---- scroll-drawn well path (Forte) ---- */
+  var wpLine = document.getElementById("wp-line");
+  var wpDot = document.getElementById("wp-dot");
+  var forteSec = document.getElementById("forte");
+  if (wpLine && forteSec && wpLine.getTotalLength) {
+    var wpLen = wpLine.getTotalLength();
+    if (!reduced) {
+      wpLine.style.strokeDasharray = wpLen;
+      wpLine.style.strokeDashoffset = wpLen;
+      var wpTick = false;
+      function wpScrub() {
+        if (wpTick) return; wpTick = true;
+        requestAnimationFrame(function () {
+          var r = forteSec.getBoundingClientRect();
+          var p = (window.innerHeight - r.top) / (r.height + window.innerHeight * 0.35);
+          p = Math.max(0, Math.min(1, p));
+          wpLine.style.strokeDashoffset = wpLen * (1 - p);
+          if (wpDot) {
+            var pt = wpLine.getPointAtLength(wpLen * p);
+            wpDot.setAttribute("transform", "translate(" + pt.x.toFixed(1) + " " + pt.y.toFixed(1) + ")");
+            wpDot.style.opacity = (p > 0.01 && p < 0.99) ? "1" : "0";
+          }
+          wpTick = false;
+        });
+      }
+      window.addEventListener("scroll", wpScrub, { passive: true });
+      window.addEventListener("resize", wpScrub);
+      wpScrub();
+    } else if (wpDot) {
+      wpDot.style.display = "none";
+    }
+  }
+
   /* ---- nav frost on scroll ---- */
   var nav = document.getElementById("nav");
+  var navNeedle = document.getElementById("nav-needle");
+  var navBrg = document.getElementById("nav-brg");
   if (nav) {
     var nt = false;
     function navScroll() {
       if (nt) return; nt = true;
       requestAnimationFrame(function () {
         nav.classList.toggle("scrolled", window.pageYOffset > 30);
-        if (progBar) {
-          var max = document.documentElement.scrollHeight - window.innerHeight;
-          progBar.style.width = (max > 0 ? (window.pageYOffset / max) * 100 : 0) + "%";
-        }
+        var max = document.documentElement.scrollHeight - window.innerHeight;
+        var frac = max > 0 ? window.pageYOffset / max : 0;
+        if (progBar) progBar.style.width = (frac * 100) + "%";
+        // live bearing: the Azimuth needle tracks scroll through the page
+        var deg = Math.round(frac * 360) % 361;
+        if (navNeedle) navNeedle.style.transform = "rotate(" + deg + "deg)";
+        if (navBrg) navBrg.textContent = ("00" + deg).slice(-3) + "°";
         nt = false;
       });
     }

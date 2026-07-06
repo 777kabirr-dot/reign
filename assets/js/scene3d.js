@@ -214,6 +214,13 @@
     camera.lookAt(0, 0, 0);
     group.rotation.y = Math.sin(t * 0.05) * 0.12;
 
+    // hero → content handoff: network drifts up and dims as you scroll away
+    if (!reduced) {
+      var sf = Math.min(1, (window.pageYOffset || 0) / (window.innerHeight * 0.95));
+      group.position.y = sf * 3.6;
+      renderer.domElement.style.opacity = String(1 - sf * 0.85);
+    }
+
     // update HTML labels
     for (i = 0; i < labels.length; i++) {
       var s2 = projectTo2D(labels[i].p);

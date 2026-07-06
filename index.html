@@ -6,6 +6,30 @@
 <meta name="theme-color" content="#0A0A0B">
 <title>Azimuth Energy Solutions — Well Engineering &amp; Drilling Consultancy</title>
 <meta name="description" content="Azimuth Energy Solutions Pvt Ltd — independent international well engineering and drilling project management across deepwater, shallow water and onshore. Pune · Perth · Houston (opening).">
+<meta property="og:title" content="Azimuth Energy Solutions — Drilling in the Right Direction">
+<meta property="og:description" content="Independent well engineering & drilling project management — deepwater, shallow water and onshore. No vendor bias. On budget, on time. Pune · Perth · Houston (opening).">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Azimuth Energy Solutions">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Azimuth Energy Solutions Pvt Ltd",
+  "slogan": "Drilling in the right direction",
+  "description": "Independent well engineering and drilling project management consultancy — deepwater, shallow water and onshore operations.",
+  "email": "projects@azimuthenergysolutions.com",
+  "telephone": "+91-7219657827",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Vasundhara Plaza, DP Rd, Pimple Nilakh, Pimpri-Chinchwad",
+    "addressLocality": "Pune",
+    "addressRegion": "Maharashtra",
+    "addressCountry": "IN"
+  },
+  "knowsAbout": ["Well engineering", "Drilling project management", "Plug and abandonment engineering", "Reservoir and borehole characterization"]
+}
+</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%23E8E8E6' stroke-width='1.6'/%3E%3Cpath d='M16 6 L20 20 L16 17 L12 20 Z' fill='%23E8E8E6'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,6 +38,7 @@
 </head>
 <body>
 
+<a class="skip" href="#mission">Skip to content</a>
 <div id="preloader" aria-hidden="true">
   <div class="pre-in">
     <svg viewBox="0 0 32 32">
@@ -43,7 +68,7 @@
     <svg viewBox="0 0 32 32" aria-hidden="true">
       <circle cx="16" cy="16" r="13" fill="none" stroke="#E8E8E6" stroke-width="1.4" opacity=".85"/>
       <circle cx="16" cy="16" r="8.5" fill="none" stroke="#E8E8E6" stroke-width=".6" opacity=".3"/>
-      <path d="M16 5 L20 20 L16 17 L12 20 Z" fill="#E8E8E6"/>
+      <g class="nav-needle" id="nav-needle"><path d="M16 5 L20 20 L16 17 L12 20 Z" fill="#E8E8E6"/></g>
     </svg>
     <span class="word">Azimuth</span>
   </a>
@@ -52,15 +77,40 @@
     <a href="#forte">Forte</a>
     <a href="#capabilities">Capabilities</a>
     <a href="#projects">Projects</a>
+    <a href="#team">Team</a>
     <a href="#contact">Contact</a>
   </nav>
   <div class="nav-right">
+    <span class="nav-brg" id="nav-brg" aria-hidden="true">000°</span>
     <a class="nav-ghost" href="mailto:projects@azimuthenergysolutions.com">Contact</a>
     <a class="pill pill-solid pill-sm" href="#contact">Start a Project
       <span class="knob" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h9M8 4l4 4-4 4"/></svg></span>
     </a>
+    <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu">
+      <span></span><span></span>
+    </button>
   </div>
 </header>
+
+<!-- ═══════════ MOBILE MENU ═══════════ -->
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <nav class="mmenu-links" aria-label="Mobile">
+    <a href="#mission"><b>01</b>Company</a>
+    <a href="#forte"><b>02</b>Forte</a>
+    <a href="#capabilities"><b>03</b>Capabilities</a>
+    <a href="#projects"><b>04</b>Projects</a>
+    <a href="#team"><b>05</b>Team</a>
+    <a href="#contact"><b>06</b>Contact</a>
+  </nav>
+  <div class="mmenu-foot">
+    <div class="clocks">
+      <span class="clock"><span class="cd" aria-hidden="true"></span><b data-tz="Asia/Kolkata">--:--</b> Pune</span>
+      <span class="clock"><span class="cd" aria-hidden="true"></span><b data-tz="Australia/Perth">--:--</b> Perth</span>
+      <span class="clock"><span class="cd" aria-hidden="true"></span><b data-tz="America/Chicago">--:--</b> Houston</span>
+    </div>
+    <a href="mailto:projects@azimuthenergysolutions.com">projects@azimuthenergysolutions.com</a>
+  </div>
+</div>
 
 <main id="top">
 
@@ -149,6 +199,15 @@
   <!-- ═══════════ OUR FORTE ═══════════ -->
   <section id="forte" class="sec-pad" aria-label="Our forte">
     <div class="fx fx-depth" aria-hidden="true"></div>
+    <svg class="wellpath" id="wellpath" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path class="wp-casing" d="M1150 -10 V 210"/>
+      <path class="wp-line" id="wp-line" d="M1150 -10 V 300 C 1150 470 1075 575 930 625 C 785 672 540 695 300 700"/>
+      <circle class="wp-node" cx="1150" cy="300" r="3.5"/>
+      <circle class="wp-node" cx="300" cy="700" r="3.5"/>
+      <g class="wp-dot" id="wp-dot"><circle r="4.5"/></g>
+      <text class="wp-t" x="1168" y="297">KOP</text>
+      <text class="wp-t" x="258" y="683">TD</text>
+    </svg>
     <div class="wrap">
       <div class="sec-head">
         <span class="sec-idx reveal"><b>02</b> Our Forte</span>
