@@ -42,9 +42,14 @@ coordinates, node IDs).
   Characterization nests as a dashed supporting node.
 - **Projects** — the largest type moment on the page: "Trusted on *ExxonMobil* wells",
   with the Bass Strait & Papua New Guinea P&A scopes featured and the full project log.
-- Scroll reveals, nav frost, stat counters, glass-card tilt and the network are all
-  subtle and **`prefers-reduced-motion`** aware; the network degrades gracefully if WebGL
-  is unavailable.
+- **Top-tier layer** — branded "calibrating bearing" preloader with masked word-by-word
+  headline reveal, cursor light that faintly illuminates the void, magnetic pill buttons,
+  a live ops ticker of real services, live office clocks (Pune / Perth / Houston via
+  `Intl.DateTimeFormat`), section indexing (01–06) with drawn rules, scroll-progress
+  hairline, and a giant outlined AZIMUTH footer wordmark.
+- Scroll reveals (blur-up), nav frost, stat counters, glass-card tilt and the network are
+  all subtle and **`prefers-reduced-motion`** aware; the network degrades gracefully if
+  WebGL is unavailable.
 
 ## Structure
 

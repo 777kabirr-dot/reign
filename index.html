@@ -14,6 +14,21 @@
 </head>
 <body>
 
+<div id="preloader" aria-hidden="true">
+  <div class="pre-in">
+    <svg viewBox="0 0 32 32">
+      <circle cx="16" cy="16" r="14" fill="none" stroke="#E8E8E6" stroke-width="1" opacity=".35"/>
+      <circle cx="16" cy="16" r="9" fill="none" stroke="#E8E8E6" stroke-width=".5" opacity=".18"/>
+      <g class="needle"><path d="M16 5.5 L19.4 20 L16 17.2 L12.6 20 Z" fill="#E8E8E6"/></g>
+      <circle cx="16" cy="16" r="1.2" fill="#E8E8E6"/>
+    </svg>
+    <div class="pre-bar"><span></span></div>
+    <div class="pre-meta"><span>Calibrating bearing</span><span class="pre-pct">000</span></div>
+  </div>
+</div>
+<div class="scroll-progress" aria-hidden="true"><span></span></div>
+<div class="cursor-glow" aria-hidden="true"></div>
+
 <div class="atmos" aria-hidden="true">
   <div class="glow"></div>
   <div class="dots"></div>
@@ -58,7 +73,13 @@
       <div class="hero-grid">
         <div class="hero-copy">
           <p class="eyebrow reveal">International Well Engineering &amp; Drilling Consultancy</p>
-          <h1 class="h1 reveal d1">Drilling in the <span class="dim">Right Direction</span></h1>
+          <h1 class="h1 hero-h1" aria-label="Drilling in the Right Direction">
+            <span class="w" aria-hidden="true"><span>Drilling</span></span>
+            <span class="w" aria-hidden="true"><span>in</span></span>
+            <span class="w" aria-hidden="true"><span>the</span></span>
+            <span class="w dim" aria-hidden="true"><span>Right</span></span>
+            <span class="w dim" aria-hidden="true"><span>Direction</span></span>
+          </h1>
           <p class="lead reveal d2">Independent well engineering and drilling project management — no vendor bias, delivering the right technical solution on time and on budget across deepwater, shallow water and onshore operations.</p>
           <div class="hero-ctas reveal d3">
             <a class="pill pill-solid" href="#contact">Start a Project
@@ -82,7 +103,16 @@
         </div>
       </div>
     </div>
+    <div class="hero-scroll" aria-hidden="true"><span>Scroll</span><span class="sline"></span><span>18.58°N — 29.76°N</span></div>
   </section>
+
+  <!-- ═══════════ LIVE OPS TICKER ═══════════ -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Well Engineering</span><i></i><span>Project Management</span><i></i><span>P&amp;A Engineering</span><i></i><span>FEED Studies</span><i></i><span>Trajectory Design</span><i></i><span>RTOC Monitoring</span><i></i><span>Rig Selection</span><i></i><span>Tender Management</span><i></i><span>Geosteering</span><i></i><span>Casing Design</span><i></i><span>Pune &#183; Perth &#183; Houston</span><i></i>
+      <span>Well Engineering</span><i></i><span>Project Management</span><i></i><span>P&amp;A Engineering</span><i></i><span>FEED Studies</span><i></i><span>Trajectory Design</span><i></i><span>RTOC Monitoring</span><i></i><span>Rig Selection</span><i></i><span>Tender Management</span><i></i><span>Geosteering</span><i></i><span>Casing Design</span><i></i><span>Pune &#183; Perth &#183; Houston</span><i></i>
+    </div>
+  </div>
 
   <!-- ═══════════ TRUST STRIP ═══════════ -->
   <section class="trust" aria-label="Regulatory compliance">
@@ -97,7 +127,12 @@
           <span class="reg">DGH India<small>India</small></span>
           <span class="reg">ONHYM<small>Morocco</small></span>
         </div>
-        <div class="trust-stat"><b><span data-count="100">100</span>+</b> years collective well engineering experience &nbsp;·&nbsp; Pune · Perth · Houston (opening)</div>
+        <div class="trust-stat"><b><span data-count="100">100</span>+</b> years collective well engineering experience</div>
+        <div class="clocks">
+          <span class="clock"><span class="cd" aria-hidden="true"></span><b data-tz="Asia/Kolkata">--:--</b> Pune · HQ</span>
+          <span class="clock"><span class="cd" aria-hidden="true"></span><b data-tz="Australia/Perth">--:--</b> Perth</span>
+          <span class="clock"><span class="cd" aria-hidden="true"></span><b data-tz="America/Chicago">--:--</b> Houston · Opening</span>
+        </div>
       </div>
     </div>
   </section>
@@ -105,7 +140,7 @@
   <!-- ═══════════ MISSION ═══════════ -->
   <section id="mission" class="sec-pad" aria-label="Mission">
     <div class="wrap mission">
-      <p class="eyebrow reveal" style="margin-bottom:1.6rem;">Why Azimuth exists</p>
+      <p class="eyebrow reveal" style="margin-bottom:1.6rem;">01 &nbsp;/&nbsp; Why Azimuth exists</p>
       <p class="lead reveal d1">Azimuth was formed to cater to the ever-growing requirement of customisable engineering solutions for small &amp; medium projects — delivering high-quality engineering services adhering to industry standards and best practices, helping companies hit their targets.</p>
       <div class="pullbox reveal d2"><q>Totally independent. One objective: <span class="dim">the right technical solution, on budget, on time.</span></q></div>
     </div>
@@ -116,6 +151,7 @@
     <div class="fx fx-depth" aria-hidden="true"></div>
     <div class="wrap">
       <div class="sec-head">
+        <span class="sec-idx reveal"><b>02</b> Our Forte</span>
         <h2 class="h2 reveal">Our Forte <span class="dim">— seabed to surface</span></h2>
         <p class="note reveal d1">One continuous operating chain across three environments. The line runs from the deepest water to the pad.</p>
       </div>
@@ -169,6 +205,7 @@
   <section id="capabilities" class="sec-pad" aria-label="Capabilities">
     <div class="wrap">
       <div class="sec-head">
+        <span class="sec-idx reveal"><b>03</b> Capabilities</span>
         <h2 class="h2 reveal">Capabilities <span class="dim">as a connected chain</span></h2>
         <p class="note reveal d1">Each discipline is a node in one continuous engineering workflow — fluent in the latest industry-standard software.</p>
       </div>
@@ -250,7 +287,7 @@
   <section id="projects" class="sec-pad projects" aria-label="Projects executed">
     <div class="fx fx-scan" aria-hidden="true"></div>
     <div class="wrap">
-      <p class="eyebrow proj-eyebrow reveal">Projects executed</p>
+      <p class="eyebrow proj-eyebrow reveal">04 &nbsp;/&nbsp; Projects executed</p>
       <h2 class="proj-h reveal d1">Trusted on <span class="dim">ExxonMobil</span> wells</h2>
       <p class="proj-sub reveal d2">Plug &amp; abandonment planning and engineering delivered for <strong>ExxonMobil</strong> in the Bass Strait, Australia, and on two CAT&nbsp;1 wells in Papua New Guinea — alongside deepwater, shallow-water HPHT and onshore well design and engineering scopes.</p>
 
@@ -286,12 +323,13 @@
   <section id="team" class="sec-pad" aria-label="The team">
     <div class="wrap">
       <div class="sec-head">
+        <span class="sec-idx reveal"><b>05</b> The Team</span>
         <h2 class="h2 reveal">An internationally <span class="dim">distributed technical bench</span></h2>
         <p class="note reveal d1">People are our most important asset — internationally available talent, one shared standard.</p>
       </div>
       <p class="team-copy reveal d1">More than <strong>100 years of collective experience</strong> — a pool of highly experienced, internationally available talent with hands-on well engineering and project management delivery across deepwater semisubs and drillships, land drilling, and shallow-water jack-ups. Well versed with API, OGUK, NORSOK D-10, NOPSEMA, DGH India and ONHYM. Totally independent — one objective: <strong>deliver the right technical solution, on budget, on time.</strong></p>
       <div class="team-nums">
-        <div class="tnum reveal"><div class="v">100<span class="u">+</span></div><div class="c">Years collective experience</div></div>
+        <div class="tnum reveal"><div class="v"><span data-count="100">100</span><span class="u">+</span></div><div class="c">Years collective experience</div></div>
         <div class="tnum reveal d1"><div class="v">3</div><div class="c">Rig environments — deepwater · shallow · land</div></div>
         <div class="tnum reveal d2"><div class="v">6</div><div class="c">Regulatory regimes worked</div></div>
         <div class="tnum reveal d3"><div class="v">0</div><div class="c">Vendor affiliations — fully independent</div></div>
@@ -303,7 +341,7 @@
   <section id="contact" class="sec-pad" aria-label="Contact">
     <div class="wrap">
       <div class="contact-head">
-        <p class="eyebrow reveal">Your well, our bearing</p>
+        <p class="eyebrow reveal">06 &nbsp;/&nbsp; Your well, our bearing</p>
         <h2 class="h2 reveal d1">Start your next project with an independent technical partner</h2>
       </div>
       <div class="contact-grid">
@@ -356,6 +394,7 @@
 <!-- ═══════════ FOOTER ═══════════ -->
 <footer class="footer">
   <div class="wrap">
+    <div class="foot-mega" aria-hidden="true">AZIMUTH</div>
     <div class="foot-grid">
       <div>
         <div class="foot-word">
