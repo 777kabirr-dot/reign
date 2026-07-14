@@ -52,7 +52,7 @@
         requestAnimationFrame(glowLoop);
       })();
     }
-    document.querySelectorAll(".pill, .btn").forEach(function (el) {
+    document.querySelectorAll(".pill").forEach(function (el) {
       el.addEventListener("pointermove", function (e) {
         var r = el.getBoundingClientRect();
         var dx = (e.clientX - r.left - r.width / 2) / r.width;

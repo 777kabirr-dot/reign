@@ -23,16 +23,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
           enablement: true
 
+      - name: Stage site files only
+        run: |
+          mkdir dist
+          cp index.html robots.txt dist/
+          cp -r assets dist/
+
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: 'dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
